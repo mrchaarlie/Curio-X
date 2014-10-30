@@ -5,11 +5,11 @@ University of Waterloo
 Systems Design Engineering, 4th year Design Project
 
 Project Members:
-Charles Wu, Johnathan Johnston, Robert Bon, Kenneth Chan
+Charles Wu, Jonathan Johnston, Robert Bon, Kenneth Chan
 
 Project Supervisor:
 Professor Edith Law
 
 ---
 
-This is about crowd-sourcing scientific research data through gamification.
+Developing a generalized and gamified crowd-sourcing platform for collecting scientific research data from images.
