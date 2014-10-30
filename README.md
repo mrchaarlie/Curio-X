@@ -2,7 +2,7 @@ This is Curio.
 =====
 
 University of Waterloo
-Systemds Design Engineering, 4th year Design Project
+Systems Design Engineering, 4th year Design Project
 
 Project Members:
 Charles Wu, Johnathan Johnston, Robert Bon, Kenneth Chan
