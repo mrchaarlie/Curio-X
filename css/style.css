@@ -1,0 +1,79 @@
+body {
+	background-color: #1e1f1e;
+	color: #dadede;
+}
+
+h1, h2, h3 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+h1{
+	padding: 0 0 10px 0;
+	border-bottom: 1px solid #A13434;
+}
+
+.header {
+	height: 294px;
+	margin: 0 0 30px 0;
+	padding: 87px 0 57px 0;
+	background: #A13434
+}
+
+.center-block, .title {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+	-webkit-transition: 0.3s;
+	transition: 0.2s ease-out;
+	position: relative;
+	top:0px;
+	left:0px;
+	right:0px;
+	width: 300px;
+	height: 150px;
+	line-height: 145px;
+	font-size: 4em;
+	font-family: 'Montserrat', sans-serif;
+	text-shadow: rgb(59, 59, 59) 1px 1px,
+		rgb(59, 59, 59) 2px 2px,
+		rgb(59, 59, 59) 3px 3px,
+		rgb(60, 60, 60) 4px 4px,
+		rgb(60, 60, 60) 5px 5px,
+		rgb(61, 61, 61) 6px 6px,
+		rgb(61, 61, 61) 7px 7px,
+		rgb(62, 62, 62) 8px 8px,
+		rgb(62, 62, 62) 9px 9px,
+		rgb(62, 62, 62) 10px 10px,
+		rgb(63, 63, 63) 11px 11px,
+		rgb(63, 63, 63) 12px 12px,
+		rgb(64, 64, 64) 13px 13px,
+		rgb(64, 64, 64) 14px 14px,
+		rgb(65, 65, 65) 15px 15px,
+		rgb(65, 65, 65) 16px 16px,
+		rgb(65, 65, 65) 17px 17px,
+		rgb(66, 66, 66) 18px 18px,
+		rgb(66, 66, 66) 19px 19px,
+		rgb(67, 67, 67) 20px 20px,
+		rgb(67, 67, 67) 21px 21px,
+		rgb(68, 68, 68) 22px 22px;
+
+	-webkit-box-shadow: 0px 0px 61px 4px rgba(34,34,34,0.73);
+	-moz-box-shadow: 0px 0px 61px 4px rgba(34,34,34,0.73);
+	box-shadow: 0px 0px 61px 4px rgba(34,34,34,0.73);
+
+	background-color: rgb(68, 68, 68);
+	background-color: #444444;
+}
+
+.intro {
+	
+}
+
+.footer{
+	margin:30px 0 30px 0;
+	padding:30px 0 0 0 ;
+	border-top: 1px solid #444;
+}
