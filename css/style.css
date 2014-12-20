@@ -13,9 +13,11 @@ h1{
 }
 
 .header {
-	height: 294px;
+	height: 194px;
+	-webkit-transition: 0.2s;
+	transition: 0.2s ease-out;
 	margin: 0 0 30px 0;
-	padding: 87px 0 57px 0;
+	padding: 37px 0 37px 0;
 	background: #A13434
 }
 
@@ -26,15 +28,16 @@ h1{
 }
 
 .title {
-	-webkit-transition: 0.3s;
-	transition: 0.2s ease-out;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s ease-out;
+	transition: 0.3s ease-out;
 	position: relative;
 	top:0px;
 	left:0px;
 	right:0px;
 	width: 300px;
-	height: 150px;
-	line-height: 145px;
+	height: 120px;
+	line-height: 115px;
 	font-size: 4em;
 	font-family: 'Montserrat', sans-serif;
 	text-shadow: rgb(59, 59, 59) 1px 1px,
