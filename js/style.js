@@ -1,14 +1,19 @@
 
 $(document).ready(function () {
 
-    $( ".loginButton" ).click(function() {
+    $( ".login-button" ).click(function() {
     //TODO
 
     });
 
-    $( ".beginButton" ).click(function() {
+    $( ".toggle-button" ).click(function() {
+    //TODO
+       
+    });
+
+    $( ".begin-button" ).click(function() {
       // $("#beginButton").animate({
-      //   width: "200px",
+      
       //   height: "200px",
       //   },500);
       // $( this ).css({'border-radius':'100px','width':'100px', 'height':'100px'});
@@ -28,9 +33,8 @@ $(document).ready(function () {
         // $ (".container").css({'display':'none'});
     });
 
-
     $(document).scroll(function() {
     })
-    
+
 });
 

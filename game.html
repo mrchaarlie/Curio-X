@@ -7,7 +7,6 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="Science, Gamification, UW, UWaterloo, Engineering, Research, Game Design, Design, Android, iOS, Mobile" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 		
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -16,32 +15,41 @@
 		<link rel="stylesheet" href="css/reset.css" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/style.css" />
-
+		<link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
+		
 		<!-- fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 	</head>
-	<body class="game">
+	<body>
 
 		<!-- Header -->
 		<div class="header transparent">
 			<!-- TODO: background image -->
 			<div class="title text-center">curio-x</div>
 
+
 		</div>
 
 		<div class="intro">
 				
 			<!-- <h1>Background</h1> -->
-			<div class="image">test</div>
+			<div class="image"></div>
 
 		</div>
 
 		<!-- Main -->
-		<div class="container">
-
-			<div class="spacing"></div>
+		<div class="toggle-bg text-center">
+			<button type="button" class="toggle-button raised">
+			<img src="img/favicon.png">
+			<paper-ripple fit></paper-ripple></button>
+			<button type="button" class="toggle-button raised"> B <paper-ripple fit></paper-ripple></button>
+			<button type="button" class="toggle-button raised"> C <paper-ripple fit></paper-ripple></button>
+			<button type="button" class="toggle-button raised">Done<paper-ripple fit></paper-ripple></button>
+			<!-- <div class="spacing"></div> -->
 		</div>
+
+
 
 	</body>
 </html>	
