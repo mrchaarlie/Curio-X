@@ -12,6 +12,8 @@
 		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
 		<script src="{% static 'js/style.js' %}"></script>
+		<script src="{% static 'js/jquery.panzoom.js' %}"></script>
+		<script src="{% static 'js/jquery.mousewheel.js' %}"></script>
 		
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
@@ -22,7 +24,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 	</head>
-	<body>
+	<body class="test-image">
 
 		<!-- Header -->
 		<div class="header transparent">
@@ -35,7 +37,25 @@
 		<div class="intro">
 				
 			<!-- <h1>Background</h1> -->
-			<div class="image"></div>
+			<div class="test-image panzoom-parent">
+				<img class="panzoom" src="img/dog.jpg">
+			</div>
+		      <script>
+		        (function() {
+		          var $section = $('.test-image');
+		          $section.find('.panzoom').panzoom({
+		            $zoomIn: $section.find(".zoom-in"),
+		            $zoomOut: $section.find(".zoom-out"),
+		            $zoomRange: $section.find(".zoom-range"),
+		            $reset: $section.find(".reset"),
+		            startTransform: 'scale(0.8)',
+		            increment: 1,
+		            minScale: 1,
+		            maxScale: 3,
+		            contain: 'invert'
+		          }).panzoom('zoom');
+		        })();
+		      </script>
 
 		</div>
 
@@ -49,8 +69,6 @@
 			<button type="button" class="toggle-button raised">Done<paper-ripple fit></paper-ripple></button>
 			<!-- <div class="spacing"></div> -->
 		</div>
-
-
-
+	
 	</body>
 </html>	
