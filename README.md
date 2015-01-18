@@ -23,7 +23,7 @@ In order to run the project, you'll need to install Django using the python pack
 ```
 virtualenv -p /usr/bin/python3 curiox
 source py3env/bin/activate
-pip install django
+pip install django==1.7.2
 ```
 
 ### Running the development server
