@@ -5,6 +5,8 @@ $(document).ready(function (e){
 	//		   counting->classification
 	//		   randomized
 	// context reflects which mode
+	//
+	// 
 
 	var coordArray = []
 
@@ -13,16 +15,12 @@ $(document).ready(function (e){
             posY = $(this).offset().top;
             coordArray.push({x : (e.pageX - posX) , y : (e.pageY - posY)})
             drawCircle(coordArray[coordArray.length - 1], coordArray.length)
+            // each circle is a canvas element
+            // TODO: need to delete circle when it is clicked, and delete associated coordinates in coordArray
+            // TODO: post coordArray to persist when next image is requested
     });
 
     function drawCircle(data, index) {
-  //   	var canvas = document.createElement('canvas');
-		// canvas.id = "circle" + index;
-		// canvas.width = 30;
-		// canvas.height = 30;
-		// canvas.style.zIndex = 8;
-		// canvas.style.position = "absolute";
-
 		var elementID = 'circle' + index;
 	    $('<canvas>').attr({
 	        id: elementID
@@ -38,7 +36,7 @@ $(document).ready(function (e){
 
     	console.log(data)
     	ctx.beginPath();
-	    ctx.arc(data.x, data.y, 10, 0, Math.PI * 2); // 0 - 2pi is a full circle
+	    ctx.arc(10, 10, 10, 0, Math.PI * 2); // draws a circle
 	    ctx.lineWidth = 2;
 	    ctx.stroke();
 	}
