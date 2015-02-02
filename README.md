@@ -39,3 +39,5 @@ Go to where the dev server is hosted:
 ```
 localhost:8000/game/index.html
 ```
+
+The administrator login is admin:admin.
