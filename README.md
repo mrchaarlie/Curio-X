@@ -33,3 +33,9 @@ We're using Django as our web framework, so when doing development you can run D
 ```
 python manage.py runserver
 ```
+
+Go to where the dev server is hosted:
+
+```
+localhost:8000/game/index.html
+```
