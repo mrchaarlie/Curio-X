@@ -10,3 +10,6 @@ class Results(models.Model):
 #    results = models.ForeignKey(Results)
 #    choice_text = models.CharField(max_length=200)
 #    votes = models.IntegerField(default=0)
+
+#	Pass a representation of the session
+#	i.e. one user to a session; one to many association
