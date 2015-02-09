@@ -65,7 +65,7 @@
 		<!-- Main -->
 		<div class="toggle-bg text-center">
 			<div class="button-container">
-				<button class="toggle-button raised">
+				<button class="toggle-button raised" id="flower-button">
 				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Flower</span>
@@ -73,14 +73,14 @@
 			
 
 			<div class="button-container">
-				<button class="toggle-button raised">
+				<button class="toggle-button raised" id="bud-button">
 				<img class="button-image" src="{% static 'img/bud1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Bud</span>
 			</div>
 			
 			<div class="button-container">
-				<button class="toggle-button raised">
+				<button class="toggle-button raised" id="fruit-button">
 				<img class="button-image" src="{% static 'img/fruit1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Fruit</span>
@@ -91,8 +91,10 @@
 				<!-- <img class="button-image" src="{% static 'img/flower1.jpg' %}"> -->
 				<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
-				<span>Done</span>
+				<span id="submit-button">Done</span>
 			</div>
+
+			<!-- TODO: Add skip button -->
 			<!-- <div class="spacing"></div> -->
 		</div>
 	

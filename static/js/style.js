@@ -3,12 +3,10 @@ $(document).ready(function () {
 
     $( ".login-button" ).click(function() {
     //TODO
-
     });
 
     $( ".toggle-button" ).click(function() {
     //TODO
-       
     });
 
     $( ".begin-button" ).click(function() {
@@ -38,15 +36,19 @@ $(document).ready(function () {
     $('.button-image').css({'width':tbw+'px','height':tbw+'px'});
     $('.submit').css({'width':tbw+'px','height':tbw+'px'});
 
-    // $( "toggle-button" ).on( "click", function() {
-    //   var tc = this.className || undefined;
-    //   divs.toggleClass( tc );
-    //   appendClass();
-    // });
 
     $( ".toggle-button" ).click(function() {
         $(this).parent().toggleClass( "selected" , 1000, "easeOut");
-    });
+        
+        if(!$('#flower-button').parent().hasClass("selected") & !$('#bud-button').parent().hasClass("selected") & !$('#fruit-button').parent().hasClass("selected")){
+            console.log("all empty");
+            $("#submit-button").html('Skip');
+        }else{
+            console.log("at least one selected");
+            $("#submit-button").html('Submit');
+        }
+    }); 
+
 
     $(document).scroll(function() {
     })
