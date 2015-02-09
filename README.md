@@ -37,7 +37,21 @@ python manage.py runserver
 Go to where the dev server is hosted:
 
 ```
-localhost:8000/game/index.html
+localhost:8000/game/index
 ```
 
 The administrator login is admin:admin.
+
+### Running production
+
+Currently, we have:
+* Load default username bases (adjectives and animals; ex. CuriousBear) to the database
+```
+python mange.py loadwords --adjectives static/etc/adjectivelist.csv --animals static/etc/animallist.csv
+```
+* Run a model migration to initialize the database
+```
+python manage.py makemigrations game
+python manage.py sqlmigrate game <number>
+python manage.py migrate
+```
