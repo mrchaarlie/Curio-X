@@ -88,6 +88,13 @@ class Adjective(models.Model):
     def __str__(self):
         return 'ID: {id}, Adjective: {adj}'.format(id=self.id,adj=self.adjective)
 
+class Word(models.Model):
+    id = models.AutoField(primary_key=True)
+    word = models.CharField(max_length=32)
+    
+    def __str__(self):
+        return 'ID: {id}, Word: {word}'.format(id=self.id,word=self.word)
+
 #class Choice(models.Model):
 #    results = models.ForeignKey(Results)
 #    choice_text = models.CharField(max_length=200)

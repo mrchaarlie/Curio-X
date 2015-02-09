@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from game.models import Adjective, Animal
+from game.models import Adjective, Animal, Word
 
 from optparse import make_option
 import os
@@ -13,27 +13,41 @@ class Command(BaseCommand):
         make_option('--animals',
             metavar='FILE',
             help='CSV file with animals'),
+        make_option('--words',
+            metavar='FILE',
+            help='CSV file with single words'),
         )
     
     def handle(self, *args, **options):
-        print(options)
         adjectives = options['adjectives']
-        try:
-            with open(adjectives, 'r') as f:
-                for line in f:
-                    adj = Adjective(adjective=line)
-                    adj.save()
-                    self.stdout.write('Successfully added word %s' % adj)
-        except IOError:
-            raise CommandError('File "%s" does not exist' % adjectives)
+        if adjectives:
+            try:
+                with open(adjectives, 'r') as f:
+                    for line in f:
+                        adj = Adjective(adjective=line)
+                        adj.save()
+                        self.stdout.write('Successfully added word %s' % adj)
+            except IOError:
+                raise CommandError('File "%s" does not exist' % adjectives)
         
         animals = options['animals']
-        try:
-            with open(animals, 'r') as f:
-                for line in f:
-                    an = Animal(animal=line)
-                    an.save()
-                    self.stdout.write('Successfully added word %s' % an)
-        except IOError:
-            raise CommandError('File "%s" does not exist' % animals)
-                
+        if animals:
+            try:
+                with open(animals, 'r') as f:
+                    for line in f:
+                        an = Animal(animal=line)
+                        an.save()
+                        self.stdout.write('Successfully added word %s' % an)
+            except IOError:
+                 raise CommandError('File "%s" does not exist' % animals)
+            
+        words = options['words']
+        if words:
+            try:
+                with open(words, 'r') as f:
+                    for line in f:
+                        word = Word(word=line)
+                        word.save()
+                        self.stdout.write('Successfully added word %s' % word)
+            except IOError:
+                raise CommandError('File "%s" does not exist' % words)
