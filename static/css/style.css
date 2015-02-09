@@ -99,19 +99,15 @@ h1{
 
 button{
 	border: none;
-	background: #3A2D55;
+	background: #a2bdc2;
 	color: #dadede;
 	margin:0;
 }
-
 button:hover{
-	background: #892727;
-	color: #dadede;
+	/*opacity: 0.8;*/
+	/*background: #6B9299;*/
 }
-button:active{
-	position:relative;
-	top:0px;
-}
+
 
 .login-button{
 	padding: 8px 25px;
@@ -151,48 +147,65 @@ button:active{
 }
 .button-container{
 	/*position: fixed;*/
-	margin: 20px 10px;
-	width: 15%;
+	margin: 3px 0px;
+	padding: 15px 5px;
+	width: 20%;
 	min-width: 45px;
 	display: inline-block;
-	max-height: 100px;
+	/*max-height: 100px;*/
 	max-width: 100px;
+	background: rgba(107, 146, 153, 0);
+	border-radius: 2px;
+    -webkit-transition: 200ms linear;
+    transition: 200ms linear;
 }
-.button-container span{
+.selected{
+	background: rgba(107, 146, 153, 0.8);
+	border-radius: 2px
+    -webkit-transition: 200ms linear;
+    transition: 200ms linear;
+    position: relative;
 }
-
+.button-image{border-radius: 2px}
+.submit{
+	border-radius: 50%;
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	overflow: hidden;
+	color: #fff;
+transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+transition-delay: 0.2s;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
 .toggle-button{
 	width: 100%;
 	/*height: auto;*/
-	margin: 5px 0;
+	/*margin: 5px 0;*/
 	vertical-align: middle;
 	/*display: inline-block;*/
 	position: relative;
-	border-radius: 2px;
 	padding: 0;
+	border-radius: 50%;
 }
-    
-.toggle-button > paper-ripple {
-    border-radius: 2px;
+paper-ripple {
+	border-radius: 2px;
     overflow: hidden;
+    color: #fff;
 }
-
-.toggle-button.raised {
+.raised {
 	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 	transition-delay: 0.2s;
-	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
-.toggle-button.raised:active {
+.raised:active {
 	transition-delay: 0s;
-	-webkit-box-shadow: 0px 6px 26px 2px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 6px 26px 2px rgba(0,0,0,0.75);
-	box-shadow: 0px 6px 26px 2px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px 6px 26px 2px rgba(0,0,0,0.2);
+	box-shadow: 0px 6px 26px 2px rgba(0,0,0,0.2);
 	top:0px;
-}
-.toggle-button img:hover{
 }
 
 .footer{

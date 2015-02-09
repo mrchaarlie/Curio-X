@@ -35,8 +35,18 @@ $(document).ready(function () {
 
     var tbw = $('.toggle-button').width();
     $('.toggle-button').css({'height':tbw+'px'});
-    $('.button-image').css({'width':'tbw','height':tbw+'px'});
+    $('.button-image').css({'width':tbw+'px','height':tbw+'px'});
+    $('.submit').css({'width':tbw+'px','height':tbw+'px'});
 
+    // $( "toggle-button" ).on( "click", function() {
+    //   var tc = this.className || undefined;
+    //   divs.toggleClass( tc );
+    //   appendClass();
+    // });
+
+    $( ".toggle-button" ).click(function() {
+        $(this).parent().toggleClass( "selected" , 1000, "easeOut");
+    });
 
     $(document).scroll(function() {
     })
