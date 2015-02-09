@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 import os
 import datetime
 
+from game.models import Image
+
 current_dir = os.path.dirname(__file__)  # get current directory
 
 @login_required
@@ -28,3 +30,6 @@ def index(request):
 def game(request):
     return render_to_response('game.html', locals()) 
 
+#def game(request):
+#    image = Image.objects.get(id=1)
+#    return render_to_response('game.html',locals()) 
