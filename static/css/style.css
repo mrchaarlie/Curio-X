@@ -28,8 +28,7 @@ h1{
 	-webkit-transition: 0.2s;
 	transition: 0.2s ease-out;
 	margin: 0 0 30px 1px;
-	padding: 9px 0 9px 0;
-	background: #A13434*/
+	padding: 9px 0 9px 0;*/
 	-webkit-transition: 0.3s;
 	transition: 0.3s ease-out;
 	position: fixed;
@@ -100,7 +99,7 @@ h1{
 
 button{
 	border: none;
-	background: #A13434;
+	background: #3A2D55;
 	color: #dadede;
 	margin:0;
 }
@@ -136,6 +135,7 @@ button:active{
 
 .test-image{
 	height: 100%;
+	max-height: 800px;
 	/*background: #179456;*/
 	/*margin-top: 55px;*/
 	/*background-image: url(../img/dog.jpg);*/
