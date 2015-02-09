@@ -35,13 +35,14 @@
 
 		</div>
 
-		<div class="intro">
+		<div class="outsideWrapper">
 				
 			<!-- <h1>Background</h1> -->
 			<div class="test-image panzoom-parent" id="panzoomParent">
-				<img class="panzoom" id = "testImage" src="{% static 'img/dog.jpg' %}">
+				<img class="panzoom coveredImage" id = "testImage" src="{% static 'img/dog.jpg' %}">
+				<canvas id='circleCanvas' class='panzoom coveringCanvas' width=1000px height=1300px>
 			</div>
-		      <script>
+			  <!-- <script>
 		        (function() {
 		          var $section = $('.test-image');
 		          $section.find('.panzoom').panzoom({
@@ -56,7 +57,7 @@
 		            contain: 'invert'
 		          }).panzoom('zoom');
 		        })();
-		      </script>
+		      </script> -->
 
 		</div>
 
