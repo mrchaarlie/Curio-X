@@ -19,6 +19,8 @@
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<!-- <link rel="import" href="{% static 'etc/paper-ripple.html' %}"> -->
 		<link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
 		
 		<!-- fonts -->
@@ -63,31 +65,31 @@
 		<!-- Main -->
 		<div class="toggle-bg text-center">
 			<div class="button-container">
-				<button type="button" class="toggle-button raised">
-				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple fit></paper-ripple>
+				<button class="toggle-button raised">
+				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Flower</span>
 			</div>
 			
 
 			<div class="button-container">
-				<button type="button" class="toggle-button raised">
-				<img class="button-image" src="{% static 'img/bud1.jpg' %}"><paper-ripple fit></paper-ripple>
+				<button class="toggle-button raised">
+				<img class="button-image" src="{% static 'img/bud1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Bud</span>
 			</div>
 			
 			<div class="button-container">
-				<button type="button" class="toggle-button raised">
-				<img class="button-image" src="{% static 'img/fruit1.jpg' %}"><paper-ripple fit></paper-ripple>
+				<button class="toggle-button raised">
+				<img class="button-image" src="{% static 'img/fruit1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Fruit</span>
 			</div>
 			
 			<div class="button-container">
-				<button type="button" class="toggle-button raised">
+				<button class="raised submit">
 				<!-- <img class="button-image" src="{% static 'img/flower1.jpg' %}"> -->
-				<paper-ripple fit></paper-ripple>
+				<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Done</span>
 			</div>
