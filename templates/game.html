@@ -35,11 +35,11 @@
 
 		</div>
 
-		<div class="intro">
+		<div class="main">
 				
 			<!-- <h1>Background</h1> -->
 			<div class="test-image panzoom-parent" id="panzoomParent">
-				<img class="panzoom" id = "testImage" src="{% static 'img/dog.jpg' %}">
+				<img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}">
 			</div>
 		      <script>
 		        (function() {
@@ -50,9 +50,9 @@
 		            $zoomRange: $section.find(".zoom-range"),
 		            $reset: $section.find(".reset"),
 		            startTransform: 'scale(0.8)',
-		            increment: 1,
-		            minScale: 1,
-		            maxScale: 3,
+		            increment: 0.4,
+		            minScale: 0.5,
+		            maxScale: 2,
 		            contain: 'invert'
 		          }).panzoom('zoom');
 		        })();
@@ -62,12 +62,35 @@
 
 		<!-- Main -->
 		<div class="toggle-bg text-center">
-			<button type="button" class="toggle-button raised">
-			<img src="{% static 'img/favicon.png' %}">
-			<paper-ripple fit></paper-ripple></button>
-			<button type="button" class="toggle-button raised"> B <paper-ripple fit></paper-ripple></button>
-			<button type="button" class="toggle-button raised"> C <paper-ripple fit></paper-ripple></button>
-			<button type="button" class="toggle-button raised">Done<paper-ripple fit></paper-ripple></button>
+			<div class="button-container">
+				<button type="button" class="toggle-button raised">
+				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple fit></paper-ripple>
+				</button>
+				<span>Flower</span>
+			</div>
+			
+
+			<div class="button-container">
+				<button type="button" class="toggle-button raised">
+				<img class="button-image" src="{% static 'img/bud1.jpg' %}"><paper-ripple fit></paper-ripple>
+				</button>
+				<span>Bud</span>
+			</div>
+			
+			<div class="button-container">
+				<button type="button" class="toggle-button raised">
+				<img class="button-image" src="{% static 'img/fruit1.jpg' %}"><paper-ripple fit></paper-ripple>
+				</button>
+				<span>Fruit</span>
+			</div>
+			
+			<div class="button-container">
+				<button type="button" class="toggle-button raised">
+				<!-- <img class="button-image" src="{% static 'img/flower1.jpg' %}"> -->
+				<paper-ripple fit></paper-ripple>
+				</button>
+				<span>Done</span>
+			</div>
 			<!-- <div class="spacing"></div> -->
 		</div>
 	

@@ -33,6 +33,11 @@ $(document).ready(function () {
         // $ (".container").css({'display':'none'});
     });
 
+    var tbw = $('.toggle-button').width();
+    $('.toggle-button').css({'height':tbw+'px'});
+    $('.button-image').css({'width':'tbw','height':tbw+'px'});
+
+
     $(document).scroll(function() {
     })
 
