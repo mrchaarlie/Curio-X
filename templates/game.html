@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+	<!DOCTYPE HTML>
 {% load staticfiles %}
 
 <html>
@@ -14,6 +14,7 @@
 		<script src="{% static 'js/style.js' %}"></script>
 		<script src="{% static 'js/jquery.panzoom.js' %}"></script>
 		<script src="{% static 'js/jquery.mousewheel.js' %}"></script>
+		<script src="{% static 'js/gameScript.js' %}"></script>
 		
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
@@ -37,8 +38,8 @@
 		<div class="intro">
 				
 			<!-- <h1>Background</h1> -->
-			<div class="test-image panzoom-parent">
-				<img class="panzoom" src="{% static 'img/dog.jpg' %}">
+			<div class="test-image panzoom-parent" id="panzoomParent">
+				<img class="panzoom" id = "testImage" src="{% static 'img/dog.jpg' %}">
 			</div>
 		      <script>
 		        (function() {
