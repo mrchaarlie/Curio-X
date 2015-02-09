@@ -49,3 +49,9 @@ Currently, we have:
 ```
 python mange.py loadwords --adjectives static/etc/adjectivelist.csv --animals static/etc/animallist.csv
 ```
+* Run a model migration to initialize the database
+```
+python manage.py makemigrations game
+python manage.py sqlmigrate game <number>
+python manage.py migrate
+```
