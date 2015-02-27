@@ -1,5 +1,26 @@
 from django.db import models
 
+class Animal(models.Model):
+    id = models.AutoField(primary_key=True)
+    animal = models.CharField(max_length=32)
+    
+    def __str__(self):
+        return 'ID: {id}, Animal: {an}'.format(id=self.id,an=self.animal)
+
+class Adjective(models.Model):
+    id = models.AutoField(primary_key=True)
+    adjective = models.CharField(max_length=32)
+    
+    def __str__(self):
+        return 'ID: {id}, Adjective: {adj}'.format(id=self.id,adj=self.adjective)
+
+class Word(models.Model):
+    id = models.AutoField(primary_key=True)
+    word = models.CharField(max_length=32)
+    
+    def __str__(self):
+        return 'ID: {id}, Word: {word}'.format(id=self.id,word=self.word)
+
 '''
 class Result(models.Model):
     CLASSIFICATION = 'CLAS'
@@ -74,31 +95,6 @@ class Image(models.Model):
     ''
 '''
 
-class Animal(models.Model):
-    id = models.AutoField(primary_key=True)
-    animal = models.CharField(max_length=32)
-    
-    def __str__(self):
-        return 'ID: {id}, Animal: {an}'.format(id=self.id,an=self.animal)
-
-class Adjective(models.Model):
-    id = models.AutoField(primary_key=True)
-    adjective = models.CharField(max_length=32)
-    
-    def __str__(self):
-        return 'ID: {id}, Adjective: {adj}'.format(id=self.id,adj=self.adjective)
-
-class Word(models.Model):
-    id = models.AutoField(primary_key=True)
-    word = models.CharField(max_length=32)
-    
-    def __str__(self):
-        return 'ID: {id}, Word: {word}'.format(id=self.id,word=self.word)
-
-#class Choice(models.Model):
-#    results = models.ForeignKey(Results)
-#    choice_text = models.CharField(max_length=200)
-#    votes = models.IntegerField(default=0)
-
+# What is this?
 #	Pass a representation of the session
 #	i.e. one user to a session; one to many association
