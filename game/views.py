@@ -14,3 +14,7 @@ def index(request):
 @login_required
 def game(request):
     return render_to_response('game.html', locals()) 
+
+@login_required
+def game2(request):
+    return render_to_response('game2.html', locals()) 
