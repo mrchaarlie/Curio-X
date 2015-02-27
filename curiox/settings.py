@@ -47,6 +47,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'curiox.middleware.LogAllMiddleware',
 )
 
 ROOT_URLCONF = 'curiox.urls'
@@ -85,6 +86,45 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-STATIC_ROOT = ''
-STATIC_URL = '/static/' #os.path.join(os.path.dirname(BASE_DIR),'static/')
+STATIC_ROOT = '/var/www/curiox/static/'
+STATIC_URL = '/static/' 
 STATICFILES_DIRS = ( os.path.join('static'), )
+
+
+#
+# Logging configuration
+#
+import logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'game': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}

@@ -1,4 +1,47 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class UserLog(models.Model):
+    # Probably not going to be able to use these...
+    '''LOGIN = 'LOGIN'
+    LOGOUT = 'LOGOUT'
+    START_GAME = 'START'
+    COMPLETE_GAME = 'DONE'
+    QUIT_GAME = 'QUIT'
+    UNKNOWN = 'UNKNOWN'
+    USER_ACTION_CHOICES = (
+        (LOGIN, 'Login'),
+        (LOGOUT, 'Logout'),
+        (START_GAME, 'Start Game'),
+        (COMPLETE_GAME, 'Complete Game'),
+        (QUIT_GAME, 'Quit Game'),
+        (UNKNOWN, 'Unknown Action'),
+    )'''
+    
+    user = models.CharField(max_length=256)#ForeignKey(User.username)
+    session = models.CharField(max_length=256)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
+    '''action = models.CharField(max_length=7,
+                              choices=USER_ACTION_CHOICES,
+                              default=UNKNOWN)'''
+    path = models.TextField()
+    query = models.TextField()
+    variables = models.TextField()
+    method = models.CharField(max_length=4)
+    secure = models.BooleanField(default=False)
+    #ajax = models.BooleanField(default=False)
+    meta = models.TextField(null=True, blank=True)
+    #address = models.IPAddressField()
+    
+    #view_func = models.CharField(max_length=256)
+    #view_docstr = models.TextField(null=True, blank=True)
+    #view_args = models.TextField()
+    
+    resp_code = models.CharField(max_length=3)
+
+    def __str__(self):
+        return str(self.__dict__)
 
 class Animal(models.Model):
     id = models.AutoField(primary_key=True)
@@ -42,28 +85,6 @@ class Result(models.Model):
     # Object metadata
     class Meta:
         unique_together = [("img_id","user_id")] # user only uses image once
-
-class Log(models.Model):
-    LOGIN = 'LOGIN'
-    LOGOUT = 'LOGOUT'
-    START_GAME = 'START'
-    COMPLETE_GAME = 'DONE'
-    QUIT_GAME = 'QUIT'
-    UNKNOWN = 'UNKNOWN'
-    USER_ACTION_CHOICES = (
-        (LOGIN, 'Login'),
-        (LOGOUT, 'Logout'),
-        (START_GAME, 'Start Game'),
-        (COMPLETE_GAME, 'Complete Game'),
-        (QUIT_GAME, 'Quit Game'),
-        (UNKNOWN, 'Unknown Action'),
-    )
-    
-    user_id = models.PositiveIntegerField(default=0)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    action = models.CharField(max_length=7,
-                              choices=USER_ACTION_CHOICES,
-                              default=UNKNOWN)
 '''
 
 '''

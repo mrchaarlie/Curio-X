@@ -21,9 +21,13 @@ Developing a generalized and gamified crowd-sourcing platform for collecting sci
 In order to run the project, you'll need to install Django using the python package installer pip (the easiest way). The most simple way to do this without installing packages in your root is to create a virtual environment with virtualenv, activate it, and install the packages you require.
 
 ```
+sudo apt-get install python-pip
+sudo pip install virtualenv
 virtualenv -p /usr/bin/python3 curiox
-source py3env/bin/activate
+source curiox/bin/activate
+
 pip install django==1.7.2
+pip install simplejson
 ```
 
 ### Running the development server
@@ -52,6 +56,58 @@ python mange.py loadwords --adjectives static/etc/adjectivelist.csv --animals st
 * Run a model migration to initialize the database
 ```
 python manage.py makemigrations game
-python manage.py sqlmigrate game <number>
+python manage.py sqlmigrate game <number> #optional
 python manage.py migrate
+```
+
+#### Logging
+
+Code-level logging outputs to 'log' in the base directory. Logging options are specified in the settings.py file. To log in a python file, do the following:
+
+```
+import logging
+
+logger = logging.getLogger()
+
+#...
+logger.debug('I can see this debug message in the log file')
+#...
+```
+
+#### Configuring Apache
+
+This section is unfinished.
+
+Install Apache, check the version number (2.4.x) and enable the VirtualHost by creating a new site 'curiox'
+
+```
+sudo apt-get install apache2
+apache2 -v   #get version
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/curiox.conf
+```
+
+Add to the /etc/apache2/apache2.conf file
+
+```
+ServerName localhost
+```
+
+Another server might be listening on the port 80, so you can either change the port in /etc/apache2/ports.conf, or
+
+```
+sudo netstat -ltnp | grep :80
+kill <pid>
+```
+
+Enable the site and start Apache and check out the default Apache page at 'localhost'
+
+```
+sudo a2ensite curiox
+sudo service apache2 restart
+```
+
+Now, to host Python applications with Apache, we will need a module that runs with Apache called mod\_wsgi, so let's install that
+
+```
+sudo apt-get install libapache2-mod-wsgi
 ```
