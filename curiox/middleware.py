@@ -1,4 +1,3 @@
-import time
 import simplejson as json
 
 from django.core.exceptions import ObjectDoesNotExist

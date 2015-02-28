@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class UserLog(models.Model):
     # Probably not going to be able to use these...
-    '''LOGIN = 'LOGIN'
+    LOGIN = 'LOGIN'
     LOGOUT = 'LOGOUT'
     START_GAME = 'START'
     COMPLETE_GAME = 'DONE'
@@ -16,15 +16,15 @@ class UserLog(models.Model):
         (COMPLETE_GAME, 'Complete Game'),
         (QUIT_GAME, 'Quit Game'),
         (UNKNOWN, 'Unknown Action'),
-    )'''
+    )
     
     user = models.CharField(max_length=256)#ForeignKey(User.username)
     session = models.CharField(max_length=256)
     timestamp = models.DateTimeField(auto_now_add=True)
     
-    '''action = models.CharField(max_length=7,
+    action = models.CharField(max_length=7,
                               choices=USER_ACTION_CHOICES,
-                              default=UNKNOWN)'''
+                              default=UNKNOWN)
     path = models.TextField()
     query = models.TextField()
     variables = models.TextField()
@@ -63,6 +63,53 @@ class Word(models.Model):
     
     def __str__(self):
         return 'ID: {id}, Word: {word}'.format(id=self.id,word=self.word)
+
+##
+## TODO: Put into another file (ex. signals.py)
+##
+from django.contrib.auth.signals import user_logged_in, user_logged_out
+
+import logging
+import simplejson as json
+
+logger = logging.getLogger(__name__)
+
+def log_login(sender, user, request, **kwargs):
+    new_log = UserLog(
+        session = request.session.session_key,
+        action = UserLog.LOGIN,
+        user = request.user.username,
+        path  = request.path,
+        query = request.META["QUERY_STRING"],
+        variables = json.dumps(request.REQUEST.__dict__),
+        method = request.method,
+        secure = request.is_secure(),
+        meta = request.META.__str__(), #need meta for unique entry
+        )
+    
+    logger.debug('User %s login', new_log.user)
+    new_log.save()
+
+def log_logout(sender, user, request, **kwargs):
+    new_log = UserLog(
+        session = request.session.session_key,
+        action = UserLog.LOGOUT,
+        user = request.user.username,
+        path  = request.path,
+        query = request.META["QUERY_STRING"],
+        variables = json.dumps(request.REQUEST.__dict__),
+        method = request.method,
+        secure = request.is_secure(),
+        meta = request.META.__str__(), #need meta for unique entry
+        )
+    
+    logger.debug('User %s logout', new_log.user)
+    new_log.save()
+
+# Capture the logins and logouts
+user_logged_in.connect(log_login)
+user_logged_out.connect(log_logout)
+
 
 '''
 class Result(models.Model):
