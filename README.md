@@ -51,7 +51,7 @@ The administrator login is admin:admin.
 Currently, we have:
 * Load default username bases (adjectives and animals; ex. CuriousBear) to the database
 ```
-python mange.py loadwords --adjectives static/etc/adjectivelist.csv --animals static/etc/animallist.csv
+python manage.py loadwords --adjectives static/lists/adjectivelist.csv --animals static/lists/animallist.csv
 ```
 * Run a model migration to initialize the database
 ```
