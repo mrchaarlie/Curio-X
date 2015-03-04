@@ -27,7 +27,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 	</head>
-	<body class="test-image">
+	<body class="main">
 
 		<!-- Header -->
 		<div class="header transparent">
@@ -36,61 +36,30 @@
 
 
 		</div>
-		<div class="main">
+		<div class="splash">
 				
 			<!-- <h1>Background</h1> -->
-			<div class="test-image panzoom-parent" id="panzoomParent">
-				<img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}">
+			<div class="intro">
+				<p>Introductory Text</p>
 			</div>
-			  <script>
-		        (function() {
-		          var $section = $('.test-image');
-		          $section.find('.panzoom').panzoom({
-		            $zoomIn: $section.find(".zoom-in"),
-		            $zoomOut: $section.find(".zoom-out"),
-		            $zoomRange: $section.find(".zoom-range"),
-		            $reset: $section.find(".reset"),
-		            startTransform: 'scale(0.8)',
-		            increment: 0.4,
-		            minScale: 0.5,
-		            maxScale: 2,
-		            contain: 'invert'
-		          }).panzoom('zoom');
-		        })();
-		      </script>
 
 		</div>
 
 		<!-- Buttons -->
-		<div class="toggle-bg text-center">
-			<div class="button-container">
-				<button class="toggle-button raised" id="flower-button">
-				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
-				</button>
-				<span>Flower</span>
-			</div>
-			
-
-			<div class="button-container">
-				<button class="toggle-button raised" id="bud-button">
-				<img class="button-image" src="{% static 'img/bud1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
-				</button>
-				<span>Bud</span>
-			</div>
-			
-			<div class="button-container">
-				<button class="toggle-button raised" id="fruit-button">
-				<img class="button-image" src="{% static 'img/fruit1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
-				</button>
-				<span>Fruit</span>
-			</div>
-			
+		<div class="toggle-bg text-center">			
 			<div class="button-container">
 				<button class="raised submit">
 				<!-- <img class="button-image" src="{% static 'img/flower1.jpg' %}"> -->
 				<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
-				<span id="submit-button">Done</span>
+				<span id="submit-button">Back</span>
+			</div>		
+			<div class="button-container">
+				<button class="raised submit">
+				<!-- <img class="button-image" src="{% static 'img/flower1.jpg' %}"> -->
+				<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+				</button>
+				<span id="submit-button">Start</span>
 			</div>
 
 			<!-- TODO: Add skip button -->

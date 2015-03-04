@@ -1,3 +1,4 @@
+html{height: 100%; }
 body {
 	background-color: #1e1f1e;
 	color: #dadede;
@@ -90,7 +91,11 @@ h1{
 .main{
 	height: 100%;
 }
-
+.splash{
+	height: 100%;
+	padding-top: 20%;
+	background-color: #fff;
+}
 .game{
 }
 .loginTitle{
@@ -125,7 +130,8 @@ button:hover{
 }
 
 .intro {
-	
+	margin: 20px 35px;
+	color: #333;
 }
 
 .outsideWrapper{
@@ -165,6 +171,10 @@ button:hover{
 	display: inline;
 	bottom: 0;
 	float: left;
+}
+.toggle-bg button{
+	min-height: 70px;
+	min-height: 70px;
 }
 .button-container{
 	/*position: fixed;*/
