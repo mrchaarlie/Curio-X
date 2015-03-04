@@ -5,6 +5,7 @@ class UserLog(models.Model):
     # Probably not going to be able to use these...
     LOGIN = 'LOGIN'
     LOGOUT = 'LOGOUT'
+    HOME = 'HOME'
     START_GAME = 'START'
     COMPLETE_GAME = 'DONE'
     QUIT_GAME = 'QUIT'
@@ -12,6 +13,7 @@ class UserLog(models.Model):
     USER_ACTION_CHOICES = (
         (LOGIN, 'Login'),
         (LOGOUT, 'Logout'),
+        (HOME, 'Home Screen'),
         (START_GAME, 'Start Game'),
         (COMPLETE_GAME, 'Complete Game'),
         (QUIT_GAME, 'Quit Game'),

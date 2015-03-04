@@ -34,6 +34,11 @@ class LogAllMiddleware(object):
             #address = request.META["REMOTE_ADDR"],
             )
         
+        if new_log.path == "/game/game" or new_log.path == "/game/game2":
+            new_log.action = UserLog.START_GAME
+        elif new_log.path == "/game/index":
+            new_log.action = UserLog.HOME
+        
         logger.debug('Save user log for user %s at %s for path %s', new_log.user, new_log.timestamp, new_log.path)
         new_log.save()
         
