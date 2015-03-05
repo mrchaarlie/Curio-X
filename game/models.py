@@ -66,6 +66,9 @@ class Word(models.Model):
     def __str__(self):
         return 'ID: {id}, Word: {word}'.format(id=self.id,word=self.word)
 
+class taskSubmission(models.Model):
+    raw = models.TextField(blank=True,null=True)
+
 ##
 ## TODO: Put into another file (ex. signals.py)
 ##

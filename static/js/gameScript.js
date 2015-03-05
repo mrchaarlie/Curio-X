@@ -50,6 +50,13 @@ $(document).ready(function (e){
 			ctx.stroke();
 		});
 	}
+
+	$("#submit-button").click(function() {
+		var data = {user: 'user', // get user from context
+			coords: cArray}; // etc. everything else
+		var url = '/submit/game2_submit_task'
+		$.post(url, data)
+	})
 })
 
 

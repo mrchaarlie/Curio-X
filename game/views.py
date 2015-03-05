@@ -34,3 +34,11 @@ def gameSplash(request):
 def game2Splash(request):
     logger.debug('Serve game mode 2 splash')
     return render_to_response('game2-splash.html', locals()) 
+
+def game2_submit_task(request):
+    if request.method == "POST":
+        post = request.POST.copy()
+        # do with post what you will
+        return render_to_response('game2.html', locals())
+    else:
+        return HttpResponseServerError("post error: not a post")
