@@ -65,11 +65,14 @@
 		<!-- Main -->
 		<div class="toggle-bg text-center">			
 			<div class="button-container">
+                                <form action="/game/post2" method="post">
+                                {% csrf_token %}
 				<button class="raised submit">
 				<!-- <img class="button-image" src="{% static 'img/flower1.jpg' %}"> -->
 				<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span id="submit-button">Done</span>
+                                </form>
 			</div>
 
 			<!-- TODO: Add skip button -->
