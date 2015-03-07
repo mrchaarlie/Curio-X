@@ -210,8 +210,8 @@ button:hover{
 }
 .skip-container{
 	margin: 3px 5px;
-	padding: 45px 0;
-	min-width: 30px;
+	padding: 35px 0;
+	min-width: 20px;
 	display: inline-block;
 	max-width: 70px;
 	border-radius: 2px;
@@ -224,7 +224,7 @@ button:hover{
 	vertical-align: top;
 }
 .skip{
-	height: 30px; width: 30px;
+	height: 25px; width: 25px;
 	border-radius: 2px;
 	display: inline-block;
 	position: relative;
