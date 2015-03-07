@@ -50,14 +50,24 @@ The administrator login is admin:admin.
 
 Currently, we have:
 * Load default username bases (adjectives and animals; ex. CuriousBear) to the database
+
 ```
 python manage.py loadwords --adjectives static/lists/adjectivelist.csv --animals static/lists/animallist.csv
 ```
+
 * Run a model migration to initialize the database
+
 ```
 python manage.py makemigrations game
 python manage.py sqlmigrate game <number> #optional
 python manage.py migrate
+```
+
+* Load image URLs and their metadata into the database
+
+```
+python manage.py loadimages --images=static/lists/fewobj_images.csv
+python manage.py loadimages --images=static/lists/manyobj_images.csv
 ```
 
 #### Logging

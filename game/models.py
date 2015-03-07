@@ -1,8 +1,12 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    img_idx = models.IntegerField(default=0)
+
 class UserLog(models.Model):
-    # Probably not going to be able to use these...
     LOGIN = 'LOGIN'
     LOGOUT = 'LOGOUT'
     HOME = 'HOME'
@@ -20,7 +24,7 @@ class UserLog(models.Model):
         (UNKNOWN, 'Unknown Action'),
     )
     
-    user = models.CharField(max_length=256)#ForeignKey(User.username)
+    user = models.CharField(max_length=256)
     session = models.CharField(max_length=256)
     timestamp = models.DateTimeField(auto_now_add=True)
     
@@ -65,6 +69,47 @@ class Word(models.Model):
     
     def __str__(self):
         return 'ID: {id}, Word: {word}'.format(id=self.id,word=self.word)
+
+class Image(models.Model):
+    id = models.AutoField(primary_key=True) # auto-increment
+    url = models.URLField()
+    species = models.CharField(max_length=256, default='Unknown species')
+    obj_type = models.CharField(max_length=32, default='')
+    obj_count = models.IntegerField(default=0)
+    
+    FEW = 'FEW'
+    MANY = 'MANY'
+    UNKNCLASS = 'UNKNOWN'
+    IMAGE_TEST_CLASS_CHOICES = (
+        (FEW, 'Few Objects'),
+        (MANY, 'Many Objects'),
+        (UNKNCLASS, 'Unknown Test Class'),
+    )
+    test_class = models.CharField(max_length=8,
+                                  choices=IMAGE_TEST_CLASS_CHOICES,
+                                  default=UNKNCLASS)
+    
+    NEW = 'NEW'
+    IN_PROGRESS = 'INPROG'
+    DONE = 'DONE'
+    IMAGE_STATUS_CHOICES = (
+        (NEW, 'New Image'),
+        (IN_PROGRESS, 'In Progress'),
+        (DONE, 'Data Collection Complete'),
+    )
+    # TODO: How should we update this?
+    status = models.CharField(max_length=8,
+                              choices=IMAGE_STATUS_CHOICES,
+                              default=NEW)
+    
+    def __str__(self):
+        return str(self.__dict__)
+    
+    # Object metadata
+    class Meta:
+        ordering = ["id"] # def order when selecting objs
+        # there's a way to set an 'active' flag and
+        # only lookup items with active=true
 
 class taskSubmission(models.Model):
     raw = models.TextField(blank=True,null=True)
@@ -139,34 +184,34 @@ class Result(models.Model):
         unique_together = [("img_id","user_id")] # user only uses image once
 '''
 
-'''
-class Image(models.Model):
-    id = models.AutoField(primary_key=True) # auto-increment
-    url = models.URLField()
-    
-    def __str__(self):
-        return '{}, {}'.format(self.id,self.url)
-    
-    # Object metadata
-    class Meta:
-        ordering = ["id"] # def order when selecting objs
-        # there's a way to set an 'active' flag and
-        # only lookup items with active=true
-    ''
-    NEW = 'NEW'
-    IN_PROGRESS = 'INPROG'
-    DONE = 'DONE'
-    IMAGE_STATUS_CHOICES = (
-        (NEW, 'New Image'),
-        (IN_PROGRESS, 'In Progress'),
-        (DONE, 'Data Collection Complete'),
-    )
-    
-    status = models.CharField(max_length=6,
-                              choices=IMAGE_STATUS_CHOICES,
-                              default=NEW)
-    ''
-'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # What is this?
 #	Pass a representation of the session

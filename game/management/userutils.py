@@ -1,10 +1,12 @@
 from django.contrib.auth.models import User
+from game.models import UserProfile
 from game.models import Adjective, Animal, Word
 
 def add_user(username, pwd, email='curio.x.dev@gmail.com'):
     user = User.objects.create_user(username=username, password=pwd, email=email)
-    user.save()
-    print('Successfully created user %s' % user)
+    user_profile = UserProfile(user=user)
+    user_profile.save()
+    print('Successfully created user %s' % user_profile.user)
 
 def generate_username():
     while True: #TODO: Avoid collisions
