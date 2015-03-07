@@ -142,8 +142,9 @@ button:hover{
 }
 
 .panzoom-parent img{
-	width: 120%;
+	width: 88%;
 	height: 100%;
+	margin-top: 80px;
 }
 .test-image{
 	width:100%; height:100%; 
