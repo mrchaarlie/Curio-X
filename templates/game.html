@@ -11,16 +11,14 @@
 		
 		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		<script src="{% static 'js/style.js' %}"></script>
 		<script src="{% static 'js/jquery.panzoom.js' %}"></script>
 		<script src="{% static 'js/jquery.mousewheel.js' %}"></script>
-		<!--<script src="{% static 'js/gameScript.js' %}"></script>-->
-		
+
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-		<!-- <link rel="import" href="{% static 'etc/paper-ripple.html' %}"> -->
+		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
+
 		<link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
 		
 		<!-- fonts -->
@@ -85,21 +83,37 @@
 				<span>Fruit</span>
 			</div>
 			
+<<<<<<< HEAD
 			<div class="button-container">
 				<form action="/game/post" method="post">
 				{% csrf_token %}
 				<button class="raised submit">
 				<!-- <img class="button-image" src="{% static 'img/flower1.jpg' %}"> -->
 				<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+=======
+			<div class="button-container left-indent">
+				<button class="raised submit green" id="submit-button">
+					<i class="fa fa-check fa-2x"></i>
+					<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+>>>>>>> game formatting
 				</button>
 				<span id="submit-button">Done</span>
 				<!--<input type="submit" name="done" value="Done"/> -->
 				</form>
 			</div>
 
+			<div class="skip-container">
+				<button class="raised skip red" id="skip-button">
+					<i class="fa fa-share"></i>
+					<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+				</button>
+				<span id="submit-button">Skip</span>
+			</div>
+
 			<!-- TODO: Add skip button -->
 			<!-- <div class="spacing"></div> -->
 		</div>
-	
+
+	<script src="{% static 'js/style.js' %}"></script>
 	</body>
 </html>	

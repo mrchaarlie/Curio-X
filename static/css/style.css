@@ -1,4 +1,4 @@
-/*html{height: 100%; }*/
+html{}
 body {
 	background-color: #1e1f1e;
 	color: #dadede;
@@ -11,7 +11,6 @@ body {
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-touch-callout: none;
-
 }
 
 h1, h2, h3 {
@@ -24,6 +23,9 @@ h1{
 	border-bottom: 1px solid #A13434;
 }
 
+.red{background-color: #D27274}
+.pink{background-color: #E8A4B4}
+.green{background-color: #A3D596}
 .header {
 	/*height: 68px;
 	-webkit-transition: 0.2s;
@@ -93,7 +95,7 @@ h1{
 }
 .splash{
 	height: 100%;
-	padding-top: 20%;
+	/*padding-top: 20%;*/
 	background-color: #fff;
 }
 .game{
@@ -130,7 +132,7 @@ button:hover{
 }
 
 .intro {
-	margin: 20px 35px;
+	padding: 100px 35px 20px;
 	color: #333;
 }
 
@@ -143,7 +145,6 @@ button:hover{
 	width: 120%;
 	height: 100%;
 }
-
 .test-image{
 	width:100%; height:100%; 
 	max-height: 800px;
@@ -172,18 +173,13 @@ button:hover{
 	bottom: 0;
 	float: left;
 }
-.toggle-bg button{
-	min-height: 70px;
-	min-height: 70px;
-}
+
 .button-container{
-	/*position: fixed;*/
 	margin: 3px 0px;
 	padding: 15px 5px;
-	width: 20%;
+	width: 18%;
 	min-width: 45px;
 	display: inline-block;
-	/*max-height: 100px;*/
 	max-width: 100px;
 	background: rgba(107, 146, 153, 0);
 	border-radius: 2px;
@@ -206,19 +202,48 @@ button:hover{
 	width: 100%;
 	overflow: hidden;
 	color: #fff;
-transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-transition-delay: 0.2s;
-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	transition-delay: 0.2s;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.skip-container{
+	margin: 3px 5px;
+	padding: 35px 0;
+	min-width: 30px;
+	display: inline-block;
+	max-width: 70px;
+	border-radius: 2px;
+    -webkit-transition: 200ms linear;
+    transition: 200ms linear;
+    width: 8%;
+	height: 100%;
+	display: inline-block;
+	top:10px;
+	vertical-align: top;
+}
+.skip{
+	height: 30px; width: 30px;
+	border-radius: 2px;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
 }
 .toggle-button{
 	width: 100%;
-	/*height: auto;*/
-	/*margin: 5px 0;*/
+	min-height: 60px;
+	min-width: 60px;
+	max-height: 90px;
+	max-width: 90px;
 	vertical-align: middle;
-	/*display: inline-block;*/
 	position: relative;
 	padding: 0;
 	border-radius: 50%;
+}
+.left-indent{
+	margin-left: 20px;
+}
+.left-indent-lg{
+	margin-left: 30%;
 }
 paper-ripple {
 	border-radius: 2px;
