@@ -50,11 +50,11 @@
 			  			$reset: $section.find(".reset"),
 			  			startTransform: 'scale(0.8)',
 			  			increment: 0.4,
-			  			minScale: 0.5,
-			  			maxScale: 2,
+			  			minScale: 0.9,
+			  			maxScale: 3.5,
 			  			contain: 'invert'
 			  		}).panzoom('zoom');
-			  		
+
 			  		var $panzoom = $section.find('.panzoom').panzoom();		          
 			  		$panzoom.parent().on('mousewheel.focal', function( e ) {
 			  			e.preventDefault();
