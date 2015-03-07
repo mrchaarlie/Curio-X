@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^game2-splash$', views.game2Splash, name='game2-splash'),
     url(r'^post$', views.game_submit_task, name='submit'),
     url(r'^post2$', views.game2_submit_task, name='submit2'),
+    url(r'^skip$', views.game_skip, name='skip'),
 )

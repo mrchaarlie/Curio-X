@@ -60,3 +60,13 @@ def game2_submit_task(request):
         return render_to_response('game2.html', c)
     else:
         return HttpResponseServerError("post error: not a post")
+
+def game_skip(request):
+    if request.method == "POST":
+        post = request.POST.copy()
+        c = {}
+        c.update(csrf(request))
+        logger.debug("Get the skip from game")
+        return render_to_response('game.html', c)
+    else:
+        return HttpResponseServerError("post error: not a post")
