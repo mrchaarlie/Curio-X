@@ -87,6 +87,12 @@ s3cmd --configure #configure to your S3 bucket
 s3cmd put db.backup s3://curiox/backups/db.backup.<month>.<day> #follow some convention
 ```
 
+* User logs can be pulled from the database, formatted, and stored into a CSV file for further analysis
+
+```
+python manage.py pulldata --logs=user.log
+```
+
 #### Logging
 
 Code-level logging outputs to 'log' in the base directory. Logging options are specified in the settings.py file. To log in a python file, do the following:
