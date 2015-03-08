@@ -96,23 +96,23 @@
 			</div>
 
 			<div class="button-container left-indent">
-                                <form action="/game/post" method="post">
-                                {% csrf_token %}
-				<button class="raised submit green" id="submit-button">
-					<i class="fa fa-check fa-2x"></i>
-					<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
-				</button>
+                <form action="/game/post" method="post">
+                    {% csrf_token %}
+					<button class="raised submit green" id="submit-button">
+						<i class="fa fa-check fa-2x"></i>
+						<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+					</button>
 				</form>
 				<span>Submit</span>
 			</div>
 
 			<div class="skip-container">
-                                <form action="/game/skip" method="post">
-                                {% csrf_token %}
-				<button class="raised skip red" id="skip-button">
-					<i class="fa fa-share"></i>
-					<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
-				</button>
+                <form action="/game/skip" method="post">
+                {% csrf_token %}
+					<button class="raised skip red" id="skip-button">
+						<i class="fa fa-share"></i>
+						<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+					</button>
 				</form>
 				<span>Skip</span>
 
