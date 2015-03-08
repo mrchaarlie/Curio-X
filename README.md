@@ -50,9 +50,11 @@ The administrator login is admin:admin.
 
 Currently, we have:
 * Load default username bases (adjectives and animals; ex. CuriousBear) to the database
+* Load password bases (random selection of 2K or 11K words)
 
 ```
 python manage.py loadwords --adjectives static/lists/adjectivelist.csv --animals static/lists/animallist.csv
+python manage.py loadwords --words static/lists/shortwordlist.csv
 ```
 
 * Run a model migration to initialize the database
@@ -68,6 +70,21 @@ python manage.py migrate
 ```
 python manage.py loadimages --images=static/lists/fewobj_images.csv
 python manage.py loadimages --images=static/lists/manyobj_images.csv
+```
+
+* Backing up and restoring SQLite database
+
+```
+sudo apt-get install sqlite3
+sqlite3 db.sqlite3 ".backup db.backup" # create a backup
+```
+
+* Uploading backup to S3
+* Will first need to get s3cmd at http://s3tools.org/download
+
+```
+s3cmd --configure #configure to your S3 bucket
+s3cmd put db.backup s3://curiox/backups/db.backup.<month>.<day> #follow some convention
 ```
 
 #### Logging
