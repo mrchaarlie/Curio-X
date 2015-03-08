@@ -24,12 +24,12 @@ def game(request):
     c = {}
     c.update(csrf(request))
     
-    user = request.user
+    '''user = request.user
     image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
     if user.is_authenticated():
         image_url = Image.objects.filter(status=Image.NEW)[user.userprofile.img_idx].url
     
-    c.update({'image_url' : image_url})
+    c.update({'image_url' : image_url})'''
     logger.debug('Serve game mode 1 page')
     return render_to_response('game.html', c) 
 
@@ -58,7 +58,7 @@ def game_submit_task(request):
         c.update(csrf(request))
         
         # TODO: Grab data
-        user = request.user
+        '''user = request.user
         image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
@@ -67,7 +67,7 @@ def game_submit_task(request):
                 userprofile.save()
             image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
         
-        c.update({'image_url' : image_url})
+        c.update({'image_url' : image_url})'''
         logger.debug("Get the post from the game")
         return render_to_response('game.html', c)
     else:
@@ -89,7 +89,7 @@ def game_skip(request):
         c = {}
         c.update(csrf(request))
         
-        user = request.user
+        '''user = request.user
         image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
@@ -98,7 +98,7 @@ def game_skip(request):
                 userprofile.save()
             image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
         
-        c.update({'image_url' : image_url})
+        c.update({'image_url' : image_url})'''
         logger.debug("Get the skip from game")
         return render_to_response('game.html', c)
     else:
