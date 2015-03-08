@@ -12,6 +12,7 @@ class UserLog(models.Model):
     HOME = 'HOME'
     START_GAME = 'START'
     COMPLETE_GAME = 'DONE'
+    SKIP_GAME = 'SKIP'
     QUIT_GAME = 'QUIT'
     UNKNOWN = 'UNKNOWN'
     USER_ACTION_CHOICES = (
@@ -20,6 +21,7 @@ class UserLog(models.Model):
         (HOME, 'Home Screen'),
         (START_GAME, 'Start Game'),
         (COMPLETE_GAME, 'Complete Game'),
+        (SKIP_GAME, 'Skip Game'),
         (QUIT_GAME, 'Quit Game'),
         (UNKNOWN, 'Unknown Action'),
     )

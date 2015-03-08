@@ -38,6 +38,10 @@ class LogAllMiddleware(object):
             new_log.action = UserLog.START_GAME
         elif new_log.path == "/game/index":
             new_log.action = UserLog.HOME
+        elif new_log.path == "/game/skip" or new_log.path == "/game/skip2":
+            new_log.action = UserLog.SKIP_GAME
+        elif new_log.path == "/game/post" or new_log.path == "/game/post2":
+            new_log.action = UserLog.COMPLETE_GAME
         
         logger.debug('Save user log for user %s at %s for path %s', new_log.user, new_log.timestamp, new_log.path)
         new_log.save()
