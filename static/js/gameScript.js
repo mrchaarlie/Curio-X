@@ -4,6 +4,15 @@ $(document).ready(function (e){
 	var canvas = document.getElementById('circleCanvas')
 	var ctx = canvas.getContext('2d');
 	var img = new Image();
+
+	// var width=720;
+	// var height=1080;
+	var width = $('.main').width();
+	var height = $('.main').height();
+	canvas.width=width;
+	canvas.height=height;
+	console.log(canvas);
+	// $('#circleCanvas').css({'width':width+'px','height':height+'px'});
 	// img.src = document.getElementById('testImage');
 	// img.onload = function(){
 		// ctx.drawImage(img,0,0)

@@ -29,7 +29,7 @@ $(document).ready(function () {
         });
 
         // $ (".container").css({'display':'none'});
-    });
+    }); 
     
     resizeButtons();
 
@@ -40,14 +40,6 @@ $(document).ready(function () {
     function resizeButtons(){
         // console.log('width: ' + $('.button-container').width());;
         var tbw = $('.button-container').width();
-        // if ($('.toggle-button').width() > 0 ){
-        //     console.log($('.toggle-button').width());
-        //     tbw = $('.toggle-button').width();
-        // }else{
-        //     tbw = $('#submit-button').width();
-        //     console.log($('#submit-button').width());
-        // }
-
         console.log('resize: ' + tbw);
         $('.toggle-button').css({'height':tbw+'px'});
         $('.button-image').css({'width':tbw+'px','height':tbw+'px'});
