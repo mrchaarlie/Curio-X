@@ -40,28 +40,41 @@ $(document).ready(function () {
     function resizeButtons(){
         // console.log('width: ' + $('.button-container').width());;
         var tbw = $('.button-container').width();
-        console.log('resize: ' + tbw);
+        // console.log('resize: ' + tbw);
         $('.toggle-button').css({'height':tbw+'px'});
         $('.button-image').css({'width':tbw+'px','height':tbw+'px'});
         $('.submit').css({'width':tbw+'px','height':tbw+'px'});    
     }
 
 
-    $( ".toggle-button" ).click(function() {
-        $(this).parent().toggleClass( "selected" , 1000, "easeOut");
-        
-        // if(!$('#flower-button').parent().hasClass("selected") & 
-        //     !$('#bud-button').parent().hasClass("selected") & 
-        //     !$('#fruit-button').parent().hasClass("selected")
-        //   ){
-        //     console.log("all empty");
-        //     $("#submit-button").html('Skip');
-        // }else{
-        //     console.log("at least one selected");
-        //     $("#submit-button").html('Submit');
-        // }
-    }); 
+    //todo
+    if ($('.toggle-button').length > 0){
 
+        var flowerBool = 0;
+        var budBool = 0;
+        var fruitBool = 0;
+
+        if($("#flower-button").click(function(){
+            flowerBool += 1;
+            flowerBool = flowerBool % 2;
+        }));
+        if($("#bud-button").click(function(){
+            budBool += 1;
+            budBool = budBool % 2;
+        }));
+        if($("#fruit-button").click(function(){
+            fruitBool += 1;
+            fruitBool = fruitBool % 2;
+        }));
+
+        $( ".toggle-button" ).click(function() {
+            $(this).parent().toggleClass( "selected" , 1000, "easeOut");
+        }); 
+
+        //Submit click code:
+        var clickSubmit = "{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}";
+
+    }
 
     $(document).scroll(function() {
     })
