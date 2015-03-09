@@ -50,16 +50,16 @@ $(document).ready(function () {
     $( ".toggle-button" ).click(function() {
         $(this).parent().toggleClass( "selected" , 1000, "easeOut");
         
-        if(!$('#flower-button').parent().hasClass("selected") & 
-            !$('#bud-button').parent().hasClass("selected") & 
-            !$('#fruit-button').parent().hasClass("selected")
-          ){
-            console.log("all empty");
-            $("#submit-button").html('Skip');
-        }else{
-            console.log("at least one selected");
-            $("#submit-button").html('Submit');
-        }
+        // if(!$('#flower-button').parent().hasClass("selected") & 
+        //     !$('#bud-button').parent().hasClass("selected") & 
+        //     !$('#fruit-button').parent().hasClass("selected")
+        //   ){
+        //     console.log("all empty");
+        //     $("#submit-button").html('Skip');
+        // }else{
+        //     console.log("at least one selected");
+        //     $("#submit-button").html('Submit');
+        // }
     }); 
 
 
