@@ -5,6 +5,19 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     img_idx = models.IntegerField(default=0)
+    
+    COUNTING = 'COUNT'
+    CLASSIFICATION = 'CLAS'
+    UNKNMODE = 'UNKNOWN'
+    USER_GAME_MODE_CHOICES = (
+        (COUNTING, 'Counting Mode'),
+        (CLASSIFICATION, 'Classification Mode'),
+        (UNKNMODE, 'Unknown Game Mode'),
+    )
+    
+    game_mode = models.CharField(max_length=8,
+                              choices=USER_GAME_MODE_CHOICES,
+                              default=UNKNMODE)
 
 class UserLog(models.Model):
     LOGIN = 'LOGIN'
@@ -113,8 +126,35 @@ class Image(models.Model):
         # there's a way to set an 'active' flag and
         # only lookup items with active=true
 
-class taskSubmission(models.Model):
-    raw = models.TextField(blank=True,null=True)
+class ClassificationResult(models.Model):
+    image = models.ForeignKey('Image')
+    user = models.CharField(max_length=256)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
+    flower_bool = models.BooleanField(default=False)
+    bud_bool = models.BooleanField(default=False)
+    fruit_bool = models.BooleanField(default=False)
+    
+    # Object metadata
+    class Meta:
+        unique_together = [("image","user")]
+
+class CountResult(models.Model):
+    image = models.ForeignKey('Image')
+    user = models.CharField(max_length=256)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    flower_coords = models.TextField(blank=True, null=True)
+    bud_coords = models.TextField(blank=True, null=True)
+    fruit_coords = models.TextField(blank=True, null=True)
+    
+    flower_count = models.IntegerField(default=0)
+    bud_count = models.IntegerField(default=0)
+    fruit_count = models.IntegerField(default=0)
+
+    # Object metadata
+    class Meta:
+        unique_together = [("image","user")]
 
 ##
 ## TODO: Put into another file (ex. signals.py)
@@ -163,28 +203,28 @@ user_logged_in.connect(log_login)
 user_logged_out.connect(log_logout)
 
 
-'''
-class Result(models.Model):
-    CLASSIFICATION = 'CLAS'
-    COUNT = 'COUNT'
-    UNKNOWN = 'UNKNOWN'
-    GAME_TYPE_CHOICES = (
-        (CLASSIFICATION, 'Classification'),
-        (COUNT, 'Counting'),
-        (UNKNOWN, 'Unknown Game Type'),
-    )
-    
-    img_id = models.PositiveIntegerField(default=0)
-    user_id = models.PositiveIntegerField(default=0)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    game_type = models.CharField(max_length=7,
-                                 choices=GAME_TYPE_CHOICES,
-                                 default=UNKNOWN)
-    output = models.CharField(max_length=200)
-    # Object metadata
-    class Meta:
-        unique_together = [("img_id","user_id")] # user only uses image once
-'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

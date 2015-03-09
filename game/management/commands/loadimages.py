@@ -21,9 +21,11 @@ class Command(BaseCommand):
                         row = [attr.strip() for attr in line.split(',')]
                         if row[0] == 'ImageID':
                             continue
-                        url = 'https://s3-us-west-2.amazonaws.com/curiox/medres/' + \
-                               row[4] + '/' + \
+                        url = 'https://s3-us-west-2.amazonaws.com/curiox/testimgs/' + \
                                row[0] + '.jpg' #TODO: Un-hardcode
+                        '''url = 'https://s3-us-west-2.amazonaws.com/curiox/medres/' + \
+                               row[4] + '/' + \
+                               row[0] + '.jpg' #TODO: Un-hardcode'''
                         species = row[1].lower()
                         obj_type = row[2].lower()
                         obj_count = row[3]
