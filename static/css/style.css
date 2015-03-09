@@ -42,7 +42,10 @@ h1{
 	height: 55px;
 	z-index: 100;
 }
-
+.emphasis{
+	font-weight: bold;
+	font-size: 1.3em;
+}
 .transparent {
 	opacity: 0.8;
 }
@@ -173,6 +176,15 @@ button:hover{
 	display: inline;
 	bottom: 0;
 	float: left;
+}
+.instructions{
+	position: absolute;
+	background: rgba(31, 31, 31, 0.7);
+	top: -30px;
+	height: 30px;
+	width: 100%;
+	padding-top:10px;
+	text-align: center;
 }
 
 .button-container{
