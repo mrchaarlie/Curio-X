@@ -11,7 +11,6 @@ $(document).ready(function (e){
 	var height = $('.main').height();
 	canvas.width=width;
 	canvas.height=height;
-	console.log(canvas);
 	// $('#circleCanvas').css({'width':width+'px','height':height+'px'});
 	// img.src = document.getElementById('testImage');
 	// img.onload = function(){
@@ -60,12 +59,13 @@ $(document).ready(function (e){
 		});
 	}
 
-	$("#submit-button").click(function() {
-		var data = {user: 'user', // get user from context
-			coords: cArray}; // etc. everything else
-		var url = '/submit/game2_submit_task'
-		$.post(url, data)
+	$("#postForm").submit(function(e) {
+		console.log('submit!')
+		$('<input />').attr('type', 'hidden')
+			.attr('name', "coords")
+			.attr('value', cArray.map(function(c){return '('+c.x+','+c.y+')'}).toString())
+			.appendTo('#postForm');
+      	return true;
 	})
 })
-
 

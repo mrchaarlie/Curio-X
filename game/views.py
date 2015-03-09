@@ -79,6 +79,8 @@ def game2_submit_task(request):
         c = {}
         c.update(csrf(request))
         logger.debug("Get the post from game 2")
+        # logger.debug("POST request data: ", post.get('coords', False))
+        print("POST request: ", post)
         return render_to_response('game2.html', c)
     else:
         return HttpResponseServerError("post error: not a post")
