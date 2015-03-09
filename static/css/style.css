@@ -180,11 +180,12 @@ button:hover{
 .instructions{
 	position: absolute;
 	background: rgba(31, 31, 31, 0.7);
-	top: -30px;
-	height: 30px;
+	top: -35px;
+	height: 35px;
 	width: 100%;
-	padding-top:10px;
+	padding-top:8px;
 	text-align: center;
+	font-size: 1.1em;
 }
 
 .button-container{
