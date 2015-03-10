@@ -76,6 +76,25 @@ $(document).ready(function () {
 
     }
 
+        // Post the button toggle states upon submission
+        $("#postClas").submit(function(e) {
+                console.log('submit!')
+                $('<input />').attr('type', 'hidden')
+                        .attr('name', "flowerbool")
+                        .attr('value', flowerBool)
+                        .appendTo('#postClas');
+                $('<input />').attr('type', 'hidden')
+                        .attr('name', "budbool")
+                        .attr('value', budBool)
+                        .appendTo('#postClas');
+                $('<input />').attr('type', 'hidden')
+                        .attr('name', "fruitbool")
+                        .attr('value', fruitBool)
+                        .appendTo('#postClas');
+        return true;
+        })
+
+
     $(document).scroll(function() {
     })
 

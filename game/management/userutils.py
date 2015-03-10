@@ -7,6 +7,7 @@ def add_user(username, pwd, email='curio.x.dev@gmail.com'):
     user_profile = UserProfile(user=user)
     user_profile.save()
     print('Successfully created user %s' % user_profile.user)
+    return user_profile
 
 def generate_username():
     while True: #TODO: Avoid collisions

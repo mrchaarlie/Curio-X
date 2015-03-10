@@ -37,7 +37,7 @@
 				
 			<!-- <h1>Background</h1> -->
 			<div class="test-image panzoom-parent" id="panzoomParent">
-				<img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}">
+				<!-- ---><img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}">
 				<!-- DO NOT REMOVE <img class="panzoom" id = "testImage" src="{{ image_url }}"> -->
 			</div>
 			  <script>
@@ -97,7 +97,7 @@
 			</div>
 
 			<div class="button-container left-indent">
-				<form action="/game/post" method="post">
+				<form action="/game/post" method="post" id="postClas">
                 		{% csrf_token %}
 					<button class="raised submit green" id="submit-button">
 						<i class="fa fa-check fa-2x"></i>
