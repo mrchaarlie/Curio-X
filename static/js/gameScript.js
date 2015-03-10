@@ -59,12 +59,57 @@ $(document).ready(function (e){
 		});
 	}
 
+	if ($('.toggle-button').length > 0){
+
+        var flowerBool = 0;
+        var budBool = 0;
+        var fruitBool = 0;
+
+        if($("#flower-button").click(function(){
+            flowerBool += 1;
+            flowerBool = flowerBool % 2;
+        }));
+        if($("#bud-button").click(function(){
+            budBool += 1;
+            budBool = budBool % 2;
+        }));
+        if($("#fruit-button").click(function(){
+            fruitBool += 1;
+            fruitBool = fruitBool % 2;
+        }));
+
+        $( ".toggle-button" ).click(function() {
+            $(this).parent().toggleClass( "selected" , 1000, "easeOut");
+        }); 
+
+        //Submit click code:
+        var clickSubmit = "{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}";
+    }
+
 	$("#postForm").submit(function(e) {
 		console.log('submit!')
+
+		// send in type, count and location
+		// view provides: user, timestamp, imageID?
+
 		$('<input />').attr('type', 'hidden')
-			.attr('name', "coords")
-			.attr('value', cArray.map(function(c){return '('+c.x+','+c.y+')'}).toString())
-			.appendTo('#postForm');
+			.attr('name', "count").attr('value',cArray.length).appendTo('#postForm')
+		$('<input />').attr('type', 'hidden')
+			.attr('name', "coords").attr('value',cArray.map(function(c){return '('+c.x+','+c.y+')'}).toString())
+			.appendTo('#postForm')
+        $('<input />').attr('type', 'hidden')
+	        .attr('name', "flowerbool")
+	        .attr('value', flowerBool)
+	        .appendTo('#postForm');
+        $('<input />').attr('type', 'hidden')
+            .attr('name', "budbool")
+            .attr('value', budBool)
+            .appendTo('#postForm');
+        $('<input />').attr('type', 'hidden')
+            .attr('name', "fruitbool")
+            .attr('value', fruitBool)
+            .appendTo('#postForm');
+
       	return true;
 	})
 })
