@@ -87,6 +87,7 @@ class Word(models.Model):
 
 class Image(models.Model):
     id = models.AutoField(primary_key=True) # auto-increment
+    iid = models.CharField(max_length=256, default='')
     url = models.URLField()
     species = models.CharField(max_length=256, default='Unknown species')
     obj_type = models.CharField(max_length=32, default='')
@@ -122,7 +123,7 @@ class Image(models.Model):
     
     # Object metadata
     class Meta:
-        ordering = ["id"] # def order when selecting objs
+        ordering = ["iid"] # def order when selecting objs
         # there's a way to set an 'active' flag and
         # only lookup items with active=true
 

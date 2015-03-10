@@ -26,6 +26,7 @@ class Command(BaseCommand):
                         url = 'https://s3-us-west-2.amazonaws.com/curiox/medres/' + \
                                row[4] + '/' + \
                                row[0] + '.jpg' #TODO: Un-hardcode
+                        iid = row[0]
                         species = row[1].lower()
                         obj_type = row[2].lower()
                         obj_count = row[3]
@@ -36,7 +37,7 @@ class Command(BaseCommand):
                         else:
                             test_class = Image.UNKNCLASS
                         
-                        img = Image(url=url, species=species, 
+                        img = Image(iid=iid, url=url, species=species, 
                                     obj_type=obj_type, obj_count=obj_count, 
                                     test_class=test_class)
                         img.save()
