@@ -22,7 +22,7 @@ $(document).ready(function (e){
 		var posX = $(this).offset().left,
 			posY = $(this).offset().top;
 		
-		var coord = {x : (e.pageX - posX) , y : (e.pageY - posY)};
+		var coord = {cType : getType() , x : (e.pageX - posX) , y : (e.pageY - posY)};
 		
 		cArrayUpdate(coord);
 		drawCircles();
@@ -54,7 +54,9 @@ $(document).ready(function (e){
 			ctx.beginPath();
 			ctx.arc(data.x, data.y, radius, 0, Math.PI * 2);
 			ctx.lineWidth = 2;
-			ctx.strokeStyle = 'red';
+			if(data.cType == 'flower'){ ctx.strokeStyle = 'red'; }
+			else if(data.cType == 'bud'){ ctx.strokeStyle = 'blue'; }
+			else if(data.cType == 'fruit'){ ctx.strokeStyle = 'yellow'; }
 			ctx.stroke();
 		});
 	}
@@ -65,26 +67,49 @@ $(document).ready(function (e){
         var budBool = 0;
         var fruitBool = 0;
 
-        if($("#flower-button").click(function(){
+        $("#flower-button").click(function(){
+        	$("#flower-button").parent().toggleClass( "selected" , 1000, "easeOut");
+            if(budBool) { $("#bud-button").parent().toggleClass( "selected" , 1000, "easeOut") }
+            if(fruitBool) { $("#fruit-button").parent().toggleClass( "selected" , 1000, "easeOut") }
             flowerBool += 1;
             flowerBool = flowerBool % 2;
-        }));
-        if($("#bud-button").click(function(){
+            budBool = fruitBool = 0;
+            console.log("{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}")
+        });
+        $("#bud-button").click(function(){
+        	$("#bud-button").parent().toggleClass( "selected" , 1000, "easeOut");
+            if(flowerBool) { $("#flower-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
+            if(fruitBool) { $("#fruit-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
             budBool += 1;
             budBool = budBool % 2;
-        }));
-        if($("#fruit-button").click(function(){
+            flowerBool = fruitBool = 0;
+            console.log("{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}")
+        });
+        $("#fruit-button").click(function(){
+        	$("#fruit-button").parent().toggleClass( "selected" , 1000, "easeOut");
+            if(flowerBool) { $("#flower-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
+            if(budBool) { $("#bud-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
             fruitBool += 1;
             fruitBool = fruitBool % 2;
-        }));
+            flowerBool = budBool = 0;
+            console.log("{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}")
+        });
 
         $( ".toggle-button" ).click(function() {
             $(this).parent().toggleClass( "selected" , 1000, "easeOut");
-        }); 
-
-        //Submit click code:
-        var clickSubmit = "{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}";
+        });
     }
+
+    function getType() {
+		if (flowerBool) {return 'flower'}
+		else if (budBool) {return 'bud'}
+		else if (fruitBool) {return 'fruit'}
+	}
+
+
+
+    	// __init
+	$('#flower-button').click();
 
 	$("#postForm").submit(function(e) {
 		console.log('submit!')
@@ -93,22 +118,21 @@ $(document).ready(function (e){
 		// view provides: user, timestamp, imageID?
 
 		$('<input />').attr('type', 'hidden')
-			.attr('name', "count").attr('value',cArray.length).appendTo('#postForm')
-		$('<input />').attr('type', 'hidden')
-			.attr('name', "coords").attr('value',cArray.map(function(c){return '('+c.x+','+c.y+')'}).toString())
+			.attr('name', "count")
+			.attr('value',cArray.length)
 			.appendTo('#postForm')
-        $('<input />').attr('type', 'hidden')
-	        .attr('name', "flowerbool")
-	        .attr('value', flowerBool)
-	        .appendTo('#postForm');
-        $('<input />').attr('type', 'hidden')
-            .attr('name', "budbool")
-            .attr('value', budBool)
-            .appendTo('#postForm');
-        $('<input />').attr('type', 'hidden')
-            .attr('name', "fruitbool")
-            .attr('value', fruitBool)
-            .appendTo('#postForm');
+		$('<input />').attr('type', 'hidden')
+			.attr('name', "coords")
+			.attr('value',cArray.map(function(c){return '('+c.cType+':'+c.x+','+c.y+')'}).toString())
+			.appendTo('#postForm')
+		$('<input />').attr('type', 'hidden')
+			.attr('name', "coords")
+			.attr('value',cArray.map(function(c){return '('+c.cType+':'+c.x+','+c.y+')'}).toString())
+			.appendTo('#postForm')
+		$('<input />').attr('type', 'hidden')
+			.attr('name', "coords")
+			.attr('value',cArray.map(function(c){return '('+c.cType+':'+c.x+','+c.y+')'}).toString())
+			.appendTo('#postForm')
 
       	return true;
 	})
