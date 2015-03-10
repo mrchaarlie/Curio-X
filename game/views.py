@@ -18,24 +18,24 @@ def csrf_render(request, htmlpage, context):
     context.update(csrf(request))
     return render_to_response(htmlpage, context)
 
-#@login_required
+@login_required
 def index(request):
     '''Home page'''
     logger.debug('Serve index')
     return render_to_response('index.html', locals())
 
-#@login_required
+@login_required
 def game(request):
     '''Classification game'''
     logger.debug('Serve game mode 1 page')
     
     c = {}
-    '''user = request.user
+    user = request.user
     image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
     if user.is_authenticated():
         image_url = Image.objects.filter(status=Image.NEW)[user.userprofile.img_idx].url
     
-    c.update({'image_url' : image_url})'''
+    c.update({'image_url' : image_url})
     return csrf_render(request, 'game.html', c) 
 
 #@login_required
@@ -73,7 +73,7 @@ def game_submit_task(request):
                         budbool,
                         fruitbool))
         
-        '''user = request.user
+        user = request.user
         image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
@@ -89,7 +89,7 @@ def game_submit_task(request):
                 userprofile.save()
             image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
         
-        c.update({'image_url' : image_url})'''
+        c.update({'image_url' : image_url})
         return csrf_render(request, 'game.html', c)
     else:
         return HttpResponseServerError("post error: not a post")
@@ -111,7 +111,7 @@ def game_skip(request):
         post = request.POST.copy()
         c = {}
         
-        '''user = request.user
+        user = request.user
         image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
@@ -120,7 +120,7 @@ def game_skip(request):
                 userprofile.save()
             image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
         
-        c.update({'image_url' : image_url})'''
+        c.update({'image_url' : image_url})
         
         return csrf_render(request, 'game.html', c)
     else:

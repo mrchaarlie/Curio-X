@@ -137,8 +137,8 @@ class ClassificationResult(models.Model):
     fruit_bool = models.BooleanField(default=False)
     
     # Object metadata
-    class Meta:
-        unique_together = [("image","user")]
+    #class Meta:
+    #    unique_together = [("image","user")]
 
 class CountResult(models.Model):
     image = models.ForeignKey('Image')
@@ -154,8 +154,8 @@ class CountResult(models.Model):
     fruit_count = models.IntegerField(default=0)
 
     # Object metadata
-    class Meta:
-        unique_together = [("image","user")]
+    #class Meta:
+    #    unique_together = [("image","user")]
 
 ##
 ## TODO: Put into another file (ex. signals.py)
