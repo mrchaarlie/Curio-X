@@ -125,15 +125,6 @@ $(document).ready(function (e){
 			.attr('name', "coords")
 			.attr('value',cArray.map(function(c){return '('+c.cType+':'+c.x+','+c.y+')'}).toString())
 			.appendTo('#postForm')
-		$('<input />').attr('type', 'hidden')
-			.attr('name', "coords")
-			.attr('value',cArray.map(function(c){return '('+c.cType+':'+c.x+','+c.y+')'}).toString())
-			.appendTo('#postForm')
-		$('<input />').attr('type', 'hidden')
-			.attr('name', "coords")
-			.attr('value',cArray.map(function(c){return '('+c.cType+':'+c.x+','+c.y+')'}).toString())
-			.appendTo('#postForm')
-
       	return true;
 	})
 })
