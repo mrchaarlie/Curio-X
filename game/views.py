@@ -38,12 +38,18 @@ def game(request):
     c.update({'image_url' : image_url})
     return csrf_render(request, 'game.html', c) 
 
-#@login_required
+@login_required
 def game2(request):
     '''Counting game'''
     logger.debug('Serve game mode 2 page')
     
     c = {}
+    user = request.user
+    image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
+    if user.is_authenticated():
+        image_url = Image.objects.filter(status=Image.NEW)[user.userprofile.img_idx].url
+
+    c.update({'image_url' : image_url})
     return csrf_render(request, 'game2.html', c) 
 
 #@login_required
@@ -95,12 +101,39 @@ def game_submit_task(request):
         return HttpResponseServerError("post error: not a post")
 
 def game2_submit_task(request):
+    logger.debug(request)
+    
     if request.method == "POST":
-        post = request.POST.copy()
-        c = {}
         logger.debug("Get the post from game 2")
-        logger.debug("POST request data: %s" % post.get('coords', False))
-        print("POST request: ", post)
+        c = {}
+        post = request.POST.copy()
+
+        '''flowerbool = True if int(post.get('flowerbool')) else False
+        budbool = True if int(post.get('budbool')) else False
+        fruitbool = True if int(post.get('fruitbool')) else False
+
+        logger.debug("POST request data: %s, %s, %s" % \
+                        (flowerbool,
+                        budbool,
+                        fruitbool))'''
+
+        user = request.user
+        image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
+        if user.is_authenticated():
+            userprofile = UserProfile.objects.get(user=user)
+            '''result = ClassificationResult(user=userprofile.user.username, \
+                         image=Image.objects.all()[userprofile.img_idx], \
+                         flower_bool=flowerbool, \
+                         bud_bool=budbool, \
+                         fruit_bool=fruitbool)
+            result.save()'''
+
+            if len(Image.objects.all()) > userprofile.img_idx + 1:
+                userprofile.img_idx += 1
+                userprofile.save()
+            image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
+
+        c.update({'image_url' : image_url})
         return csrf_render(request, 'game2.html', c)
     else:
         return HttpResponseServerError("post error: not a post")

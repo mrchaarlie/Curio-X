@@ -24,7 +24,7 @@ $(document).ready(function () {
     //          $(".title").css({'transition': '0.1s','height':'70px', 'line-height':'70px', 'font-size':'3em'});
     //           $(".header").css({'height':'108px'});
     
-            window.open("game", "_self");
+            window.open("game2", "_self");
             next(); 
         });
 

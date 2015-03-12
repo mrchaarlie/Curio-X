@@ -43,7 +43,8 @@
 			
 			
 			<div class="test-image panzoom-parent" id="panzoomParent">
-				<img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}">
+				<!-- <img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}"> -->
+				<!-- DO NOT REMOVE --><img class="panzoom" id = "testImage" src="{{ image_url }}">
 				<canvas id='circleCanvas' class='coveringCanvas' width=360px height=640px>
 			</div>
 			<script>
