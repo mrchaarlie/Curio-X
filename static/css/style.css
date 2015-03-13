@@ -132,11 +132,13 @@ button:hover{
 	font-size: 2.2em;
 	line-height: 1.5;
 	border-radius: 6px;
+	margin-top: 20px;
 }
 
-.container{background: #2a2a2a;}
+.container{}
 .intro {
-	padding: 40px 35px 20px;
+	background: #2a2a2a;
+	padding: 20px 35px;
 	color: #eee;
 }
 
