@@ -1,9 +1,9 @@
 $(document).ready(function (e){
-	
-	console.log('document ready');
-
 
 	var isDraw = 0;
+	var globalScale = 0;
+	var globalX = 0;
+	var globalY = 0;
 
 	$('#testImage').load(function(e){
 		drawCanvas();
@@ -15,6 +15,16 @@ $(document).ready(function (e){
 		}
 	 }, 1000);
 
+	$('.panzoom-parent').click(function(){
+		
+		var canvasArray = $("#circleCanvas").attr("style").split(',');
+		// console.log("scale: "+canvasArray[3]);
+		// console.log("x: "+canvasArray[4]);
+		// console.log("y: "+canvasArray[5].split(')')[0]);
+		globalScale = canvasArray[3];
+		globalX = canvasArray[4];
+		globalY = canvasArray[5].split(')')[0];
+	})
 	function drawCanvas(){
 		console.log('draw ready');
 		var cArray = []
@@ -36,7 +46,7 @@ $(document).ready(function (e){
 			canvas.width=width;
 			canvas.height=height;
 			// canvas.width=420;
-			// canvas.height=720;
+			// canvas.height=720;	
 			drawCircles();
 		}		
 		// $('#circleCanvas').css({'width':width+'px','height':height+'px'});
@@ -54,7 +64,7 @@ $(document).ready(function (e){
 			
 			cArrayUpdate(coord);
 			drawCircles();
-			console.log('coordsArray', cArray)
+			// console.log('coordsArray', cArray)
 		});
 		
 		function cArrayUpdate(newCoord) {
