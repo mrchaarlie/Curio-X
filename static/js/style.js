@@ -17,14 +17,17 @@ $(document).ready(function () {
       // $( this ).css({'border-radius':'100px','width':'100px', 'height':'100px'});
         $ ("body").css({'background-color':'#dadede', 'color':'#dadede'});
         $ ("h1").css({'border':'none'});
-        $ (".header").css({'display':'none'})
-        $ (".footer").css({'border':'none'}).delay(250)
+        $ (".header").css({'display':'none'});
+        $ (".intro").css({'display':'none'});
+        $ (this).css({'display':'none'});
+        $ (".footer").css({'display':'none'});
+        $ (".footer").css({'border':'none'})
         // window.location("http://www.w3schools.com", _self);
         .queue( function(next){ 
     //          $(".title").css({'transition': '0.1s','height':'70px', 'line-height':'70px', 'font-size':'3em'});
     //           $(".header").css({'height':'108px'});
     
-            window.open("game2", "_self");
+            window.open("game", "_self");
             next(); 
         });
 

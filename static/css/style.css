@@ -109,7 +109,7 @@ h1{
 
 button{
 	border: none;
-	background: #a2bdc2;
+	background: #26707D;
 	color: #dadede;
 	margin:0;
 }
@@ -191,6 +191,9 @@ button:hover{
 	font-size: 1.1em;
 }
 
+.count #flower-button{border: 3px solid rgb(255, 226, 22);}
+.count #bud-button{border: 3px solid rgb(255, 114, 22);}
+.count #fruit-button{border: 3px solid rgb(52, 214, 18);}
 .button-container{
 	margin: 3px 0px;
 	padding: 15px 5px;
