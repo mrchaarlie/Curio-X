@@ -35,6 +35,8 @@ $(document).ready(function (e){
 			
 			canvas.width=width;
 			canvas.height=height;
+			// canvas.width=420;
+			// canvas.height=720;
 			drawCircles();
 		}		
 		// $('#circleCanvas').css({'width':width+'px','height':height+'px'});
@@ -97,8 +99,8 @@ $(document).ready(function (e){
 	        	$("#flower-button").parent().addClass( "selected" , 1000, "easeOut");
 	            if(budBool) { $("#bud-button").parent().toggleClass( "selected" , 1000, "easeOut") }
 	            if(fruitBool) { $("#fruit-button").parent().toggleClass( "selected" , 1000, "easeOut") }
-	            flowerBool += 1;
-	            flowerBool = flowerBool % 2;
+	            
+	            flowerBool = 1;
 	            budBool = fruitBool = 0;
 	            console.log("{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}")
 	        });
@@ -106,8 +108,7 @@ $(document).ready(function (e){
 	        	$("#bud-button").parent().addClass( "selected" , 1000, "easeOut");
 	            if(flowerBool) { $("#flower-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
 	            if(fruitBool) { $("#fruit-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
-	            budBool += 1;
-	            budBool = budBool % 2;
+	            budBool = 1;
 	            flowerBool = fruitBool = 0;
 	            console.log("{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}")
 	        });
@@ -115,8 +116,7 @@ $(document).ready(function (e){
 	        	$("#fruit-button").parent().addClass( "selected" , 1000, "easeOut");
 	            if(flowerBool) { $("#flower-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
 	            if(budBool) { $("#bud-button").parent().toggleClass( "selected" , 1000, "easeOut"); }
-	            fruitBool += 1;
-	            fruitBool = fruitBool % 2;
+	            fruitBool = 1;
 	            flowerBool = budBool = 0;
 	            console.log("{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}")
 	        });

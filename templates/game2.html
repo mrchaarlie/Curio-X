@@ -35,11 +35,12 @@
 		</div>
 		<div class="main">
 				
-			<div class="test-image panzoom-parent" id="panzoomParent">
+			<div class="test-image panzoom-parent" id="">
 				<!-- <img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}"> -->
 				<!-- DO NOT REMOVE -->
-				<img class="panzoom" id = "testImage" src="{{ image_url }}">
-				<canvas id='circleCanvas' class='coveringCanvas' width=360px height=640px>
+				<img class="" id = "testImage" src="{{ image_url }}">
+				<canvas id='circleCanvas' class='panzoom coveringCanvas' width=360px height=640px>
+				</canvas>
 			</div>
 			<script>
 				(function() {
@@ -48,25 +49,27 @@
 						$zoomIn: $section.find(".zoom-in"),
 						$zoomOut: $section.find(".zoom-out"),
 						$zoomRange: $section.find(".zoom-range"),
-						$reset: $section.find(".reset"),
-						startTransform: 'scale(0.8)',
-						increment: 0.4,
-						minScale: 0.9,
-						maxScale: 3.5,
-						contain: 'invert'
+						$reset: $section.find(".testImage"),
+						$set: $section.find('#testImage, #circleCanvas'),
+
+						startTransform: 'scale(1)',
+						// increment: 0.4,
+						minScale: 1,
+						maxScale: 3,
+						// contain: 'invert'
 					}).panzoom('zoom');
-					
-			  		// var $panzoom = $section.find('.panzoom').panzoom();		          
-			  		// $panzoom.parent().on('mousewheel.focal', function( e ) {
-			  		// 	e.preventDefault();
-			  		// 	var delta = e.delta || e.originalEvent.wheelDelta;
-			  		// 	var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-			  		// 	$panzoom.panzoom('zoom', zoomOut, {
-			  		// 		increment: 0.1,
-			  		// 		animate: false,
-			  		// 		focal: e
-			  		// 	});
-			  		// });
+
+			  		var $panzoom = $section.find('.panzoom').panzoom();		          
+			  		$panzoom.parent().on('mousewheel.focal', function( e ) {
+			  			e.preventDefault();
+			  			var delta = e.delta || e.originalEvent.wheelDelta;
+			  			var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+			  			$panzoom.panzoom('zoom', zoomOut, {
+			  				increment: 0.1,
+			  				animate: false,
+			  				focal: e
+			  			});
+			  		});
 			  	})();
 		      </script>
 			

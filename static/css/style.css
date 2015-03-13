@@ -171,6 +171,7 @@ button:hover{
     position:absolute; top:0px; left:0px;
 	background-color: rgba(0,0,0,0);
 }
+/*#circleCanvas{pointer-events:none;}*/
 
 .toggle-bg{
 	background: rgba(31, 31, 31, 0.7);
@@ -192,7 +193,7 @@ button:hover{
 }
 
 .count #flower-button{border: 3px solid rgb(192, 43, 96);}
-.count #bud-button{border: 3px solid rgb(255, 114, 22);}
+.count #bud-button{border: 3px solid rgb(219, 130, 50);}
 .count #fruit-button{border: 3px solid rgb(52, 214, 18);}
 .button-container{
 	margin: 3px 0px;
