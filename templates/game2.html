@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
-		<link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
+		<!-- <link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html"> -->
 		
 		<!-- fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -35,16 +35,10 @@
 		</div>
 		<div class="main">
 				
-			<!-- <h1>Background</h1> -->
-			<!-- <div class="test-image panzoom-parent" id="panzoomParent">
-				<img class="panzoom coveredImage" id = "testImage" src="{% static 'img/plant.jpg' %}">
-				<canvas id='circleCanvas' class='panzoom coveringCanvas' width=1000px height=800px>
-			</div> -->
-			
-			
 			<div class="test-image panzoom-parent" id="panzoomParent">
 				<!-- <img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}"> -->
-				<!-- DO NOT REMOVE --><img class="panzoom" id = "testImage" src="{{ image_url }}">
+				<!-- DO NOT REMOVE -->
+				<img class="panzoom" id = "testImage" src="{{ image_url }}">
 				<canvas id='circleCanvas' class='coveringCanvas' width=360px height=640px>
 			</div>
 			<script>
@@ -61,19 +55,22 @@
 						maxScale: 3.5,
 						contain: 'invert'
 					}).panzoom('zoom');
-					// var $panzoom = $section.find('.panzoom').panzoom();		          
-			  // 		$panzoom.parent().on('mousewheel.focal', function( e ) {
-			  // 			e.preventDefault();
-			  // 			var delta = e.delta || e.originalEvent.wheelDelta;
-			  // 			var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-			  // 			$panzoom.panzoom('zoom', zoomOut, {
-			  // 				increment: 0.1,
-			  // 				animate: false,
-			  // 				focal: e
-			  // 			});
-			  // 		});
-				})();
-			</script>
+					
+			  		// var $panzoom = $section.find('.panzoom').panzoom();		          
+			  		// $panzoom.parent().on('mousewheel.focal', function( e ) {
+			  		// 	e.preventDefault();
+			  		// 	var delta = e.delta || e.originalEvent.wheelDelta;
+			  		// 	var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+			  		// 	$panzoom.panzoom('zoom', zoomOut, {
+			  		// 		increment: 0.1,
+			  		// 		animate: false,
+			  		// 		focal: e
+			  		// 	});
+			  		// });
+			  	})();
+		      </script>
+			
+			
 
 		</div>
 

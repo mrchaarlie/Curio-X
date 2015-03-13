@@ -1,5 +1,22 @@
 $(document).ready(function (e){
+	
+	console.log('document ready');
+
+
+	var isDraw = 0;
+
 	$('#testImage').load(function(e){
+		drawCanvas();
+		isDraw++;
+	})
+	setTimeout(function(){ 
+		if(!isDraw){
+			drawCanvas();
+		}
+	 }, 1000);
+
+	function drawCanvas(){
+		console.log('draw ready');
 		var cArray = []
 		var radius = 15;
 		var canvas = document.getElementById('circleCanvas');
@@ -7,10 +24,19 @@ $(document).ready(function (e){
 
 		// var width=720;
 		// var height=1080;
-		var width = $('.main').width();
-		var height = $('.main').height();
-		canvas.width=width;
-		canvas.height=height;
+		resizeCanvas();
+		$( window ).resize(function(){
+        	resizeCanvas();
+   		});
+
+		function resizeCanvas(){
+			var width = $('.main').width();
+			var height = $('.main').height();
+			
+			canvas.width=width;
+			canvas.height=height;
+			drawCircles();
+		}		
 		// $('#circleCanvas').css({'width':width+'px','height':height+'px'});
 		// img.src = document.getElementById('testImage');
 		// img.onload = function(){
@@ -124,6 +150,6 @@ $(document).ready(function (e){
 				.appendTo('#postForm')
 	      	return true;
 		})
-	})
+	}
 })
 

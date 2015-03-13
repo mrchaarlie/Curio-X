@@ -51,6 +51,13 @@ $(document).ready(function () {
 
 
     //todo
+
+
+    // var name = window.location.pathname.split("/").pop().toLowerCase();
+    // console.log(name);
+    // console.log(name.indexOf("game"));
+    // console.log(name.length);
+
     if ($('.toggle-button').length > 0){
 
         var flowerBool = 0;
