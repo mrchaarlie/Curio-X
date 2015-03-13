@@ -79,13 +79,15 @@
 
 		<!-- Main -->
 		<div class="toggle-bg text-center">
+
+			<div class="instructions">Select what <!--<span class="emphasis">fruit</span> -->you counted.</div>
+			
 			<div class="button-container">
 				<button class="toggle-button raised" id="flower-button">
 				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Flower</span>
-			</div>
-			
+			</div>			
 
 			<div class="button-container">
 				<button class="toggle-button raised" id="bud-button">
@@ -101,8 +103,7 @@
 				<span>Fruit</span>
 			</div>
 
-			<div class="instructions">Select what <!--<span class="emphasis">fruit</span> -->you counted.</div>              
-			<div class="button-container">
+			<div class="button-container left-indent">
 				<form action="/game/post2" method="post" id="postForm">
 				{% csrf_token %}
 					<button class="raised submit green" id="submit-button">
@@ -111,6 +112,18 @@
 					</button>
 				</form>
 				<span>Submit</span>
+			</div>
+
+			<div class="skip-container skip-game-2">
+				<form action="/game/skip" method="post">
+				{% csrf_token %}
+					<button class="raised skip red" id="skip-button">
+						<i class="fa fa-share"></i>
+						<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+					</button>
+				</form>
+				<span>Skip</span>
+
 			</div>
 
 			<!-- TODO: Add skip button -->
