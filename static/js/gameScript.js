@@ -89,7 +89,7 @@ $(document).ready(function (e){
 
 		
 		function drawCircles(){
-			console.log('drawing circles, ' + "(dx,dy) " + globalXOffset + ', ' + globalYOffset);
+			// console.log('drawing circles, ' + "(dx,dy) " + globalXOffset + ', ' + globalYOffset);
 			ctx.clearRect(0,0, canvas.width, canvas.height);
 			$.each(cArray, function(i, data) {
 				ctx.beginPath();
@@ -99,7 +99,7 @@ $(document).ready(function (e){
 				yPos = data.y + yScalingFactor;
 				// console.log("(dx,dy) " + xScalingFactor + ', ' + yScalingFactor)
 				ctx.arc(xPos, yPos, radius, 0, Math.PI * 2);
-				ctx.arc(data.x, data.y, radius, 0, Math.PI * 2);
+				// ctx.arc(data.x, data.y, radius, 0, Math.PI * 2);
 				ctx.lineWidth = 2;
 				if(data.cType == 'flower'){ ctx.strokeStyle = 'rgb(192, 43, 96)'; }
 				else if(data.cType == 'bud'){ ctx.strokeStyle = 'rgb(219, 130, 50)'; }
