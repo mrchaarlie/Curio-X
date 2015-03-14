@@ -107,22 +107,17 @@ logger.debug('I can see this debug message in the log file')
 #...
 ```
 
-#### Configuring Apache
+#### Configuring Apache for Production
 
-This section is unfinished.
-
-Install Apache, check the version number (2.4.x) and enable the VirtualHost by creating a new site 'curiox'
+Install Apache, and required packages check the version number (2.4.x) and enable the VirtualHost by creating a new site 'curiox'. Make sure to make the git clone in the /var/www/curiox directory, with the virtualenv 'env' in the same directory. Don't attach to the env, but run it like 'env/bin/python'.
 
 ```
 sudo apt-get install apache2
-apache2 -v   #get version
-sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/curiox.conf
-```
+sudo apt-get install python3-dev
+sudo apt-get install apache2-dev
+sudo apt-get install python3.4
 
-Add to the /etc/apache2/apache2.conf file
-
-```
-ServerName localhost
+sudo cp curiox.conf /etc/apache2/sites-available/
 ```
 
 Another server might be listening on the port 80, so you can either change the port in /etc/apache2/ports.conf, or
@@ -136,11 +131,41 @@ Enable the site and start Apache and check out the default Apache page at 'local
 
 ```
 sudo a2ensite curiox
+sudo a2dissite 000-default
 sudo service apache2 restart
 ```
 
 Now, to host Python applications with Apache, we will need a module that runs with Apache called mod\_wsgi, so let's install that
 
 ```
-sudo apt-get install libapache2-mod-wsgi
+sudo apt-get install libapache2-mod-wsgi  #might not be needed
+```
+
+Now, download and build the source for mod\_wsgi for python 3.4 at
+
+```
+# Source:
+https://github.com/GrahamDumpleton/mod_wsgi/releases/tag/4.4.10
+# Instructions:
+https://stackoverflow.com/questions/20913125/mod-wsgi-for-correct-version-of-python3
+```
+
+And follow the instructions on this site
+
+```
+https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps
+```
+
+Change the logging settings in curiox.settings to point to /var/log/curiox.log, and do
+
+```
+chmod a+w /var/log/curiox.log
+chown www-data /var/log/curiox.log
+```
+
+And make sure the directory curiox (with the database) is owned by apache
+
+```
+cd /var/www/curiox
+chown www-data /var/www/curiox
 ```
