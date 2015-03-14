@@ -144,14 +144,16 @@ class CountResult(models.Model):
     image = models.ForeignKey('Image')
     user = models.CharField(max_length=256)
     timestamp = models.DateTimeField(auto_now_add=True)
-
-    flower_coords = models.TextField(blank=True, null=True)
+    
+    coords = models.TextField(blank=True, null=True)
+    
+    '''flower_coords = models.TextField(blank=True, null=True)
     bud_coords = models.TextField(blank=True, null=True)
     fruit_coords = models.TextField(blank=True, null=True)
     
     flower_count = models.IntegerField(default=0)
     bud_count = models.IntegerField(default=0)
-    fruit_count = models.IntegerField(default=0)
+    fruit_count = models.IntegerField(default=0)'''
 
     # Object metadata
     #class Meta:
@@ -202,60 +204,3 @@ def log_logout(sender, user, request, **kwargs):
 # Capture the logins and logouts
 user_logged_in.connect(log_login)
 user_logged_out.connect(log_logout)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# What is this?
-#	Pass a representation of the session
-#	i.e. one user to a session; one to many association
