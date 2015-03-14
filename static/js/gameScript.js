@@ -2,8 +2,10 @@ $(document).ready(function (e){
 
 	var isDraw = 0;
 	var globalScale = 0;
-	var globalX = 0;
-	var globalY = 0;
+	var globalXOffset = 0;
+	var globalYOffset = 0;
+	var globalDownX = 0;
+	var globalDownY = 0;
 
 	$('#testImage').load(function(e){
 		drawCanvas();
@@ -15,16 +17,6 @@ $(document).ready(function (e){
 		}
 	 }, 1000);
 
-	$('.panzoom-parent').click(function(){
-		
-		var canvasArray = $("#circleCanvas").attr("style").split(',');
-		// console.log("scale: "+canvasArray[3]);
-		// console.log("x: "+canvasArray[4]);
-		// console.log("y: "+canvasArray[5].split(')')[0]);
-		globalScale = canvasArray[3];
-		globalX = canvasArray[4];
-		globalY = canvasArray[5].split(')')[0];
-	})
 	function drawCanvas(){
 		console.log('draw ready');
 		var cArray = []
@@ -56,17 +48,28 @@ $(document).ready(function (e){
 			// console.log('drawing image')
 		// }
 		
-		$('#circleCanvas').click(function (e) {
+		$('#circleCanvas').mousedown(function (e) {
+			console.log('mousedown')
 			var posX = $(this).offset().left,
 				posY = $(this).offset().top;
-			
-			var coord = {cType : getType() , x : (e.pageX - posX) , y : (e.pageY - posY)};
-			
-			cArrayUpdate(coord);
-			drawCircles();
-			// console.log('coordsArray', cArray)
+
+			globalDownX = e.pageX - posX
+			globalDownY = e.pageY - posY
 		});
-		
+
+		$('#circleCanvas').mouseup(function (e) {
+			console.log('mouseup')
+			var posX = $(this).offset().left,
+				posY = $(this).offset().top;
+
+			if(e.pageX-posX == globalDownX && e.pageY-posY == globalDownY) {
+				console.log('same spot click')
+				var coord = {cType : getType() , x : (globalDownX) , y : (globalDownY)};
+				cArrayUpdate(coord);
+				drawCircles();
+			}
+		})
+
 		function cArrayUpdate(newCoord) {
 			var noOverlap = true;
 			$.each(cArray, function(i, coord) {
@@ -90,6 +93,12 @@ $(document).ready(function (e){
 			ctx.clearRect(0,0, canvas.width, canvas.height);
 			$.each(cArray, function(i, data) {
 				ctx.beginPath();
+				xScalingFactor = globalXOffset*(1-globalScale)
+				yScalingFactor = globalYOffset*(1-globalScale)
+				xPos = data.x + xScalingFactor;
+				yPos = data.y + yScalingFactor;
+				// console.log("(dx,dy) " + xScalingFactor + ', ' + yScalingFactor)
+				ctx.arc(xPos, yPos, radius, 0, Math.PI * 2);
 				ctx.arc(data.x, data.y, radius, 0, Math.PI * 2);
 				ctx.lineWidth = 2;
 				if(data.cType == 'flower'){ ctx.strokeStyle = 'rgb(192, 43, 96)'; }
@@ -98,6 +107,25 @@ $(document).ready(function (e){
 				ctx.stroke();
 			});
 		}
+
+		$('.panzoom-parent').click(function(e){
+			var posX = $(this).offset().left,
+				posY = $(this).offset().top;
+			
+			globalXOffset = (e.pageX - globalDownX)
+			globalYOffset = (e.pageY - globalDownY)
+
+			var canvasArray = $("#circleCanvas").attr("style").split(',');
+			// console.log("scale: "+canvasArray[3]);
+			// console.log("x: "+canvasArray[4]);
+			// console.log("y: "+canvasArray[5].split(')')[0]);
+			globalScale = canvasArray[3];
+			// globalXOffset = canvasArray[4];
+			// globalYOffset = canvasArray[5].split(')')[0];
+			drawCircles();
+		})
+		
+
 
 		if ($('.toggle-button').length > 0){
 
