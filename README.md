@@ -93,6 +93,12 @@ s3cmd put db.backup s3://curiox/backups/db.backup.<month>.<day> #follow some con
 python manage.py pulldata --logs=user.log
 ```
 
+* As well, user results on the images can be pulled from the database into a CSV file
+
+```
+python manage.py pulldata --clasresults=results.csv
+```
+
 #### Logging
 
 Code-level logging outputs to 'log' in the base directory. Logging options are specified in the settings.py file. To log in a python file, do the following:
