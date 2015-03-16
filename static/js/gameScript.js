@@ -2,8 +2,8 @@ $(document).ready(function (e){
 
 	var isDraw = 0;
 	var globalScale = 0;
-	var globalXOffset = 25;
-	var globalYOffset = -90;
+	var globalImgWidth = 0;
+	var globalImgHeight = 0;
 	var globalDownX = 0;
 	var globalDownY = 0;
 
@@ -32,15 +32,18 @@ $(document).ready(function (e){
    		});
 
 		function resizeCanvas(){
-			var width = $('.main').width();
-			var height = $('.main').height();
+			var imgWidth = globalImgWidth = $('#testImage').width();
+			var imgHeight = globalImgHeight = $('#testImage').height();
 			
-			canvas.width=width;
-			canvas.height=height;
+			// console.log(width+', ' + height);
+			// alert(imgWidth+', ' + imgHeight);
+			canvas.width=imgWidth;
+			canvas.height=imgHeight;
+
 			// canvas.width=420;
 			// canvas.height=720;	
 			drawCircles();
-		}		
+		}
 		
 		$('.panzoom-parent').click(function(e){
 			var posX = $(this).offset().left,
@@ -75,8 +78,8 @@ $(document).ready(function (e){
 			if(e.pageX-posX == globalDownX && e.pageY-posY == globalDownY) {
 				// console.log('same spot click')
 				var coord = {cType : getType(),
-					x : (globalDownX / globalScale)-globalXOffset*Math.sqrt(globalScale-1),
-					y : (globalDownY / globalScale)-globalYOffset*Math.sqrt(globalScale-1)
+					x : (globalDownX / globalScale)/globalImgWidth,
+					y : (globalDownY / globalScale)/globalImgHeight
 				};
 				cArrayUpdate(coord);
 				drawCircles();
@@ -95,8 +98,8 @@ $(document).ready(function (e){
 		}
 		
 		function isClose(p1, p2){
-			var dx = p2.x-p1.x;
-			var dy = p2.y-p1.y;
+			var dx = (p2.x-p1.x)*globalImgWidth;
+			var dy = (p2.y-p1.y)*globalImgHeight;
 			return (Math.sqrt(dx*dx + dy*dy) <= radius);
 		}
 
@@ -106,10 +109,10 @@ $(document).ready(function (e){
 			ctx.clearRect(0,0, canvas.width, canvas.height);
 			$.each(cArray, function(i, data) {
 				ctx.beginPath();
-				xScalingFactor = globalXOffset*Math.sqrt(globalScale-1)
-				yScalingFactor = globalYOffset*Math.sqrt(globalScale-1)
-				xPos = data.x + xScalingFactor;
-				yPos = data.y + yScalingFactor;
+				// xScalingFactor = globalXOffset*Math.sqrt(globalScale-1)
+				// yScalingFactor = globalYOffset*Math.sqrt(globalScale-1)
+				xPos = data.x * globalImgWidth;
+				yPos = data.y * globalImgHeight;
 				// console.log("(dx,dy) " + xScalingFactor + ', ' + yScalingFactor)
 				ctx.arc(xPos, yPos, radius, 0, Math.PI * 2);
 				// ctx.arc(data.x, data.y, radius, 0, Math.PI * 2);
