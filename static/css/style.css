@@ -147,6 +147,9 @@ button:hover{
 	margin: 20 20;
 }
 
+.panzoom{
+	cursor: pointer !important;
+}
 .panzoom-parent img{
 	width: 88%;
 	height: 100%;
