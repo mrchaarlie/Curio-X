@@ -2,8 +2,8 @@ $(document).ready(function (e){
 
 	var isDraw = 0;
 	var globalScale = 0;
-	var globalXOffset = 35;
-	var globalYOffset = -140;
+	var globalXOffset = 25;
+	var globalYOffset = -90;
 	var globalDownX = 0;
 	var globalDownY = 0;
 
@@ -41,13 +41,23 @@ $(document).ready(function (e){
 			// canvas.height=720;	
 			drawCircles();
 		}		
-		// $('#circleCanvas').css({'width':width+'px','height':height+'px'});
-		// img.src = document.getElementById('testImage');
-		// img.onload = function(){
-			// ctx.drawImage(img,0,0)
-			// console.log('drawing image')
-		// }
 		
+		$('.panzoom-parent').click(function(e){
+			var posX = $(this).offset().left,
+				posY = $(this).offset().top;
+			
+			var canvasArray = $("#circleCanvas").attr("style").split(',');
+			globalScale = canvasArray[3];
+			drawCircles();
+		})
+
+		$('.panzoom-parent').on('mousewheel.focal', function( e ) {
+			console.log('scrolling')
+			var canvasArray = $("#circleCanvas").attr("style").split(',');
+			globalScale = canvasArray[3];
+			drawCircles();
+		})
+
 		$('#circleCanvas').mousedown(function (e) {
 			// console.log('mousedown')
 			var posX = $(this).offset().left,
@@ -64,7 +74,10 @@ $(document).ready(function (e){
 
 			if(e.pageX-posX == globalDownX && e.pageY-posY == globalDownY) {
 				// console.log('same spot click')
-				var coord = {cType : getType() , x : (globalDownX) , y : (globalDownY)};
+				var coord = {cType : getType(),
+					x : (globalDownX / globalScale)-globalXOffset*Math.sqrt(globalScale-1),
+					y : (globalDownY / globalScale)-globalYOffset*Math.sqrt(globalScale-1)
+				};
 				cArrayUpdate(coord);
 				drawCircles();
 			}
@@ -93,8 +106,8 @@ $(document).ready(function (e){
 			ctx.clearRect(0,0, canvas.width, canvas.height);
 			$.each(cArray, function(i, data) {
 				ctx.beginPath();
-				xScalingFactor = globalXOffset*(globalScale-1)
-				yScalingFactor = globalYOffset*(globalScale-1)
+				xScalingFactor = globalXOffset*Math.sqrt(globalScale-1)
+				yScalingFactor = globalYOffset*Math.sqrt(globalScale-1)
 				xPos = data.x + xScalingFactor;
 				yPos = data.y + yScalingFactor;
 				// console.log("(dx,dy) " + xScalingFactor + ', ' + yScalingFactor)
@@ -107,28 +120,6 @@ $(document).ready(function (e){
 				ctx.stroke();
 			});
 		}
-
-		$('.panzoom-parent').click(function(e){
-			var posX = $(this).offset().left,
-				posY = $(this).offset().top;
-			
-			// globalXOffset = (e.pageX - globalDownX)
-			// globalYOffset = (e.pageY - globalDownY)
-
-			var canvasArray = $("#circleCanvas").attr("style").split(',');
-			// console.log("scale: "+canvasArray[3]);
-			// console.log("x: "+canvasArray[4]);
-			// console.log("y: "+canvasArray[5].split(')')[0]);
-			globalScale = canvasArray[3];
-			// globalXOffset = canvasArray[4];
-			// globalYOffset = canvasArray[5].split(')')[0];
-			drawCircles();
-		})
-		$('.panzoom-parent').scroll(function(e) {
-			console.log('scrolling')
-			drawCircles();
-		})
-
 
 		if ($('.toggle-button').length > 0){
 
