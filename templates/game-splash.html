@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+	<!DOCTYPE HTML>
 {% load staticfiles %}
 
 <html class="splash">
@@ -16,10 +16,9 @@
 		
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
-
-		<link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
 		
 		<!-- fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -32,13 +31,25 @@
 			<!-- TODO: background image -->
 			<div class="title text-center">curio-x</div>
 
-
 		</div>
-		<div class="splash">
+
+		<div class="container">
+
+			<div class="spacing"></div>
+
+			<div class="intro splash">
 				
-			<!-- <h1>Background</h1> -->
-			<div class="intro">
-				<p>Introductory Text</p>
+				<h4>Classification Game</h4>
+				<h2></h2>
+				<p>You will be presented with images of flora which <b>may</b> contain flowers, buds, or fruits.</p>
+				<p>Sample images of different plants will be on the bottom of the screen (example below).</p>
+
+				<img class="highlight" src="{% static 'img/splash.png' %}">
+
+				 <p>Select which elements you think are present.</p>
+				 <p>You can zoom by scolling, and pan by dragging your mouse.</p>
+				 <p>Remember, there may be none, one, or more than one element!</p>
+
 			</div>
 
 		</div>
@@ -46,16 +57,15 @@
 		<!-- Buttons -->
 		<div class="toggle-bg text-center">			
 			<div class="button-container">
-				<button class="raised submit red" id="back-button">
+				<button class="submit red lighten-2 waves-effect waves-light" id="back-button">
 					<i class="fa fa-arrow-left fa-2x"></i>
-					<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
+
 				<span>Back</span>
-			</div>		
+			</div>	
 			<div class="button-container left-indent-lg">
-				<button class="raised submit green" id="submit-button">
+				<button class="submit green lighten-3 waves-effect waves-light" id="game-button">
 					<i class="fa fa-check fa-2x"></i>
-					<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Start</span>
 			</div>
@@ -64,6 +74,8 @@
 			<!-- <div class="spacing"></div> -->
 		</div>
 	
+	<script src="{% static 'js/materialize.js' %}"></script>
+	<script src="{% static 'js/splash.js' %}"></script>
 	<script src="{% static 'js/style.js' %}"></script>
 	</body>
 </html>	

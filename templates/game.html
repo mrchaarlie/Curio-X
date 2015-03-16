@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
 
@@ -74,23 +75,23 @@
 		<!-- Buttons -->
 		<div class="toggle-bg text-center">
 			<div class="instructions">Select what you can see in the image.</div>              
-			<div class="button-container">
-				<button class="toggle-button raised" id="flower-button">
+			<div class="button-container waves-effect waves-light">
+				<button class="toggle-button" id="flower-button">
 				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Flower</span>
 			</div>
 			
 
-			<div class="button-container">
-				<button class="toggle-button raised" id="bud-button">
+			<div class="button-container waves-effect waves-light">
+				<button class="toggle-button" id="bud-button">
 				<img class="button-image" src="{% static 'img/bud1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Bud</span>
 			</div>
 			
-			<div class="button-container">
-				<button class="toggle-button raised" id="fruit-button">
+			<div class="button-container waves-effect waves-light">
+				<button class="toggle-button" id="fruit-button">
 				<img class="button-image" src="{% static 'img/fruit1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 				</button>
 				<span>Fruit</span>
@@ -99,7 +100,7 @@
 			<div class="button-container left-indent">
 				<form action="/game/post" method="post" id="postClas">
                 		{% csrf_token %}
-					<button class="raised submit green" id="submit-button">
+					<button class="submit green lighten-3 waves-effect waves-light" id="submit-button">
 						<i class="fa fa-check fa-2x"></i>
 						<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 					</button>
@@ -110,7 +111,7 @@
 			<div class="skip-container">
 				<form action="/game/skip" method="post">
 				{% csrf_token %}
-					<button class="raised skip red" id="skip-button">
+					<button class="skip red lighten-2 waves-effect waves-light" id="skip-button">
 						<i class="fa fa-share"></i>
 						<paper-ripple class="circle recenteringTouch" fit></paper-ripple>
 					</button>
@@ -123,6 +124,7 @@
 			<!-- <div class="spacing"></div> -->
 		</div>
 
-	<script src="{% static 'js/style.js' %}"></script>
+		<script src="{% static 'js/materialize.js' %}"></script>
+		<script src="{% static 'js/style.js' %}"></script>
 	</body>
 </html>	

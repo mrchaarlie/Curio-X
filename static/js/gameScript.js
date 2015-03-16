@@ -66,8 +66,8 @@ $(document).ready(function (e){
 			var posX = $(this).offset().left,
 				posY = $(this).offset().top;
 
-			globalDownX = e.pageX - posX
-			globalDownY = e.pageY - posY
+			globalDownX = e.pageX - posX;
+			globalDownY = e.pageY - posY;
 		});
 
 		$('#circleCanvas').mouseup(function (e) {
@@ -75,7 +75,7 @@ $(document).ready(function (e){
 			var posX = $(this).offset().left,
 				posY = $(this).offset().top;
 
-			if(e.pageX-posX == globalDownX && e.pageY-posY == globalDownY) {
+			if(e.pageX-posX === globalDownX && e.pageY-posY === globalDownY) {
 				// console.log('same spot click')
 				var coord = {cType : getType(),
 					x : (globalDownX / globalScale)/globalImgWidth,

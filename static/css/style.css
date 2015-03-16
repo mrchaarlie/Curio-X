@@ -23,9 +23,9 @@ h1{
 	border-bottom: 1px solid #A13434;
 }
 
-.red{background-color: #D27274}
-.pink{background-color: #E8A4B4}
-.green{background-color: #A3D596}
+/*.red{background-color: #D27274}*/
+/*.pink{background-color: #E8A4B4}*/
+/*.green{background-color: #A3D596}*/
 .header {
 	/*height: 68px;
 	-webkit-transition: 0.2s;
@@ -89,23 +89,24 @@ h1{
 	background-color: #444444;
 }
 
-.spacing{
-	padding-top: 60px;
+.spacing{padding-top: 60px;}
+
+.main{height: 100%;}
+
+.splash{margin-top: 10px;}
+.splash p{color: #aaa;}
+.splash b{color: #eee;}
+.splash img{
+	width: 100%;
+	border-radius: 3px;
+	border:2px solid #2a2a2a;
+	margin-bottom:15px; 
+	/*border: 2px solid #15CABD;*/
+	-webkit-transition: 800ms linear;
+	transition: 800ms linear;
 }
 
-.main{
-	height: 100%;
-}
-.splash{
-	height: 100%;
-	/*padding-top: 20%;*/
-	background-color: #fff;
-}
-.game{
-}
-.loginTitle{
-	font-size: 1.5em;
-}
+.loginTitle{font-size: 1.5em;}
 
 button{
 	border: none;
@@ -206,12 +207,13 @@ button:hover{
 	min-width: 45px;
 	display: inline-block;
 	max-width: 100px;
+  	overflow: hidden;
 	background: rgba(107, 146, 153, 0);
 	border-radius: 2px;
     -webkit-transition: 200ms linear;
     transition: 200ms linear;
 }
-.button-container button{margin-bottom:10px;}
+.button-container button{margin-bottom:10px; background-color: #222;}
 .selected{
 	background: rgba(107, 146, 153, 0.8);
 	border-radius: 2px
@@ -275,19 +277,6 @@ paper-ripple {
 	border-radius: 2px;
     overflow: hidden;
     color: #fff;
-}
-.raised {
-	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-	transition-delay: 0.2s;
-	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-}
-
-.raised:active {
-	transition-delay: 0s;
-	-webkit-box-shadow: 0px 6px 26px 2px rgba(0,0,0,0.2);
-	box-shadow: 0px 6px 26px 2px rgba(0,0,0,0.2);
-	top:0px;
 }
 
 .footer{
