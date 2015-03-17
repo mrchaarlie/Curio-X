@@ -20,7 +20,7 @@ $(document).ready(function () {
     //     $ (".footer").css({'border':'none'})
         // .queue( function(next){ 
     
-            window.open("game", "_self");
+            window.open("game-splash", "_self");
             // next(); 
         // });
 

@@ -53,12 +53,12 @@ def game2(request):
     c.update({'image_url' : image_url})
     return csrf_render(request, 'game2.html', c) 
 
-#@login_required
+@login_required
 def gameSplash(request):
     logger.debug('Serve game mode 1 splash')
     return render_to_response('game-splash.html', locals()) 
 
-#@login_required
+@login_required
 def game2Splash(request):
     logger.debug('Serve game mode 2 splash')
     return render_to_response('game2-splash.html', locals()) 
