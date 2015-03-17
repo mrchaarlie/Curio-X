@@ -141,16 +141,20 @@ confmat <- tclass
 
 # TODO: WTF does this mean
 # Comparison of disributions for flower, bud, and fruit on accuracy, TPR, and FDR
-fl1 <- qplot(confmat$accuracyFlower,xlab="Flower Classification Accuracy",ylab="Number of Images",color=confmat$TestClass)
-fl2 <- qplot(confmat$tprFlower,xlab="Flower True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
-fl3 <- qplot(confmat$fdrFlower,xlab="Flower False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
-bud1 <- qplot(confmat$accuracyBud,xlab="Bud Classification Accuracy",ylab="Number of Images",color=confmat$TestClass)
-bud2 <- qplot(confmat$tprBud,xlab="Bud True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
-bud3 <- qplot(confmat$fdrBud,xlab="Bud False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
-fr1 <- qplot(confmat$accuracyFruit,xlab="Fruit Classification Accuracy",ylab="Number of Images",color=confmat$TestClass)
-fr2 <- qplot(confmat$tprFruit,xlab="Fruit True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
-fr3 <- qplot(confmat$fdrFruit,xlab="Fruit False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
-grid.arrange(fl1, fl2, fl3, bud1, bud2, bud3, fr1, fr2, fr3, ncol=3)
+fl1 <- qplot(confmat$accuracyFlower,xlab="Flower Classification Accuracy",ylab="Number of Images",color=confmat$TestClass) +
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 35))
+# fl2 <- qplot(confmat$tprFlower,xlab="Flower True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
+# fl3 <- qplot(confmat$fdrFlower,xlab="Flower False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
+bud1 <- qplot(confmat$accuracyBud,xlab="Bud Classification Accuracy",ylab="Number of Images",color=confmat$TestClass) +
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 35))
+# bud2 <- qplot(confmat$tprBud,xlab="Bud True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
+# bud3 <- qplot(confmat$fdrBud,xlab="Bud False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
+fr1 <- qplot(confmat$accuracyFruit,xlab="Fruit Classification Accuracy",ylab="Number of Images",color=confmat$TestClass) +
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 35))
+# fr2 <- qplot(confmat$tprFruit,xlab="Fruit True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
+# fr3 <- qplot(confmat$fdrFruit,xlab="Fruit False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
+#grid.arrange(fl1, fl2, fl3, bud1, bud2, bud3, fr1, fr2, fr3, ncol=3)
+grid.arrange(fl1, bud1, fr1, ncol=3)
 
 # Mean and std dev distrubutions for images
 # Accuracy
@@ -224,15 +228,24 @@ for (i in 1:dim(confmat)[1]) {
 }
 
 # Comparison of disributions for flower, bud, and fruit on accuracy, TPR, and FDR
-fl1 <- qplot(confmat$accuracyFlower,xlab="Flower Classification Accuracy",ylab="Number of Users")
-fl2 <- qplot(confmat$tprFlower,xlab="Flower True Positive Rate",ylab="Number of Users")
-fl3 <- qplot(confmat$fdrFlower,xlab="Flower False Discovery Rate",ylab="Number of Users")
-bud1 <- qplot(confmat$accuracyBud,xlab="Bud Classification Accuracy",ylab="Number of Users")
-bud2 <- qplot(confmat$tprBud,xlab="Bud True Positive Rate",ylab="Number of Users")
-bud3 <- qplot(confmat$fdrBud,xlab="Bud False Discovery Rate",ylab="Number of Users")
-fr1 <- qplot(confmat$accuracyFruit,xlab="Fruit Classification Accuracy",ylab="Number of Users")
-fr2 <- qplot(confmat$tprFruit,xlab="Fruit True Positive Rate",ylab="Number of Users")
-fr3 <- qplot(confmat$fdrFruit,xlab="Fruit False Discovery Rate",ylab="Number of Users")
+fl1 <- qplot(confmat$accuracyFlower,xlab="Flower Classification Accuracy",ylab="Number of Users",binwidth=0.05) + 
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+fl2 <- qplot(confmat$tprFlower,xlab="Flower True Positive Rate",ylab="Number of Users",binwidth=0.05) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+fl3 <- qplot(confmat$fdrFlower,xlab="Flower False Discovery Rate",ylab="Number of Users",binwidth=0.05) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+bud1 <- qplot(confmat$accuracyBud,xlab="Bud Classification Accuracy",ylab="Number of Users",binwidth=0.05) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+bud2 <- qplot(confmat$tprBud,xlab="Bud True Positive Rate",ylab="Number of Users",binwidth=0.05) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+bud3 <- qplot(confmat$fdrBud,xlab="Bud False Discovery Rate",ylab="Number of Users",binwidth=0.05) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+fr1 <- qplot(confmat$accuracyFruit,xlab="Fruit Classification Accuracy",ylab="Number of Users",binwidth=0.05) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+fr2 <- qplot(confmat$tprFruit,xlab="Fruit True Positive Rate",ylab="Number of Users",binwidth=0.05) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
+fr3 <- qplot(confmat$fdrFruit,xlab="Fruit False Discovery Rate",ylab="Number of Users",binwidth=0.05) + 
+  coord_cartesian(xlim = c(0,1), ylim = c(0, 18))
 grid.arrange(fl1, fl2, fl3, bud1, bud2, bud3, fr1, fr2, fr3, ncol=3)
 
 # Mean and std dev distrubutions for users
@@ -286,7 +299,10 @@ for (i in 1:dim(times)[1]) {
 }
 
 # Cool hist plot of users and their durations
-qplot(duration,data=times,color=User)
+qplot(duration,data=times,color=User,guide=FALSE) +
+  xlab("Completion Time of Image (seconds)") +
+  ylab("Number of Users") +
+  labs(title="Distribution of Image Completion Time Colour-Coded by User")
 
 # Cool coloured plot of images and their duration for users
 qplot(iID,duration,data=times,color=User)
@@ -328,12 +344,73 @@ qplot(duration/60,accuracyFruit,data=confmat,color=TestClass)
 confmat <- aggregate(duration ~ iID, times, sd)
 qplot(duration,data=confmat)#,color=User)
 
-# Check correlation between duration and accuracy
+# Check correlation between duration and accuracy for different object types
 userDurationScore <- merge(userDuration,userScores,by="User")
-p1 <- qplot(duration,accuracyFlower,data=userDurationScore)
-p2 <- qplot(duration,accuracyBud,data=userDurationScore)
-p3 <- qplot(duration,accuracyFruit,data=userDurationScore)
-#qplot(duration, accuracyFlower, data=userDurationScore) +
-#  geom_point(data=userDurationScore,aes(duration,accuracyBud,shape=b),colour="red") +
-#  geom_point(data=userDurationScore,aes(duration,accuracyFruit,shape=c),colour="Blue")
+ggplot(userDurationScore, aes(x=duration/60, y = accuracy, color = 'Object')) + 
+  geom_point(aes(y = accuracyFlower, col = "Flowers"),size=4) + 
+  geom_point(aes(y = accuracyBud, col = "Buds"),size=4) +
+  geom_point(aes(y = accuracyFruit, col = "Fruit"),size=4) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User Accuracy for Objects over Varying Test Duration") +
+  xlab("Total Test Duration (minutes)") +
+  ylab("Accuracy")
 
+ggplot(userDurationScore, aes(x=duration/60, y = 'True Positive Rate', color = 'Object')) + 
+  geom_point(aes(y = tprFlower, col = "Flowers"),size=4) + 
+  geom_point(aes(y = tprBud, col = "Buds"),size=4) +
+  geom_point(aes(y = tprFruit, col = "Fruit"),size=4) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User True Positive Rate for Objects over Varying Test Duration") +
+  xlab("Total Test Duration (minutes)") +
+  ylab("True Positive Rate")
+
+ggplot(userDurationScore, aes(x=duration/60, y = 'False Discovery Rate', color = 'Object')) + 
+  geom_point(aes(y = fdrFlower, col = "Flowers"),size=4) + 
+  geom_point(aes(y = fdrBud, col = "Buds"),size=4) +
+  geom_point(aes(y = fdrFruit, col = "Fruit"),size=4) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User False Discovery Rate for Objects over Varying Test Duration") +
+  xlab("Total Test Duration (minutes)") +
+  ylab("False Discovery Rate")
+
+#
+# How many users is "enough" to classify image reliably
+#
+# TODO: Fix this section
+# runs <- 2
+# numUsers <- c(2,4)#,4,8,16)
+# userSet <- data.frame(unique(users$User))
+# colnames(userSet) <- c("User")
+# randImgs <- gold[sample(nrow(gold), 5, replace=FALSE),"iID"]
+# 
+# for (i in 1:length(randImgs)) {   #random smapling of images
+#   for (j in 1:length(numUsers)) { #test on some number of random users
+#     for (k in 1:length(runs)) { #average over 5 samplings (runs)
+#       randUsers <- userSet[sample(nrow(userSet), numUsers[j], replace=FALSE), "User"]
+#       sim <- times[times[,"iID"] == randImgs[i],]
+#       sim <- sim[sim$User %in% randUsers,]
+#       
+#       confmat <- aggregate(cbind(tpFlower,fpFlower,tnFlower,fnFlower,
+#                                  tpBud,fpBud,tnBud,fnBud,tpFruit,fpFruit,
+#                                  tnFruit,fnFruit) ~ iID, sim, sum)
+#       
+#       metricCols <- c("accuracyFlower","accuracyBud","accuracyFruit")
+#       confmat[metricCols] <- 0.0
+#       
+#       # Calculate metrics for image sample
+#       for (i in 1:dim(confmat)[1]) {
+#         # Flowers
+#         confmat$accuracyFlower[i] <- (confmat$tpFlower[i] + confmat$tnFlower[i]) /
+#           (confmat$tpFlower[i] + confmat$tnFlower[i] + confmat$fpFlower[i] + confmat$fnFlower[i])
+#         # Buds
+#         confmat$accuracyBud[i] <- (confmat$tpBud[i] + confmat$tnBud[i]) /
+#           (confmat$tpBud[i] + confmat$tnBud[i] + confmat$fpBud[i] + confmat$fnBud[i])
+#         # Fruit
+#         confmat$accuracyFruit[i] <- (confmat$tpFruit[i] + confmat$tnFruit[i]) /
+#           (confmat$tpFruit[i] + confmat$tnFruit[i] + confmat$fpFruit[i] + confmat$fnFruit[i])
+#       }
+#       summary(confmat)
+#     }
+#   }
+# }
+# 
