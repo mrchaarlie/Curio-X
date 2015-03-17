@@ -8,7 +8,8 @@ library(gridExtra)
 logs <- read.csv("logs.csv")
 results <- read.csv("results.csv")
 gold <- read.csv("goldstandard.csv")
-dim(logs); dim(results); dim(gold)
+timg <- read.csv("testimages.csv")
+dim(logs); dim(results); dim(gold); dim(timg)
 
 # Overview
 summary(gold); summary(results);
@@ -44,7 +45,7 @@ grid.arrange(p1, p2, p3, ncol=3)
 #
 # Compare to gold standard
 #
-images <- results[,c("User","iID","Flower","Bud","Fruit")] #results$User == "AmusingBombay"
+images <- results #results$User == "AmusingBombay"
 images$correctFlower <- "False"; images$correctBud <- "False"; images$correctFruit <- "False"
 accuracyCols <- c("tpFlower","tpBud","tpFruit","tnFlower","tnBud",
                   "tnFruit","fpFlower","fpBud","fpFruit","fnFlower","fnBud","fnFruit")
@@ -135,20 +136,23 @@ for (i in 1:dim(confmat)[1]) {
   confmat$fdrFruit[i] <- confmat$fpFruit[i] / (confmat$tpFruit[i] + confmat$fpFruit[i])
 }
 
-# TODO: WTF
+tclass <- merge(confmat,timg,by="iID")
+confmat <- tclass
+
+# TODO: WTF does this mean
 # Comparison of disributions for flower, bud, and fruit on accuracy, TPR, and FDR
-fl1 <- qplot(confmat$accuracyFlower,xlab="Flower Classification Accuracy",ylab="Number of Users")
-fl2 <- qplot(confmat$tprFlower,xlab="Flower True Positive Rate",ylab="Number of Users")
-fl3 <- qplot(confmat$fdrFlower,xlab="Flower False Discovery Rate",ylab="Number of Users")
-bud1 <- qplot(confmat$accuracyBud,xlab="Bud Classification Accuracy",ylab="Number of Users")
-bud2 <- qplot(confmat$tprBud,xlab="Bud True Positive Rate",ylab="Number of Users")
-bud3 <- qplot(confmat$fdrBud,xlab="Bud False Discovery Rate",ylab="Number of Users")
-fr1 <- qplot(confmat$accuracyFruit,xlab="Fruit Classification Accuracy",ylab="Number of Users")
-fr2 <- qplot(confmat$tprFruit,xlab="Fruit True Positive Rate",ylab="Number of Users")
-fr3 <- qplot(confmat$fdrFruit,xlab="Fruit False Discovery Rate",ylab="Number of Users")
+fl1 <- qplot(confmat$accuracyFlower,xlab="Flower Classification Accuracy",ylab="Number of Images",color=confmat$TestClass)
+fl2 <- qplot(confmat$tprFlower,xlab="Flower True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
+fl3 <- qplot(confmat$fdrFlower,xlab="Flower False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
+bud1 <- qplot(confmat$accuracyBud,xlab="Bud Classification Accuracy",ylab="Number of Images",color=confmat$TestClass)
+bud2 <- qplot(confmat$tprBud,xlab="Bud True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
+bud3 <- qplot(confmat$fdrBud,xlab="Bud False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
+fr1 <- qplot(confmat$accuracyFruit,xlab="Fruit Classification Accuracy",ylab="Number of Images",color=confmat$TestClass)
+fr2 <- qplot(confmat$tprFruit,xlab="Fruit True Positive Rate",ylab="Number of Images",color=confmat$TestClass)
+fr3 <- qplot(confmat$fdrFruit,xlab="Fruit False Discovery Rate",ylab="Number of Images",color=confmat$TestClass)
 grid.arrange(fl1, fl2, fl3, bud1, bud2, bud3, fr1, fr2, fr3, ncol=3)
 
-# Mean and std dev distrubutions fr images
+# Mean and std dev distrubutions for images
 # Accuracy
 distflAcc <- c(mean(confmat$accuracyFlower,na.rm=TRUE), sd(confmat$accuracyFlower,na.rm=TRUE))
 distbudAcc <- c(mean(confmat$accuracyBud,na.rm=TRUE),sd(confmat$accuracyBud,na.rm=TRUE))
@@ -179,6 +183,8 @@ x <- seq(0,1,length=1000);
 y <- dnorm(x,mean=distflFdr[1],sd=distflFdr[2]); qplot(x,y)
 y <- dnorm(x,mean=distbudFdr[1],sd=distbudFdr[2]); qplot(x,y)
 y <- dnorm(x,mean=distfrFdr[1],sd=distfrFdr[2]); qplot(x,y)
+
+imageScores <- confmat
 
 #
 # Aggregate for users
@@ -260,4 +266,74 @@ x <- seq(0,1,length=1000);
 y <- dnorm(x,mean=distflFdr[1],sd=distflFdr[2]); qplot(x,y)
 y <- dnorm(x,mean=distbudFdr[1],sd=distbudFdr[2]); qplot(x,y)
 y <- dnorm(x,mean=distfrFdr[1],sd=distfrFdr[2]); qplot(x,y)
+
+userScores <- confmat
+
+#
+# Temporal analysis
+#
+times <- images
+times$duration <- 0.0
+
+for (i in 1:dim(times)[1]) {
+  if (i == 1) {
+    times$duration[i] <- 0
+  } else if (times$User[i] != times$User[i-1]){
+    times$duration[i] <- 0
+  } else if (times$User[i]) {
+    times$duration[i] <- times$Timestamp[i] - times$Timestamp[i-1]
+  }
+}
+
+# Cool hist plot of users and their durations
+qplot(duration,data=times,color=User)
+
+# Cool coloured plot of images and their duration for users
+qplot(iID,duration,data=times,color=User)
+
+#
+# Aggregate temporal data
+#
+# Total duration for users (how can someone have played for only 2 or so minutes?!)
+userDuration <- aggregate(duration ~ User, times, sum)
+qplot(duration/60,data=userDuration, color=User) # minutes
+
+# Mean duration for users
+confmat <- aggregate(duration ~ User, times, mean)
+qplot(duration,data=confmat)#,color=User)
+
+# Standard dev of duration for users
+confmat <- aggregate(duration ~ User, times, sd)
+qplot(duration,data=confmat)#,color=User)
+
+# Total duration for images
+confmat <- aggregate(duration ~ iID, times, sum)
+tclass <- merge(confmat,imageScores,by="iID")
+confmat <- tclass
+qplot(duration/60,data=confmat,color=TestClass)
+qplot(duration/60,accuracyFlower,data=confmat,color=TestClass)
+qplot(duration/60,accuracyBud,data=confmat,color=TestClass)
+qplot(duration/60,accuracyFruit,data=confmat,color=TestClass)
+
+# Mean duration for images
+confmat <- aggregate(duration ~ iID, times, mean)
+tclass <- merge(confmat,imageScores,by="iID")
+confmat <- tclass
+qplot(duration,data=confmat)#,color=User)
+qplot(duration/60,accuracyFlower,data=confmat,color=TestClass)
+qplot(duration/60,accuracyBud,data=confmat,color=TestClass)
+qplot(duration/60,accuracyFruit,data=confmat,color=TestClass)
+
+# Standard dev of duration for images
+confmat <- aggregate(duration ~ iID, times, sd)
+qplot(duration,data=confmat)#,color=User)
+
+# Check correlation between duration and accuracy
+userDurationScore <- merge(userDuration,userScores,by="User")
+p1 <- qplot(duration,accuracyFlower,data=userDurationScore)
+p2 <- qplot(duration,accuracyBud,data=userDurationScore)
+p3 <- qplot(duration,accuracyFruit,data=userDurationScore)
+#qplot(duration, accuracyFlower, data=userDurationScore) +
+#  geom_point(data=userDurationScore,aes(duration,accuracyBud,shape=b),colour="red") +
+#  geom_point(data=userDurationScore,aes(duration,accuracyFruit,shape=c),colour="Blue")
 
