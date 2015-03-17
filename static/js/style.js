@@ -9,7 +9,7 @@ $(document).ready(function () {
     //TODO
     });
 
-    // $( ".begin-button" ).click(function() {
+    $( ".begin-button" ).click(function() {
      
     //     $ ("body").css({'background-color':'#dadede', 'color':'#dadede'});
     //     $ ("h1").css({'border':'none'});
@@ -18,13 +18,13 @@ $(document).ready(function () {
     //     $ (this).css({'display':'none'});
     //     $ (".footer").css({'display':'none'});
     //     $ (".footer").css({'border':'none'})
-    //     .queue( function(next){ 
+        // .queue( function(next){ 
     
-    //         window.open("game", "_self");
-    //         next(); 
-    //     });
+            window.open("game", "_self");
+            // next(); 
+        // });
 
-    // }); 
+    }); 
     
     resizeButtons();
 
