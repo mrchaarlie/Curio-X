@@ -68,7 +68,6 @@ def game_submit_task(request):
     
     if request.method == "POST":
         logger.debug("Get the post from the game")
-        c = {}
         post = request.POST.copy()
         
         flowerbool = True if int(post.get('flowerbool')) else False
@@ -81,7 +80,6 @@ def game_submit_task(request):
                         fruitbool))
         
         user = request.user
-        image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
             result = ClassificationResult(user=userprofile.user.username, \
@@ -94,10 +92,8 @@ def game_submit_task(request):
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
-            image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
         
-        c.update({'image_url' : image_url})
-        return csrf_render(request, 'game.html', c)
+        return redirect('/game/game')
     else:
         return HttpResponseServerError("post error: not a post")
 
@@ -106,13 +102,11 @@ def game2_submit_task(request):
     
     if request.method == "POST":
         logger.debug("Get the post from game 2")
-        c = {}
         post = request.POST.copy()
         coords = post.get('coords')
         logger.debug("POST request data: %s" % coords) 
         
         user = request.user
-        image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
             result = CountResult(user=userprofile.user.username, \
@@ -123,51 +117,33 @@ def game2_submit_task(request):
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
-            image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
-
-        c.update({'image_url' : image_url})
-        return csrf_render(request, 'game2.html', c)
+        
+        return redirect('/game/game2')
     else:
         return HttpResponseServerError("post error: not a post")
 
 def game_skip(request):
     logger.debug("Get the skip from game")
     if request.method == "POST":
-        post = request.POST.copy()
-        c = {}
-        
         user = request.user
-        image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
-            image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
-        
-        c.update({'image_url' : image_url})
-        
-        return csrf_render(request, 'game.html', c)
+        return redirect('/game/game')    
     else:
         return HttpResponseServerError("post error: not a post")
 
 def game2_skip(request):
     logger.debug("Get the skip from game 2")
     if request.method == "POST":
-        post = request.POST.copy()
-        c = {}
-        
         user = request.user
-        image_url = Image.objects.order_by('?')[0].url # TODO: Redundant
         if user.is_authenticated():
             userprofile = UserProfile.objects.get(user=user)
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
-            image_url = Image.objects.filter(status=Image.NEW)[userprofile.img_idx].url
-        
-        c.update({'image_url' : image_url})
-        
-        return csrf_render(request, 'game2.html', c)
+        return redirect('/game/game2')
     else:
         return HttpResponseServerError("post error: not a post")
