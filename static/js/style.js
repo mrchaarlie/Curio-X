@@ -5,6 +5,15 @@ $(document).ready(function () {
     //TODO
     });
 
+    if ($('.splash').length > 0){
+        var mainHeight = $(window).height();
+        $('.splash').css({'height':mainHeight-210});
+    };
+
+    $( ".login-button" ).click(function() {
+    //TODO
+    });
+
     $( ".toggle-button" ).click(function() {
     //TODO
     });

@@ -1,54 +1,56 @@
-<!DOCTYPE HTML>
+	<!DOCTYPE HTML>
 {% load staticfiles %}
 
-<html>
+<html class="splash">
 	<head>	
 		<title>Curio – The Gamification of Citizen Science</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="Science, Gamification, UW, UWaterloo, Engineering, Research, Game Design, Design, Android, iOS, Mobile" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		
-		<script src="{% static 'js/style.js' %}"></script>
+		<script src="{% static 'js/jquery.panzoom.js' %}"></script>
+		<script src="{% static 'js/jquery.mousewheel.js' %}"></script>
 		
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-
+		<!-- <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" /> -->
+		
 		<!-- fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 	</head>
-	<body>
+	<body class="main">
 
 		<!-- Header -->
-		<div class="header">
+		<div class="header transparent">
 			<!-- TODO: background image -->
 			<div class="title text-center">curio-x</div>
 
 		</div>
 
-		<!-- Main -->
 		<div class="container">
+
 			<div class="spacing"></div>
-			<div class="intro">
-				<h1>You're Almost Done!</h1>
+
+			<div class="intro splash">
+				<h4>You're Almost Done!</h4>
 
 				<p>Please fill out the questionnaire with the username you were given for this study.</p>
+
+				<a href="https://docs.google.com/forms/d/1RUrccUaYJCnfSezAwNs1A1LY0VxjiTXQXFjgewg87F8/viewform" class="waves-effect waves-light teal btn">Begin Questionnaire</a>
 			</div>
 		</div>
-	
-		<!-- TODO: Fix the formatting of the button -->
 		
-		<form action="https://docs.google.com/forms/d/1RUrccUaYJCnfSezAwNs1A1LY0VxjiTXQXFjgewg87F8/viewform">
+		<!-- <form action="https://docs.google.com/forms/d/1RUrccUaYJCnfSezAwNs1A1LY0VxjiTXQXFjgewg87F8/viewform">
 			<div class="text-center">
 				<input type="submit" class="questionnaire-button waves-effect waves-light" value="Begin Questionnaire"/>
 			</div>
-		</form>
+		</form> -->
 
 		<div class="footer">
 			<ul class="copyright text-center">

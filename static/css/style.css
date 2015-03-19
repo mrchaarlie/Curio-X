@@ -93,7 +93,7 @@ h1{
 
 .main{height: 100%;}
 
-.splash{margin-top: 10px;}
+.splash{margin-top: 10px; overflow: scroll;}
 .splash p{color: #aaa;}
 .splash b{color: #eee;}
 .splash img{
@@ -104,6 +104,15 @@ h1{
 	/*border: 2px solid #15CABD;*/
 	-webkit-transition: 800ms linear;
 	transition: 800ms linear;
+}
+.splash .btn{
+	margin: 10px auto;
+	width: 100%;
+	font-size: 1.2em;
+	line-height: 3em;
+	padding: 0 20px;
+	height: 3em;
+	border-radius: 3px;
 }
 
 .loginTitle{font-size: 1.5em;}
