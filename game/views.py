@@ -92,6 +92,8 @@ def game_submit_task(request):
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
+            else:
+                return redirect('/game/done')
         
         return redirect('/game/game')
     else:
@@ -117,6 +119,8 @@ def game2_submit_task(request):
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
+            else:
+                return redirect('/game/done')
         
         return redirect('/game/game2')
     else:
@@ -131,6 +135,9 @@ def game_skip(request):
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
+            else:
+                return redirect('/game/done')
+
         return redirect('/game/game')    
     else:
         return HttpResponseServerError("post error: not a post")
@@ -144,6 +151,13 @@ def game2_skip(request):
             if len(Image.objects.all()) > userprofile.img_idx + 1:
                 userprofile.img_idx += 1
                 userprofile.save()
+            else:
+                return redirect('/game/done')
+
         return redirect('/game/game2')
     else:
         return HttpResponseServerError("post error: not a post")
+
+def session_complete(request):
+    logger.debug("Session completed")
+    return render_to_response("session-complete.html")

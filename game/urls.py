@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^post2$', views.game2_submit_task, name='submit2'),
     url(r'^skip$', views.game_skip, name='skip'),
     url(r'^skip2$', views.game2_skip, name='skip2'),
+    url(r'^done$', views.session_complete, name='done'),
 )
