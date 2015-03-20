@@ -160,4 +160,5 @@ def game2_skip(request):
 
 def session_complete(request):
     logger.debug("Session completed")
-    return render_to_response("session-complete.html")
+    username = request.user.username
+    return render_to_response("session-complete.html", locals())
