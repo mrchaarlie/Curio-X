@@ -19,11 +19,12 @@ def csrf_render(request, htmlpage, context):
     context.update(csrf(request))
     return render_to_response(htmlpage, context)
 
-@login_required
+# @login_required
 def index(request):
     '''Home page'''
+    user=request.user
     logger.debug('Serve index')
-    return render_to_response('index.html', locals())
+    return csrf_render(request,'index.html', locals())
 
 @login_required
 def game(request):

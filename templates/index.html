@@ -8,16 +8,17 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="Science, Gamification, UW, UWaterloo, Engineering, Research, Game Design, Design, Android, iOS, Mobile" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+		
 		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		
-		<script src="{% static 'js/style.js' %}"></script>
-		
+		<script src="{% static 'js/jquery.panzoom.js' %}"></script>
+		<script src="{% static 'js/jquery.mousewheel.js' %}"></script>		
+
 		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
 
 		<!-- fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -37,18 +38,31 @@
 
 			<div class="spacing"></div>
 
-			<div class="login text-right">
+			{% if not user.is_authenticated %}
+			<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+				{% csrf_token %}
+				<div class="login text-right">
 
-				<!-- <span class="loginTitle">Login</span> -->
 
-				<!-- <input type="text" id="signin-username" class="text-input email-input" name="session[username]" autocomplete="on" placeholder="Username">
+					<div class="input-field">
+						<input id="id_username" maxlength="254" name="username" type="text">
+			        	<label for="signin-username">Username</label>
+			        </div>
 
-				<input type="password" id="signin-password" class="text-input flex-table-input " name="session[password]" placeholder="Password">
+					<div class="input-field">
+						<input type="password" id="id_password" name="password">
+					    <label for="signin-password">Password</label>
+					</div>
+					<button type="submit" class="waves-effect waves-green btn">Login</button>
+					
+				</div>
 
-				<button type="button" class="login-button text-right"> Login </button>
-				<div class=""></div> -->
+			</form>
 				
-			</div>
+			{% endif %}
+			{% if form.errors %}
+				<p>Your username and password didn't match. Please try again.</p>
+			{% endif %}
 
 			<div class="intro">
 				
@@ -77,5 +91,6 @@
 			</ul>
 		</div>
 		<script src="{% static 'js/materialize.js' %}"></script>
+		<script src="{% static 'js/style.js' %}"></script>
 	</body>
 </html>	
