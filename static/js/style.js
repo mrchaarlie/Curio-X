@@ -14,10 +14,9 @@ $(document).ready(function () {
         };
     }
 
+    //remove loading icon
     $('#testImage').load(function(e){
-        //remove loading icon
         $('.loading').remove();
-        console.log('x')
     })
 
     $( ".login-button" ).click(function() {
