@@ -63,6 +63,7 @@ def game2Splash(request):
     logger.debug('Serve game mode 2 splash')
     return render_to_response('game2-splash.html', locals()) 
 
+@login_required
 def game_submit_task(request):
     logger.debug(request)
     
@@ -99,6 +100,7 @@ def game_submit_task(request):
     else:
         return HttpResponseServerError("post error: not a post")
 
+@login_required
 def game2_submit_task(request):
     logger.debug(request)
     
@@ -126,6 +128,7 @@ def game2_submit_task(request):
     else:
         return HttpResponseServerError("post error: not a post")
 
+@login_required
 def game_skip(request):
     logger.debug("Get the skip from game")
     if request.method == "POST":
@@ -142,6 +145,7 @@ def game_skip(request):
     else:
         return HttpResponseServerError("post error: not a post")
 
+@login_required
 def game2_skip(request):
     logger.debug("Get the skip from game 2")
     if request.method == "POST":
@@ -158,6 +162,7 @@ def game2_skip(request):
     else:
         return HttpResponseServerError("post error: not a post")
 
+@login_required
 def session_complete(request):
     logger.debug("Session completed")
     username = request.user.username
