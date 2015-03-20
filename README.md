@@ -49,6 +49,15 @@ You will need to generate a username and password by using the generateusers com
 ### Running production
 
 Currently, we have:
+
+* Run a model migration to initialize the database
+
+```
+python manage.py makemigrations game
+python manage.py sqlmigrate game <number> #optional
+python manage.py migrate
+```
+
 * Load default username bases (adjectives and animals; ex. CuriousBear) to the database
 * Load password bases (random selection of 2K or 11K words)
 
@@ -57,12 +66,10 @@ python manage.py loadwords --adjectives static/lists/adjectivelist.csv --animals
 python manage.py loadwords --words static/lists/shortwordlist.csv
 ```
 
-* Run a model migration to initialize the database
+* Generate some users for testing
 
 ```
-python manage.py makemigrations game
-python manage.py sqlmigrate game <number> #optional
-python manage.py migrate
+python manage.py generateusers --random --number=1
 ```
 
 * Load image URLs and their metadata into the database

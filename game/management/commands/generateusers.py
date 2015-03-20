@@ -27,6 +27,6 @@ class Command(BaseCommand):
                 else:
                     user_profile.game_mode = UserProfile.CLASSIFICATION
                 user_profile.save()
-                print("User %s is assigned to game mode %s" % (user_profile.user.username, user_profile.game_mode))
+                print("[username, game_mode]: [%s, %s]" % (user_profile.user.username, user_profile.game_mode))
         else:
             pass
