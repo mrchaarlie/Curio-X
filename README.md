@@ -41,10 +41,10 @@ python manage.py runserver
 Go to where the dev server is hosted:
 
 ```
-localhost:8000/game/index
+localhost:8000
 ```
 
-The administrator login is admin:admin.
+You will need to generate a username and password by using the generateusers command.
 
 ### Running production
 
