@@ -5,10 +5,20 @@ $(document).ready(function () {
     //TODO
     });
 
-    if ($('.splash').length > 0){
-        var mainHeight = $(window).height();
-        $('.splash').css({'height':mainHeight-210});
-    };
+    resizeSplash();
+
+    function resizeSplash(){
+        if ($('.splash').length > 0){
+            var mainHeight = $(window).height();
+            $('.splash').css({'height':mainHeight-220});
+        };
+    }
+
+    $('#testImage').load(function(e){
+        //remove loading icon
+        $('.loading').remove();
+        console.log('x')
+    })
 
     $( ".login-button" ).click(function() {
     //TODO
@@ -29,17 +39,13 @@ $(document).ready(function () {
     //     $ (".footer").css({'border':'none'})
         // .queue( function(next){ 
     
-            window.open("game-splash", "_self");
+            // window.open("game-splash", "_self");
             // next(); 
         // });
 
     }); 
     
     resizeButtons();
-
-    $( window ).resize(function(){
-        resizeButtons();
-    });
     
     function resizeButtons(){
         // console.log('width: ' + $('.button-container').width());;
@@ -50,6 +56,10 @@ $(document).ready(function () {
         $('.submit').css({'width':tbw+'px','height':tbw+'px'});    
     }
 
+    $( window ).resize(function(){
+        resizeButtons();
+        resizeSplash();
+    });
 
     //todo
 

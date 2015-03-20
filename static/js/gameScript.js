@@ -18,7 +18,7 @@ $(document).ready(function (e){
 	 }, 1000);
 
 	function drawCanvas(){
-		console.log('draw ready');
+
 		var cArray = []
 		var radius = 10;
 		var canvas = document.getElementById('circleCanvas');

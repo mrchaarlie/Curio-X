@@ -29,7 +29,7 @@
 		<!-- Header -->
 		<div class="header">
 			<!-- TODO: background image -->
-			<div class="title text-center">curio-x</div>
+			<div class="title text-center"><a class="no-decoration" href="/">curio-x</a></div>
 
 		</div>
 
@@ -43,7 +43,6 @@
 				{% csrf_token %}
 				<div class="login text-right">
 
-
 					<div class="input-field">
 						<input id="id_username" maxlength="254" name="username" type="text">
 			        	<label for="signin-username">Username</label>
@@ -53,37 +52,40 @@
 						<input type="password" id="id_password" name="password">
 					    <label for="signin-password">Password</label>
 					</div>
-					<button type="submit" class="waves-effect waves-green btn">Login</button>
+					<button type="submit" class="waves-effect waves-light btn">Login</button>
 					
 				</div>
 
 			</form>
-				
-			{% endif %}
-			{% if form.errors %}
-				<p>Your username and password didn't match. Please try again.</p>
+			
+			<div class="small-spacing"></div>
+
+			{% else %}
+				<div class="login text-right">
+					<p><a href="/accounts/logout/">Log out</a></p>
+				</div>
 			{% endif %}
 
 			<div class="intro">
 				
 				<h1>Background</h1>
 
-				<h3>The What</h3>
+				<h4>The What</h4>
 				<p>We are trying to help scientific researchers sort and collect data for things that are hard for computers to do, but easy for people to do. At this stage, Curios is simply put, an image sorting and classification game. We incorporate gamification and crowd-sourcing to achieve our goals.</p>
 				
-				<h3>The Why</h3>
+				<h4>The Why</h4>
 				<p>Image recognition software is at an evolving but primitive state. The computing process and time required to sort and categorize images through software will take much longer than it would take people to do. A famous example would be the how <a href="http://fold.it/portal/">Foldit</a> users produced an accurate 3D model of the enzyme in just ten days, while the problem of how to configure the structure of the enzyme had been an unaccomplished goal of scientists for <b>15 years.</b></p>
 
-				<h3>The How</h3>
+				<h4>The How</h4>
 				<p>We collect the data you provide, aggregate it, and put it through an algorithm to filter out inaccuracies. We will then visualize the data to easily determine trends and patterns. We are also tuning the engagement of the project to make this more fun and awesome.</p>
 
-				<h3>The People</h3>
+				<h4>The People</h4>
 				<p>We are 4 Systems Design Engineering students at the University of Waterloo: Charles Wu, Jonathan Johnston, Robert Bon, Kenneth Chan. We are supervised by Professor Edith Law, and are doing this project as a part of our Fourth Year Design Project for Systems Design Engineering.</p>
 			</div>
 
 		</div>
 		
-		<div class="text-center"><button class="begin-button waves-effect waves-light"> Begin </button></div>
+		<div class="text-center"><a class="begin-button green lighten-2 waves-effect waves-light btn" href="/game/game-splash"> Begin </a></div>
 
 		<div class="footer">
 			<ul class="copyright text-center">

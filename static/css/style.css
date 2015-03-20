@@ -1,6 +1,7 @@
 html{}
 body {
 	background-color: #1e1f1e;
+	background-color: #2A2826;
 	color: #dadede;
 	height: 100%;
 	-webkit-transition: 0.3s;
@@ -16,12 +17,14 @@ body {
 h1, h2, h3 {
 	font-family: 'Montserrat', sans-serif;
 }
-
 h1{
 	/*padding: 0 0 10px 0;*/
+	font-size: 3.4em;
 	margin: 5px 0 0 0;
 	border-bottom: 1px solid #A13434;
 }
+
+.no-decoration, .no-decoration:hover, .no-decoration:visited, .no-decoration:active{text-decoration: none; color:#dadede}
 
 /*.red{background-color: #D27274}*/
 /*.pink{background-color: #E8A4B4}*/
@@ -61,11 +64,12 @@ h1{
 	float: right;
 	display: inline-block;
 	/*z-index: 101;*/
-	margin-right: 22px;
+	margin-right: 40px;
 	padding: 13px 20px 0 20px;
-	position: absolute;
+	position: fixed;
 	top:54px;
 	right: 0;
+	box-shadow: 0 0 7px #333;
 }
 .login .input-field, .login span{
 	display: inline-block;
@@ -74,7 +78,7 @@ h1{
 .login .input-field{margin: 0 3px;}
 .login .input-field input{height: 35px;}
 .login .input-field label{font-size: 0.8em;}
-.login button{border-radius: 3px;height: 30px; margin: 6px 0 0 6px;}
+.login button{border-radius: 3px;line-height:30px; height: 30px; margin: 6px 0 0 6px;}
 
 .title {
 	line-height: 55px;
@@ -102,11 +106,11 @@ h1{
 	background-color: #444444;
 }
 
-.spacing{padding-top: 85px;}
-
+.spacing{padding-top: 55px;}
+.small-spacing{padding-top: 40px;}
 .main{height: 100%;}
 
-.splash{margin-top: 10px; overflow: scroll;}
+.splash{overflow: scroll; overflow-x:hidden; }
 .splash p{color: #aaa;}
 .splash b{color: #eee;}
 .splash img{
@@ -153,13 +157,16 @@ button:hover{
 .begin-button{
 	padding: 8px 25px;
 	font-size: 2.2em;
-	line-height: 1.5;
+	line-height: 1.5em;
+	background: #26707D;
 	border-radius: 6px;
 	margin-top: 20px;
+	height: 60px;
 }
 
 .container{ position: relative;}
 .intro {
+	margin-top: 10px; 
 	background: #2a2a2a;
 	padding: 20px 35px;
 	color: #eee;
@@ -186,7 +193,24 @@ button:hover{
 	/*margin-top: 55px;*/
 	/*background-image: url(../img/dog.jpg);*/
 }
-
+.loading{
+	position: absolute;
+	left: 50%;
+	margin-top: 40%;
+}
+.loading div{
+	border-radius: 50%;
+	background-image: url('../img/loading4.gif');
+	width: 150px;
+	height: 150px;
+	/*margin-top: 34%;*/
+	/*margin-left: -75px;*/
+	position: relative;
+	left: -50%;
+	background-size: 200px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 .coveredImage{ 
     width:100%; height:100%; 
     position:absolute; top:0px; left:0px;
