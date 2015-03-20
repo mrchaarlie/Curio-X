@@ -7,6 +7,10 @@ $(document).ready(function () {
 
     resizeSplash();
 
+    if ($('.intro').length>0){
+        $('.intro').append('<div class="preload"></div>');
+    }
+
     function resizeSplash(){
         if ($('.splash').length > 0){
             var mainHeight = $(window).height();

@@ -1,7 +1,7 @@
 html{}
 body {
 	background-color: #1e1f1e;
-	background-color: #2A2826;
+	/*background-color: #2A2826;*/
 	color: #dadede;
 	height: 100%;
 	-webkit-transition: 0.3s;
@@ -73,13 +73,19 @@ h1{
 }
 .login .input-field, .login span{
 	display: inline-block;
-	width: 150px;
+	width: 80px;
 }
 .login .input-field{margin: 0 3px;}
 .login .input-field input{height: 35px;}
-.login .input-field label{font-size: 0.8em;}
-.login button{border-radius: 3px;line-height:30px; height: 30px; margin: 6px 0 0 6px;}
+.login .input-field label{font-size: 0.8em; pointer-events:none;}
+.login button{font-size:0.7em;border-radius: 3px; line-height:30px; height: 30px; margin: 6px 0 0 6px;}
 
+@media only screen and (min-width: 480px) {
+    .login .input-field, .login span{
+	width: 120px;
+	}
+	.login button{font-size:1em;}
+}   
 .title {
 	line-height: 55px;
 	font-size: 2.2em;
@@ -110,7 +116,7 @@ h1{
 .small-spacing{padding-top: 40px;}
 .main{height: 100%;}
 
-.splash{overflow: scroll; overflow-x:hidden; }
+.splash{overflow: auto; overflow-x:hidden; }
 .splash p{color: #aaa;}
 .splash b{color: #eee;}
 .splash img{
@@ -192,6 +198,10 @@ button:hover{
 	/*background: #179456;*/
 	/*margin-top: 55px;*/
 	/*background-image: url(../img/dog.jpg);*/
+}
+.preload{
+	background-image: url('../img/loading2.gif');
+	width: 1px; height: 1px; opacity: 0;
 }
 .loading{
 	position: absolute;
