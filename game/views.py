@@ -22,8 +22,17 @@ def csrf_render(request, htmlpage, context):
 # @login_required
 def index(request):
     '''Home page'''
-    user=request.user
     logger.debug('Serve index')
+    
+    user = request.user
+    splash_url = "/game/game-splash"
+    if user.is_authenticated():
+        up = UserProfile.objects.get(user=user)
+        if up.game_mode == UserProfile.COUNTING:
+            splash_url = "/game/game2-splash"
+        else:
+            splash_url = "/game/game-splash"
+    
     return csrf_render(request,'index.html', locals())
 
 @login_required
