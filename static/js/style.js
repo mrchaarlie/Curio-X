@@ -78,22 +78,20 @@ $(document).ready(function () {
         var budBool = 0;
         var fruitBool = 0;
 
-        if($("#flower-button").click(function(){
-            flowerBool += 1;
-            flowerBool = flowerBool % 2;
-        }));
-        if($("#bud-button").click(function(){
-            budBool += 1;
-            budBool = budBool % 2;
-        }));
-        if($("#fruit-button").click(function(){
-            fruitBool += 1;
-            fruitBool = fruitBool % 2;
-        }));
+        $(".button-container").click(function(){
+            if ($(this).find(".toggle-button").is('#flower-button')){
+                flowerBool += 1;
+                flowerBool = flowerBool % 2;
+            }else if($(this).find(".toggle-button").is('#bud-button')){
 
-        $( ".toggle-button" ).click(function() {
-            $(this).parent().toggleClass( "selected" , 1000, "easeOut");
-        }); 
+                budBool += 1;
+                budBool = budBool % 2;
+            }else if($(this).find(".toggle-button").is('#fruit-button')){
+                fruitBool += 1;
+                fruitBool = fruitBool % 2;
+            }
+            $(this).toggleClass( "selected" , 1000, "easeOut");
+        });
 
         //Submit click code:
         var clickSubmit = "{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}";

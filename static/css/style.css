@@ -50,7 +50,7 @@ h1{
 	font-size: 1.3em;
 }
 .transparent {
-	opacity: 0.8;
+	opacity: 0.85;
 }
 
 .center-block, .title {
@@ -339,3 +339,39 @@ button:hover{
 	padding:30px 0 0 0 ;
 	border-top: 1px solid #444;
 }
+
+.game-home{text-align: left; padding-left: 24px;}
+.gameUI{
+	font-family: 'Open Sans', sans-serif;
+	color: #eee;
+	text-shadow:#333 2px 2px 1px;
+	text-align: right;
+	position: absolute;
+	left: 50%;
+}
+
+.game-title{
+	font-size: 1.4em;
+	position: relative;
+	z-index: 101;
+	top: 12px;
+	left: -50%;
+}
+.points{
+	font-size: 0.8em;
+	color: #ddd;
+	position: absolute;
+	z-index: 101;
+	top: 12px; 
+	right: 11px;
+}
+.completed{
+	font-size: 0.8em;
+	color: #999;
+	position: absolute;
+	z-index: 101;
+	top: 30px; 
+	right: 11px;
+
+}
+

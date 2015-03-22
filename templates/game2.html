@@ -22,7 +22,7 @@
 		<!-- <link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html"> -->
 		
 		<!-- fonts -->
-		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Montserrat|Open+Sans:300' rel='stylesheet' type='text/css'>
 
 	</head>
 	<body>
@@ -30,11 +30,18 @@
 		<!-- Header -->
 		<div class="header transparent">
 			<!-- TODO: background image -->
-			<div class="title text-center"><a class="no-decoration" href="/">curio-x</a></div>
+			<div class="title text-center game-home"><a class="no-decoration" href="/">curio-x</a></div>
 
 
 		</div>
 		<div class="main">
+
+			<div class="gameUI">
+				<div class="game-title">Image #<!-- {{user.currentPos}} --></div>
+			</div>
+			<div class="points">100 <!-- {{user.score}} --> points</div>
+			<div class="completed">1 <!-- {{user.counter}} --> <!-- of 50 --> completed</div>
+
 			<div class="loading"><div></div></div>
 			<div class="test-image panzoom-parent" id="">
 				<!-- <img class="panzoom" id = "testImage" src="{% static 'img/plant.jpg' %}"> -->
@@ -79,9 +86,9 @@
 		</div>
 
 		<!-- Main -->
-		<div class="toggle-bg text-center">
+		<div class="toggle-bg text-center count-game">
 
-			<div class="instructions">Select what <!--<span class="emphasis">fruit</span> -->you counted.</div>
+			<div class="instructions">Select what you counted.</div>
 			
 			<div class="button-container count waves-effect waves-light">
 				<button class="toggle-button" id="flower-button">
