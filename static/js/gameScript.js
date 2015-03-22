@@ -6,6 +6,8 @@ $(document).ready(function (e){
 	var globalImgHeight = 0;
 	var globalDownX = 0;
 	var globalDownY = 0;
+	var lastPosX = 0;
+	var lastPosY = 0;
 
 	$('#testImage').load(function(e){
 		drawCanvas();
@@ -62,12 +64,12 @@ $(document).ready(function (e){
 		})
 
 		$('#circleCanvas').mousedown(function (e) {
-			// console.log('mousedown')
-			var posX = $(this).offset().left,
-				posY = $(this).offset().top;
+			var posX = lastPosX = $(this).offset().left,
+				posY = lastPosY = $(this).offset().top;
 
 			globalDownX = e.pageX - posX;
 			globalDownY = e.pageY - posY;
+			// console.log('x:'+posX+", y:"+posY+", globX" + globalDownX+", globy" + globalDownY);
 		});
 
 		$('#circleCanvas').mouseup(function (e) {
@@ -75,6 +77,10 @@ $(document).ready(function (e){
 			var posX = $(this).offset().left,
 				posY = $(this).offset().top;
 			
+			if (posX != lastPosX || posY != lastPosY) {
+				return;
+			};
+
 			var canvasArray = $("#circleCanvas").attr("style").split(',');
 			globalScale = canvasArray[3];
 
@@ -88,6 +94,7 @@ $(document).ready(function (e){
 				cArrayUpdate(coord);
 				drawCircles();
 			}
+			console.log('x:'+posX+", y:"+posY+", globX" + globalDownX+", globy" + globalDownY);
 		})
 
 		function cArrayUpdate(newCoord) {

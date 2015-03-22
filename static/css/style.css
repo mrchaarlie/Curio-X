@@ -172,10 +172,11 @@ button:hover{
 
 .container{ position: relative;}
 .intro {
-	margin-top: 10px; 
+	margin: 10px auto;
 	background: #2a2a2a;
 	padding: 20px 35px;
 	color: #eee;
+	max-width: 550px;
 }
 
 .outsideWrapper{
