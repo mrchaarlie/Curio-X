@@ -251,9 +251,9 @@ button:hover{
 	font-size: 1.1em;
 }
 
-.count #flower-button{border: 3px solid rgb(192, 43, 96);}
-.count #bud-button{border: 3px solid rgb(219, 130, 50);}
-.count #fruit-button{border: 3px solid rgb(52, 214, 18);}
+.count #flower-button img{border: 3px solid rgb(192, 43, 96);}
+.count #bud-button img{border: 3px solid rgb(219, 130, 50);}
+.count #fruit-button img{border: 3px solid rgb(52, 214, 18);}
 .button-container{
 	margin: 3px 0px;
 	padding: 15px 5px;
@@ -275,7 +275,7 @@ button:hover{
     transition: 200ms linear;
     position: relative;
 }
-.button-image{border-radius: 2px}
+.button-image{border-radius: 50%;}
 .submit{
 	border-radius: 50%;
 	height: 100%;

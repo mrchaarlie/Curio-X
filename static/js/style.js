@@ -54,7 +54,7 @@ $(document).ready(function () {
         // console.log('width: ' + $('.button-container').width());;
         var tbw = $('.button-container').width();
         // console.log('resize: ' + tbw);
-        $('.toggle-button').css({'height':tbw+'px'});
+        $('.toggle-button').css({'width':tbw+'px','height':tbw+'px'});
         $('.button-image').css({'width':tbw+'px','height':tbw+'px'});
         $('.submit').css({'width':tbw+'px','height':tbw+'px'});    
     }
