@@ -83,7 +83,9 @@
 			<div class="instructions">Select what you can see in the image.</div>              
 			<div class="button-container waves-effect waves-light">
 				<button class="toggle-button" id="flower-button">
-				<img class="button-image" src="{% static 'img/flower1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+					<img class="button-image active" id="flower-img" src="{% static 'img/flower1.jpg' %}">
+					<img class="button-image" id="flower-img" src="{% static 'img/flower2.jpg' %}">
+					<img class="button-image" id="flower-img" src="{% static 'img/flower3.jpg' %}">
 				</button>
 				<span>Flower</span>
 			</div>
@@ -91,14 +93,19 @@
 
 			<div class="button-container waves-effect waves-light">
 				<button class="toggle-button" id="bud-button">
-				<img class="button-image" src="{% static 'img/bud1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+				<img class="button-image active" id="bud-img" src="{% static 'img/bud1.jpg' %}">
+				<img class="button-image" id="bud-img" src="{% static 'img/bud2.jpg' %}">
+				<img class="button-image" id="bud-img" src="{% static 'img/bud3.jpg' %}">
 				</button>
 				<span>Bud</span>
 			</div>
 			
 			<div class="button-container waves-effect waves-light">
 				<button class="toggle-button" id="fruit-button">
-				<img class="button-image" src="{% static 'img/fruit1.jpg' %}"><paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+				<img class="button-image active" id="fruit-img" src="{% static 'img/fruit1.jpg' %}">
+				<img class="button-image" id="fruit-img" src="{% static 'img/fruit2.jpg' %}">
+				<img class="button-image" id="fruit-img" src="{% static 'img/fruit3.jpg' %}">
+
 				</button>
 				<span>Fruit</span>
 			</div>

@@ -96,28 +96,73 @@ $(document).ready(function () {
         //Submit click code:
         var clickSubmit = "{flower:"+flowerBool+", bud:"+budBool+", fruit:"+fruitBool+"}";
 
+        
+        setInterval(function () {cycleFlowers()}, 6000);
+        $(this).delay(1000)
+        .queue( function(next){ 
+            setInterval(function () {cycleBuds()}, 6000);
+            next(); 
+        });
+        
+        $(this).delay(1000)
+        .queue( function(next){ 
+            setInterval(function () {cycleFruits()}, 6000);
+            next(); 
+        });
+        
+        // setTimeout(cycleBuds(),1000);
+        // setTimeout(setInterval(function () {cycleFlowers()}, 1000), 1000);
+        // setTimeout(setInterval(function () {cycleBuds()}, 5000), 6500);
+        // setTimeout(setInterval(function () {cycleFruits()}, 5000), 8000);
+
     }
 
         // Post the button toggle states upon submission
         $("#postClas").submit(function(e) {
-                console.log('submit!')
-                $('<input />').attr('type', 'hidden')
-                        .attr('name', "flowerbool")
-                        .attr('value', flowerBool)
-                        .appendTo('#postClas');
-                $('<input />').attr('type', 'hidden')
-                        .attr('name', "budbool")
-                        .attr('value', budBool)
-                        .appendTo('#postClas');
-                $('<input />').attr('type', 'hidden')
-                        .attr('name', "fruitbool")
-                        .attr('value', fruitBool)
-                        .appendTo('#postClas');
+            console.log('submit!')
+            $('<input />').attr('type', 'hidden')
+                    .attr('name', "flowerbool")
+                    .attr('value', flowerBool)
+                    .appendTo('#postClas');
+            $('<input />').attr('type', 'hidden')
+                    .attr('name', "budbool")
+                    .attr('value', budBool)
+                    .appendTo('#postClas');
+            $('<input />').attr('type', 'hidden')
+                    .attr('name', "fruitbool")
+                    .attr('value', fruitBool)
+                    .appendTo('#postClas');
         return true;
         })
 
+    // $(document).scroll(function() {
+    // })
 
-    $(document).scroll(function() {
-    })
-
+    function cycleFlowers(){
+        var $active = $('#flower-button .active');
+        var $next = ($active.next().length > 0) ? $active.next() : $('#flower-button img:first');
+        $next.css('z-index',2);//move the next image up the pile
+        $active.fadeOut(1500,function(){//fade out the top image
+        $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+          $next.css('z-index',3).addClass('active');//make the next image the top one
+        });
+    }
+    function cycleBuds(){
+        var $active = $('#bud-button .active');
+        var $next = ($active.next().length > 0) ? $active.next() : $('#bud-button img:first');
+        $next.css('z-index',2);//move the next image up the pile
+        $active.fadeOut(1500,function(){//fade out the top image
+        $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+          $next.css('z-index',3).addClass('active');//make the next image the top one
+        });
+    }
+    function cycleFruits(){
+        var $active = $('#fruit-button .active');
+        var $next = ($active.next().length > 0) ? $active.next() : $('#fruit-button img:first');
+        $next.css('z-index',2);//move the next image up the pile
+        $active.fadeOut(1500,function(){//fade out the top image
+        $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+          $next.css('z-index',3).addClass('active');//make the next image the top one
+        });
+    }
 });

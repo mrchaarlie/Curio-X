@@ -267,7 +267,7 @@ button:hover{
     -webkit-transition: 200ms linear;
     transition: 200ms linear;
 }
-.button-container button{margin-bottom:10px; background-color: #222;}
+.button-container button{margin-bottom:10px; background-color: rgba(0,0,0,0.3);}
 .selected{
 	background: rgba(107, 146, 153, 0.8);
 	border-radius: 2px
@@ -275,7 +275,8 @@ button:hover{
     transition: 200ms linear;
     position: relative;
 }
-.button-image{border-radius: 50%;}
+.button-image{border-radius: 50%; position: absolute; top:0; left: 0; z-index:1}
+.button-image.active{z-index:3}
 .submit{
 	border-radius: 50%;
 	height: 100%;
