@@ -9,6 +9,7 @@ logs <- read.csv("logs.csv")
 results <- read.csv("results.csv")
 gold <- read.csv("goldstandard.csv")
 timg <- read.csv("testimages.csv")
+eng <- read.csv("engagement.csv")
 dim(logs); dim(results); dim(gold); dim(timg)
 
 # Overview
@@ -374,43 +375,148 @@ ggplot(userDurationScore, aes(x=duration/60, y = 'False Discovery Rate', color =
   ylab("False Discovery Rate")
 
 #
-# How many users is "enough" to classify image reliably
+# Effects of engagement on scores
 #
-# TODO: Fix this section
-# runs <- 2
-# numUsers <- c(2,4)#,4,8,16)
-# userSet <- data.frame(unique(users$User))
-# colnames(userSet) <- c("User")
-# randImgs <- gold[sample(nrow(gold), 5, replace=FALSE),"iID"]
-# 
-# for (i in 1:length(randImgs)) {   #random smapling of images
-#   for (j in 1:length(numUsers)) { #test on some number of random users
-#     for (k in 1:length(runs)) { #average over 5 samplings (runs)
-#       randUsers <- userSet[sample(nrow(userSet), numUsers[j], replace=FALSE), "User"]
-#       sim <- times[times[,"iID"] == randImgs[i],]
-#       sim <- sim[sim$User %in% randUsers,]
-#       
-#       confmat <- aggregate(cbind(tpFlower,fpFlower,tnFlower,fnFlower,
-#                                  tpBud,fpBud,tnBud,fnBud,tpFruit,fpFruit,
-#                                  tnFruit,fnFruit) ~ iID, sim, sum)
-#       
-#       metricCols <- c("accuracyFlower","accuracyBud","accuracyFruit")
-#       confmat[metricCols] <- 0.0
-#       
-#       # Calculate metrics for image sample
-#       for (i in 1:dim(confmat)[1]) {
-#         # Flowers
-#         confmat$accuracyFlower[i] <- (confmat$tpFlower[i] + confmat$tnFlower[i]) /
-#           (confmat$tpFlower[i] + confmat$tnFlower[i] + confmat$fpFlower[i] + confmat$fnFlower[i])
-#         # Buds
-#         confmat$accuracyBud[i] <- (confmat$tpBud[i] + confmat$tnBud[i]) /
-#           (confmat$tpBud[i] + confmat$tnBud[i] + confmat$fpBud[i] + confmat$fnBud[i])
-#         # Fruit
-#         confmat$accuracyFruit[i] <- (confmat$tpFruit[i] + confmat$tnFruit[i]) /
-#           (confmat$tpFruit[i] + confmat$tnFruit[i] + confmat$fpFruit[i] + confmat$fnFruit[i])
-#       }
-#       summary(confmat)
-#     }
-#   }
-# }
-# 
+userEngDurationScore <- merge(userDurationScore,eng,by="User")
+
+# Including Duration
+ggplot(userEngDurationScore, aes(x=duration/60, y = accuracy, color = 'Object',size=IMIInterest)) + 
+  geom_point(aes(y=accuracyFlower, col = "Flowers")) + 
+  geom_point(aes(y=accuracyBud, col = "Buds")) +
+  geom_point(aes(y=accuracyFruit, col = "Fruit")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User Accuracy for Objects over Varying Test Duration") +
+  xlab("Total Test Duration (minutes)") +
+  ylab("Accuracy")
+
+ggplot(userEngDurationScore, aes(x=duration/60, y = 'True Positive Rate', color = 'Object',size=IMIInterest)) + 
+  geom_point(aes(y=tprFlower, col = "Flowers")) + 
+  geom_point(aes(y=tprBud, col = "Buds")) +
+  geom_point(aes(y=tprFruit, col = "Fruit")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User True Positive Rate for Objects over Varying Test Duration") +
+  xlab("Total Test Duration (minutes)") +
+  ylab("True Positive Rate")
+
+ggplot(userEngDurationScore, aes(x=duration/60, y='False Discovery Rate', color='Object',size=IMIInterest)) + 
+  geom_point(aes(y=fdrFlower, col = "Flowers")) + 
+  geom_point(aes(y=fdrBud, col = "Buds")) +
+  geom_point(aes(y=fdrFruit, col = "Fruit")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User False Discovery Rate for Objects over Varying Test Duration") +
+  xlab("Total Test Duration (minutes)") +
+  ylab("False Discovery Rate")
+
+# Engagement versus Metric
+# No relation!
+ggplot(userEngDurationScore, aes(x=IMIInterest, y = accuracy, color = 'Object',size=4)) + 
+  geom_point(aes(y=accuracyFlower, col = "Flowers")) + 
+  geom_point(aes(y=accuracyBud, col = "Buds")) +
+  geom_point(aes(y=accuracyFruit, col = "Fruit")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User Accuracy for Objects over Varying Test Duration") +
+  xlab("Interest (IMI)") +
+  ylab("Accuracy")
+
+ggplot(userEngDurationScore, aes(x=IMIInterest, y = 'True Positive Rate', color = 'Object',size=4)) + 
+  geom_point(aes(y=tprFlower, col = "Flowers")) + 
+  geom_point(aes(y=tprBud, col = "Buds")) +
+  geom_point(aes(y=tprFruit, col = "Fruit")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User True Positive Rate for Objects over Varying Test Duration") +
+  xlab("Interest (IMI)") +
+  ylab("True Positive Rate")
+
+ggplot(userEngDurationScore, aes(x=IMIInterest, y='False Discovery Rate', color='Object',size=4)) + 
+  geom_point(aes(y=fdrFlower, col = "Flowers")) + 
+  geom_point(aes(y=fdrBud, col = "Buds")) +
+  geom_point(aes(y=fdrFruit, col = "Fruit")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="User False Discovery Rate for Objects over Varying Test Duration") +
+  xlab("Interest (IMI)") +
+  ylab("False Discovery Rate")
+
+#
+# How many users is "enough" to classify image reliably?
+#
+runs <- 5
+numUsers <- c(2,5,8)
+userSet <- data.frame(unique(users$User))
+colnames(userSet) <- c("User")
+randImgs <- gold[sample(nrow(gold), 25, replace=FALSE),"iID"]
+
+cols <- c("iID","numUsers","accuracyFlower","accuracyBud","accuracyFruit")
+numUserScores <- data.frame(matrix(ncol = length(cols), nrow = 0))
+colnames(numUserScores) <- cols
+
+cols <- c("iID","accuracyFlower","accuracyBud","accuracyFruit")
+
+for (j in 1:length(numUsers)) { #test on some number of random users
+  numUserScore <- data.frame(matrix(ncol = length(cols), nrow = 0))
+  colnames(numUserScore) <- cols
+  numUserScoreTmp <- numUserScore
+  for (m in 1:length(randImgs)) {   #random sampling of images
+    imgRuns <- data.frame(matrix(ncol = length(cols), nrow = 0))
+    colnames(imgRuns) <- cols
+    for (k in 1:runs) { #average over N samplings (runs)
+      # Sample random users
+      randUsers <- userSet[sample(nrow(userSet), numUsers[j], replace=FALSE), "User"]
+      # Simulate users applied to image
+      sim <- times[times[,"iID"] == randImgs[m],]
+      sim <- sim[sim$User %in% randUsers,]
+      
+      # Aggregate user answers
+      imgScore <- aggregate(cbind(tpFlower,fpFlower,tnFlower,fnFlower,
+                                 tpBud,fpBud,tnBud,fnBud,tpFruit,fpFruit,
+                                 tnFruit,fnFruit) ~ iID, sim, sum)
+      
+      metricCols <- c("accuracyFlower","accuracyBud","accuracyFruit")
+      imgScore[metricCols] <- 0.0
+      
+      # Calculate metrics for image sample
+      for (i in 1:dim(imgScore)[1]) {
+        # Flowers
+        imgScore$accuracyFlower[i] <- (imgScore$tpFlower[i] + imgScore$tnFlower[i]) /
+          (imgScore$tpFlower[i] + imgScore$tnFlower[i] + imgScore$fpFlower[i] + imgScore$fnFlower[i])
+        # Buds
+        imgScore$accuracyBud[i] <- (imgScore$tpBud[i] + imgScore$tnBud[i]) /
+          (imgScore$tpBud[i] + imgScore$tnBud[i] + imgScore$fpBud[i] + imgScore$fnBud[i])
+        # Fruit
+        imgScore$accuracyFruit[i] <- (imgScore$tpFruit[i] + imgScore$tnFruit[i]) /
+          (imgScore$tpFruit[i] + imgScore$tnFruit[i] + imgScore$fpFruit[i] + imgScore$fnFruit[i])
+      }
+      
+      # Append to run data
+      imgRuns <- rbind(imgRuns, imgScore[,cols])
+    }
+    # Aggregate (mean) over runs
+    imgRunScore <- aggregate(cbind(accuracyFlower, accuracyBud,
+                                   accuracyFruit) ~ iID, imgRuns, mean)
+    # Append to num user data
+    numUserScoreTmp <- rbind(numUserScoreTmp, imgRunScore)
+    numUserScore <- numUserScoreTmp
+    numUserScore$numUsers <- numUsers[j]
+  }
+  # Append num user data to overall data
+  numUserScores <- rbind(numUserScores, numUserScore)
+}
+
+# Plot numUsers against Accuracy
+ggplot(numUserScores, aes(x=numUsers, y=accuracy, color='Object',size=4)) + 
+  geom_point(aes(y=accuracyFlower, col = "Flowers")) + 
+  geom_point(aes(y=accuracyBud, col = "Buds")) +
+  geom_point(aes(y=accuracyFruit, col = "Fruit")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(title="Accuracy on Images for Objects for Number of Users Given Image") +
+  xlab("Number of Users Given Image") +
+  ylab("Accuracy")
+
+ggplot(numUserScores, aes(accuracyFlower, fill = as.factor(numUsers))) +
+  geom_density(alpha = 0.6, aes(y=..count..)) +
+  ylim(0,100)
+ggplot(numUserScores, aes(accuracyBud, fill = as.factor(numUsers))) +
+  geom_density(alpha = 0.6, aes(y=..count..)) +
+  ylim(0,100)
+ggplot(numUserScores, aes(accuracyFruit, fill = as.factor(numUsers))) +
+  geom_density(alpha = 0.6, aes(y=..count..), position = 'identity') +
+  ylim(0,100)
