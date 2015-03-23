@@ -291,7 +291,7 @@ button:hover{
 }
 .skip-container{
 	margin: 3px 5px;
-	padding: 36px 0;
+	padding: 16px 0;
 	min-width: 20px;
 	display: inline-block;
 	max-width: 70px;
@@ -304,12 +304,14 @@ button:hover{
 	top:10px;
 	vertical-align: top;
 }
+.undo{border-radius: 2px;}
 .skip{
 	height: 25px; width: 25px;
 	border-radius: 2px;
 	display: inline-block;
 	position: relative;
 	overflow: hidden;
+	margin-top: 10px
 }
 .toggle-button{
 	width: 100%;
