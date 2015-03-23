@@ -159,35 +159,35 @@ grid.arrange(fl1, bud1, fr1, ncol=3)
 
 # Mean and std dev distrubutions for images
 # Accuracy
-distflAcc <- c(mean(confmat$accuracyFlower,na.rm=TRUE), sd(confmat$accuracyFlower,na.rm=TRUE))
-distbudAcc <- c(mean(confmat$accuracyBud,na.rm=TRUE),sd(confmat$accuracyBud,na.rm=TRUE))
-distfrAcc <- c(mean(confmat$accuracyFruit,na.rm=TRUE), sd(confmat$accuracyFruit,na.rm=TRUE))
-
-x <- seq(0,1,length=1000);
-y <- dnorm(x,mean=distflAcc[1],sd=distflAcc[2]); qplot(x,y)
-y <- dnorm(x,mean=distbudAcc[1],sd=distbudAcc[2]); qplot(x,y)
-y <- dnorm(x,mean=distfrAcc[1],sd=distfrAcc[2]); qplot(x,y)
-
-# True Positive Rate
-distflTpr <- c(mean(confmat$tprFlower,na.rm=TRUE), sd(confmat$tprFlower,na.rm=TRUE))
-distbudTpr <- c(mean(confmat$tprBud,na.rm=TRUE),sd(confmat$tprBud,na.rm=TRUE))
-distfrTpr <- c(mean(confmat$tprFruit,na.rm=TRUE), sd(confmat$tprFruit,na.rm=TRUE))
-
-x <- seq(0,1,length=1000);
-y <- dnorm(x,mean=distflTpr[1],sd=distflTpr[2]); qplot(x,y)
-y <- dnorm(x,mean=distbudTpr[1],sd=distbudTpr[2]); qplot(x,y)
-y <- dnorm(x,mean=distfrTpr[1],sd=distfrTpr[2]); qplot(x,y)
-
-# False Discovery Rate
-distflFdr <- c(mean(confmat$fdrFlower,na.rm=TRUE), sd(confmat$fdrFlower,na.rm=TRUE))
-distbudFdr <- c(mean(confmat$fdrBud,na.rm=TRUE),sd(confmat$fdrBud,na.rm=TRUE))
-distfrFdr <- c(mean(confmat$fdrFruit,na.rm=TRUE), sd(confmat$fdrFruit,na.rm=TRUE))
-
-# Bimodal -- either really good or bad
-x <- seq(0,1,length=1000);
-y <- dnorm(x,mean=distflFdr[1],sd=distflFdr[2]); qplot(x,y)
-y <- dnorm(x,mean=distbudFdr[1],sd=distbudFdr[2]); qplot(x,y)
-y <- dnorm(x,mean=distfrFdr[1],sd=distfrFdr[2]); qplot(x,y)
+# distflAcc <- c(mean(confmat$accuracyFlower,na.rm=TRUE), sd(confmat$accuracyFlower,na.rm=TRUE))
+# distbudAcc <- c(mean(confmat$accuracyBud,na.rm=TRUE),sd(confmat$accuracyBud,na.rm=TRUE))
+# distfrAcc <- c(mean(confmat$accuracyFruit,na.rm=TRUE), sd(confmat$accuracyFruit,na.rm=TRUE))
+# 
+# x <- seq(0,1,length=1000);
+# y <- dnorm(x,mean=distflAcc[1],sd=distflAcc[2]); qplot(x,y)
+# y <- dnorm(x,mean=distbudAcc[1],sd=distbudAcc[2]); qplot(x,y)
+# y <- dnorm(x,mean=distfrAcc[1],sd=distfrAcc[2]); qplot(x,y)
+# 
+# # True Positive Rate
+# distflTpr <- c(mean(confmat$tprFlower,na.rm=TRUE), sd(confmat$tprFlower,na.rm=TRUE))
+# distbudTpr <- c(mean(confmat$tprBud,na.rm=TRUE),sd(confmat$tprBud,na.rm=TRUE))
+# distfrTpr <- c(mean(confmat$tprFruit,na.rm=TRUE), sd(confmat$tprFruit,na.rm=TRUE))
+# 
+# x <- seq(0,1,length=1000);
+# y <- dnorm(x,mean=distflTpr[1],sd=distflTpr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distbudTpr[1],sd=distbudTpr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distfrTpr[1],sd=distfrTpr[2]); qplot(x,y)
+# 
+# # False Discovery Rate
+# distflFdr <- c(mean(confmat$fdrFlower,na.rm=TRUE), sd(confmat$fdrFlower,na.rm=TRUE))
+# distbudFdr <- c(mean(confmat$fdrBud,na.rm=TRUE),sd(confmat$fdrBud,na.rm=TRUE))
+# distfrFdr <- c(mean(confmat$fdrFruit,na.rm=TRUE), sd(confmat$fdrFruit,na.rm=TRUE))
+# 
+# # Bimodal -- either really good or bad
+# x <- seq(0,1,length=1000);
+# y <- dnorm(x,mean=distflFdr[1],sd=distflFdr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distbudFdr[1],sd=distbudFdr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distfrFdr[1],sd=distfrFdr[2]); qplot(x,y)
 
 imageScores <- confmat
 
@@ -251,35 +251,35 @@ grid.arrange(fl1, fl2, fl3, bud1, bud2, bud3, fr1, fr2, fr3, ncol=3)
 
 # Mean and std dev distrubutions for users
 # Accuracy
-distflAcc <- c(mean(confmat$accuracyFlower,na.rm=TRUE), sd(confmat$accuracyFlower,na.rm=TRUE))
-distbudAcc <- c(mean(confmat$accuracyBud,na.rm=TRUE),sd(confmat$accuracyBud,na.rm=TRUE))
-distfrAcc <- c(mean(confmat$accuracyFruit,na.rm=TRUE), sd(confmat$accuracyFruit,na.rm=TRUE))
-
-x <- seq(0,1,length=1000);
-y <- dnorm(x,mean=distflAcc[1],sd=distflAcc[2]); qplot(x,y)
-y <- dnorm(x,mean=distbudAcc[1],sd=distbudAcc[2]); qplot(x,y)
-y <- dnorm(x,mean=distfrAcc[1],sd=distfrAcc[2]); qplot(x,y)
-
-# True Positive Rate -- really crappy for buds
-distflTpr <- c(mean(confmat$tprFlower,na.rm=TRUE), sd(confmat$tprFlower,na.rm=TRUE))
-distbudTpr <- c(mean(confmat$tprBud,na.rm=TRUE),sd(confmat$tprBud,na.rm=TRUE))
-distfrTpr <- c(mean(confmat$tprFruit,na.rm=TRUE), sd(confmat$tprFruit,na.rm=TRUE))
-
-x <- seq(0,1,length=1000);
-y <- dnorm(x,mean=distflTpr[1],sd=distflTpr[2]); qplot(x,y)
-y <- dnorm(x,mean=distbudTpr[1],sd=distbudTpr[2]); qplot(x,y)
-y <- dnorm(x,mean=distfrTpr[1],sd=distfrTpr[2]); qplot(x,y)
-
-# False Discovery Rate
-distflFdr <- c(mean(confmat$fdrFlower,na.rm=TRUE), sd(confmat$fdrFlower,na.rm=TRUE))
-distbudFdr <- c(mean(confmat$fdrBud,na.rm=TRUE),sd(confmat$fdrBud,na.rm=TRUE))
-distfrFdr <- c(mean(confmat$fdrFruit,na.rm=TRUE), sd(confmat$fdrFruit,na.rm=TRUE))
-
-# Bimodal -- either really good or bad (bad for buds)
-x <- seq(0,1,length=1000);
-y <- dnorm(x,mean=distflFdr[1],sd=distflFdr[2]); qplot(x,y)
-y <- dnorm(x,mean=distbudFdr[1],sd=distbudFdr[2]); qplot(x,y)
-y <- dnorm(x,mean=distfrFdr[1],sd=distfrFdr[2]); qplot(x,y)
+# distflAcc <- c(mean(confmat$accuracyFlower,na.rm=TRUE), sd(confmat$accuracyFlower,na.rm=TRUE))
+# distbudAcc <- c(mean(confmat$accuracyBud,na.rm=TRUE),sd(confmat$accuracyBud,na.rm=TRUE))
+# distfrAcc <- c(mean(confmat$accuracyFruit,na.rm=TRUE), sd(confmat$accuracyFruit,na.rm=TRUE))
+# 
+# x <- seq(0,1,length=1000);
+# y <- dnorm(x,mean=distflAcc[1],sd=distflAcc[2]); qplot(x,y)
+# y <- dnorm(x,mean=distbudAcc[1],sd=distbudAcc[2]); qplot(x,y)
+# y <- dnorm(x,mean=distfrAcc[1],sd=distfrAcc[2]); qplot(x,y)
+# 
+# # True Positive Rate -- really crappy for buds
+# distflTpr <- c(mean(confmat$tprFlower,na.rm=TRUE), sd(confmat$tprFlower,na.rm=TRUE))
+# distbudTpr <- c(mean(confmat$tprBud,na.rm=TRUE),sd(confmat$tprBud,na.rm=TRUE))
+# distfrTpr <- c(mean(confmat$tprFruit,na.rm=TRUE), sd(confmat$tprFruit,na.rm=TRUE))
+# 
+# x <- seq(0,1,length=1000);
+# y <- dnorm(x,mean=distflTpr[1],sd=distflTpr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distbudTpr[1],sd=distbudTpr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distfrTpr[1],sd=distfrTpr[2]); qplot(x,y)
+# 
+# # False Discovery Rate
+# distflFdr <- c(mean(confmat$fdrFlower,na.rm=TRUE), sd(confmat$fdrFlower,na.rm=TRUE))
+# distbudFdr <- c(mean(confmat$fdrBud,na.rm=TRUE),sd(confmat$fdrBud,na.rm=TRUE))
+# distfrFdr <- c(mean(confmat$fdrFruit,na.rm=TRUE), sd(confmat$fdrFruit,na.rm=TRUE))
+# 
+# # Bimodal -- either really good or bad (bad for buds)
+# x <- seq(0,1,length=1000);
+# y <- dnorm(x,mean=distflFdr[1],sd=distflFdr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distbudFdr[1],sd=distbudFdr[2]); qplot(x,y)
+# y <- dnorm(x,mean=distfrFdr[1],sd=distfrFdr[2]); qplot(x,y)
 
 userScores <- confmat
 
@@ -380,32 +380,36 @@ ggplot(userDurationScore, aes(x=duration/60, y = 'False Discovery Rate', color =
 userEngDurationScore <- merge(userDurationScore,eng,by="User")
 
 # Including Duration
+# XXX: Use these plots
 ggplot(userEngDurationScore, aes(x=duration/60, y = accuracy, color = 'Object',size=IMIInterest)) + 
   geom_point(aes(y=accuracyFlower, col = "Flowers")) + 
   geom_point(aes(y=accuracyBud, col = "Buds")) +
   geom_point(aes(y=accuracyFruit, col = "Fruit")) +
   scale_y_continuous(limits = c(0, 1)) +
-  labs(title="User Accuracy for Objects over Varying Test Duration") +
+  labs(title="User Accuracy for Plant Parts over Varying Test Duration") +
   xlab("Total Test Duration (minutes)") +
-  ylab("Accuracy")
+  ylab("Accuracy") + 
+  labs(color="Plant Part", size="Interest (IMI)")
 
 ggplot(userEngDurationScore, aes(x=duration/60, y = 'True Positive Rate', color = 'Object',size=IMIInterest)) + 
   geom_point(aes(y=tprFlower, col = "Flowers")) + 
   geom_point(aes(y=tprBud, col = "Buds")) +
   geom_point(aes(y=tprFruit, col = "Fruit")) +
   scale_y_continuous(limits = c(0, 1)) +
-  labs(title="User True Positive Rate for Objects over Varying Test Duration") +
+  labs(title="User True Positive Rate for Plant Parts over Varying Test Duration") +
   xlab("Total Test Duration (minutes)") +
-  ylab("True Positive Rate")
+  ylab("True Positive Rate") + 
+  labs(color="Plant Part", size="Interest (IMI)")
 
 ggplot(userEngDurationScore, aes(x=duration/60, y='False Discovery Rate', color='Object',size=IMIInterest)) + 
   geom_point(aes(y=fdrFlower, col = "Flowers")) + 
   geom_point(aes(y=fdrBud, col = "Buds")) +
   geom_point(aes(y=fdrFruit, col = "Fruit")) +
   scale_y_continuous(limits = c(0, 1)) +
-  labs(title="User False Discovery Rate for Objects over Varying Test Duration") +
+  labs(title="User False Discovery Rate for Plant Parts over Varying Test Duration") +
   xlab("Total Test Duration (minutes)") +
-  ylab("False Discovery Rate")
+  ylab("False Discovery Rate") + 
+  labs(color="Plant Part", size="Interest (IMI)")
 
 # Engagement versus Metric
 # No relation!
@@ -439,8 +443,8 @@ ggplot(userEngDurationScore, aes(x=IMIInterest, y='False Discovery Rate', color=
 #
 # How many users is "enough" to classify image reliably?
 #
-runs <- 5
-numUsers <- c(2,5,8)
+runs <- 2
+numUsers <- c(2,5,10)
 userSet <- data.frame(unique(users$User))
 colnames(userSet) <- c("User")
 randImgs <- gold[sample(nrow(gold), 25, replace=FALSE),"iID"]
@@ -512,11 +516,22 @@ ggplot(numUserScores, aes(x=numUsers, y=accuracy, color='Object',size=4)) +
   ylab("Accuracy")
 
 ggplot(numUserScores, aes(accuracyFlower, fill = as.factor(numUsers))) +
-  geom_density(alpha = 0.6, aes(y=..count..)) +
-  ylim(0,100)
+  geom_density(alpha = 0.7) +
+  ylim(0,6) +
+  xlab("Flower Accuracy") +
+  ylab("Density")
+# XXX: These plots -- two of them
 ggplot(numUserScores, aes(accuracyBud, fill = as.factor(numUsers))) +
-  geom_density(alpha = 0.6, aes(y=..count..)) +
-  ylim(0,100)
+  geom_density(alpha = 0.7) +
+  ylim(0,6) +
+  xlab("Bud Accuracy") +
+  ylab("Density") + 
+  labs(title="Consensus Scoring of Buds with Variable Number of Users using Random Sampling",
+       fill="Number of Users")
 ggplot(numUserScores, aes(accuracyFruit, fill = as.factor(numUsers))) +
-  geom_density(alpha = 0.6, aes(y=..count..), position = 'identity') +
-  ylim(0,100)
+  geom_density(alpha = 0.7) +
+  ylim(0,6) +
+  xlab("Fruit Accuracy") +
+  ylab("Density") + 
+  labs(title="Consensus Scoring of Fruit with Variable Number of Users using Random Sampling",
+       fill="Number of Users")
