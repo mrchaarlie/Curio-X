@@ -267,7 +267,7 @@ button:hover{
     -webkit-transition: 200ms linear;
     transition: 200ms linear;
 }
-.button-container button{margin-bottom:10px; background-color: rgba(0,0,0,0.3);}
+.button-container button{margin-bottom:10px; background-color: rgba(0,0,0,0);}
 .selected{
 	background: rgba(107, 146, 153, 0.8);
 	border-radius: 2px
